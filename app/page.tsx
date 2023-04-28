@@ -1,116 +1,94 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-
+import { VideoCameraIcon, MagnifyingGlassIcon, EllipsisHorizontalIcon, PlusIcon,PhotoIcon,FaceSmileIcon ,XMarkIcon} from '@heroicons/react/24/outline'
+import Link from 'next/link'
+import RightSideBar from '@/components/rightSideBar'
+import { Earth } from '@/components/icon'
+import Post from '@/components/post'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className=" relative flex flex-col   min-h-0   left-[60px] lg:left-[300px]  origin-top-left  ">
+      <div className='relative min-h-[56px] overflow-visible w-full h-full flex '>
+        <div className='flex relative grow min-w-0 z-0 shrink justify-between items-start flex-nowrap basis-0 max-w-none 2xl:max-w-[1464px]'>
+          {/*  main */}
+          <main role='main' className='px-8 relative flex justify-center grow min-w-0  shrink flex-nowrap bg-slate-500  basis-[744px] w-[744] ' >
+            <div className='min-w-0 flex flex-col shrink-0 relative z-0 max-w-full'>
+              <div className='w-full  mt-4 '>
+                {/* story */}
+
+                {/* posts */}
+                <div className='flex justify-center bg-yellow-900'>
+                  <div className='w-[500px] 2sm:w-[680px] max-w-full '>
+                    {/* create post */}
+                    <div className='mb-4 flex max-w-full w-full relative rounded-lg overflow-x-hidden z-0 shadow-xl bg-green-500'>
+                      <div className='flex flex-wrap pt-[12px] px-4 pb-[10px] justify-center  '>
+                        {/* what's on your mind */}
+                        <div className='flex w-full grow shrink items-center gap-x-2'>
+                          <Link href={"/"} className='p-0 m-0 cursor-pointer flex justify-center items-center rounded-full w-[40px] h-[40px] overflow-hidden'>
+                            <Image src={"/images/avatar.jpg"} alt='avatar' width={40} height={40}/>
+                          </Link>
+                          <div className='py-2 px-3 rounded-2xl select-none flex justify-start items-center relative cursor-pointer'>
+                            <div className='w-full'>
+                              <span className='line-clamp-2 '>What&#39;s on your mind, Thong</span>  
+                            </div>      
+                          </div>
+                        </div>
+                        {/* live/video/phto/ feeling */}
+                        <div className='border-t flex  w-full h-[40px] overflow-hidden justify-around flex-wrap pt-2 mt-3'>
+                          <div className='p-2 rounded-md bg-red-300 flex justify-center items-center'>
+                            <div className='flex justify-center items-center overflow-hidden gap-2'>
+                              <span>
+                                <VideoCameraIcon className='w-5 h-5' />
+                              </span>
+                              <span className='font-semibold break-words'>
+                                <span className='relative  overflow-x-hidden text-ellipsis whitespace-nowrap'>Live Video</span>
+                              </span>
+                            </div>
+                          </div>
+                          <div className='p-2 rounded-md bg-red-300 flex justify-center items-center'>
+                            <div className='flex justify-center items-center overflow-hidden gap-2'>
+                              <span>
+                                <PhotoIcon className='w-5 h-5' />
+                              </span>
+                              <span className='font-semibold break-words'>
+                                <span className='relative  overflow-x-hidden text-ellipsis whitespace-nowrap'>Photo/video</span>
+                              </span>
+                            </div>
+                          </div>
+                          <div className='p-2 rounded-md bg-red-300 flex justify-center items-center'>
+                            <div className='flex justify-center items-center overflow-hidden gap-2'>
+                              <span>
+                                <FaceSmileIcon className='w-5 h-5' />
+                              </span>
+                              <span className='font-semibold break-words'>
+                                <span className='relative  overflow-x-hidden text-ellipsis whitespace-nowrap'>Feeling/activity</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className='transition-all duration-300 opacity-100 '>
+                      {/* feed */}
+                      {
+                        Array.from(Array(10).keys()).map((item,index) => (
+
+                          <Post key={index}/>
+                        ))
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+          
+          <RightSideBar/>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   )
 }
