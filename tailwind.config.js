@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      transitionTimingFunction: {
+        'fade-out': 'cubic-bezier(0, 0, 1, 1)',
+        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
@@ -34,6 +38,12 @@ module.exports = {
         'secondary-btn-bg': 'rgba(255,255,255,.1)',
         'primary-icon-clr-hover': '#4e4f50',
         'primary-icon-clr-active': '#3c3d3f',
+        'comment-bg-clr-hover': '#292a2c',
+        'blue-link': '#4599FF',
+        'primary-deemphasized-bt-bg': 'rgba(45, 136, 255, 0.2)',
+        'primary-deemphasized-bt-text': '#2D88FF',
+        'primary-deemphasized-bt-hover': '#3c4d63',
+        'disabled-icon': 'rgba(255, 255, 255, 0.3)',
       },
       keyframes: {
         fadeIn: {

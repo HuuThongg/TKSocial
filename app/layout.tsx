@@ -16,9 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} box-border`}>
+      <body className={`${inter.className} box-border bg-secondary-clr`}>
         <NavBar />
-
         <SideBar />
         {children}
       </body>
