@@ -29,6 +29,7 @@ module.exports = {
         'secondary-clr': '#242526',
         'third-clr': '#3a3b3c',
         'fourth-clr': '#4e4f50',
+        'fifth-clr': '#525355',
         'secondary-text': '#B0B3B8',
         'primary-text': '#E4E6EB',
         'primary-icon': '#E4E6EB',
@@ -44,6 +45,7 @@ module.exports = {
         'primary-deemphasized-bt-text': '#2D88FF',
         'primary-deemphasized-bt-hover': '#3c4d63',
         'disabled-icon': 'rgba(255, 255, 255, 0.3)',
+        'blue-btb-bg-acitve': '#263950',
       },
       keyframes: {
         fadeIn: {
