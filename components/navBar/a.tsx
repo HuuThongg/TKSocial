@@ -7,40 +7,54 @@ import { useState, useRef, useEffect } from 'react'
 import clsx from 'clsx'
 import { BellIcon, ChatBubbleBottomCenterIcon, ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import Search from './Search'
+
+
 const NavBar = () => {
   const [isChatsOpen, setIsChatsOpen] = useState<Boolean>(false)
   const [isNotificationsOpen, setIsNotificationsOpen] = useState<Boolean>(false)
   const [isSidePanelOpen, setIsSidePanelOpen] = useState<Boolean>(false)
-
   const refChatNotiPanel = useRef<HTMLDivElement>(null);
-  const chatsHandler = (e: MouseEvent) => {
-    setIsChatsOpen(!isChatsOpen)
-    setIsNotificationsOpen(false)
-    if (!isSidePanelOpen)
-      setIsSidePanelOpen(true)
-    else
-      setIsSidePanelOpen(false)
-    checkIfLickedOutside(e)
 
+  const chatsHandler = () => {
+    console.log("chatsHandler", isChatsOpen);
+    if (!isChatsOpen) {
+      setIsChatsOpen(!isChatsOpen)
+      setIsNotificationsOpen(false)
+      setIsSidePanelOpen(true)
+    } else {
+      setIsChatsOpen(!isChatsOpen)
+      setIsSidePanelOpen(false)
+      setIsNotificationsOpen(false)
+
+    }
   }
-  const notificationsHandler = (e: MouseEvent) => {
+  const notificationsHandler = () => {
+    if (!isNotificationsOpen) {
+      setIsNotificationsOpen(!isNotificationsOpen)
+      setIsChatsOpen(false)
+      setIsSidePanelOpen(true)
+    }
     setIsNotificationsOpen(!isNotificationsOpen)
     setIsChatsOpen(false)
-    if (!isSidePanelOpen)
-      setIsSidePanelOpen(true)
-    else
-      setIsSidePanelOpen(false)
-    checkIfLickedOutside(e)
-  }
-  function checkIfLickedOutside(e: MouseEvent) {
-    // // If the menu is open and the clicked target is not within the menu, then close filter sidebar
-    console.log("object");
-    if (isSidePanelOpen && refChatNotiPanel.current && !refChatNotiPanel.current.contains(e.target as Node)) {
+    setIsSidePanelOpen(true)
 
-      setIsSidePanelOpen(false);
-    }
-  };
+  }
+  let reset = 1;
   useEffect(() => {
+    const checkIfLickedOutside = (e: MouseEvent) => {
+      if (isSidePanelOpen && refChatNotiPanel.current && !refChatNotiPanel.current.contains(e.target as Node)) {
+        console.log("in if");
+        setIsSidePanelOpen(false);
+        if (reset === 1) {
+
+          setIsChatsOpen(false)
+          setIsNotificationsOpen(false)
+          reset = 0;
+        }
+
+      }
+    };
+    // reset = 0;
 
     document.addEventListener("mousedown", checkIfLickedOutside);
 
@@ -48,20 +62,24 @@ const NavBar = () => {
       // Cleanup the event listener
       document.removeEventListener("mousedown", checkIfLickedOutside);
     };
-  }, []);
+  }, [isSidePanelOpen, isChatsOpen, isNotificationsOpen,]);
+
   console.log(isSidePanelOpen);
   return (
     <div className=' sticky top-0 z-40  '>
       <nav className='bg-secondary-clr  w-full h-[56px] flex items-center '>
         {/* logo */}
+
         <div className='flex justify-start items-center ml-4 fixed left-0  h-[56px] ' >
           <Link href="/" className='p-1 pb-[2px] min-w-0 min-h-0 cursor-pointer'>
             <FacebookIcon className="fill-white dark:fill-dark" />
           </Link>
         </div>
+
         {/* searhc and fake menu md:left-[160px] lg: */}
         <div className='fixed  top-0   h-[56px] left-[160px] right-[unset]   md:right-[160px]  lg:left-[300px] lg:right-0  flex grow  z-[10] bg-secondary-clr'>
           {/* search */}
+
           <Search />
 
           {/* fake  menu */}
@@ -93,11 +111,17 @@ const NavBar = () => {
             </div>
 
             <div className='h-full flex items-center justify-center relative '>
-              <div className='h-[40px] w-[40px] flex items-center justify-center p-0 m-0 rounded-full overflow-hidden  bg-secondary-btn-bg hover:bg-primary-icon-clr-hover
-                active:bg-primary-icon-clr-active active:scale-95 cursor-pointer group/messenger-icon'
-                onClick={(e) => notificationsHandler(e)}
+              <div className={clsx('h-[40px] w-[40px] flex items-center justify-center p-0 m-0 rounded-full overflow-hidden   hover:bg-primary-icon-clr-hover active:bg-primary-icon-clr-active active:scale-95 cursor-pointer group/messenger-icon', {
+                'bg-blue-btb-bg-acitve bg-primary-deemphasized-bt-bg hover:bg-primary-deemphasized-bt-hover': isNotificationsOpen,
+                'bg-secondary-btn-bg hover:bg-primary-icon-clr-hover active:bg-primary-icon-clr-active': !isNotificationsOpen
+              })}
+                onClick={notificationsHandler}
               >
-                <BellIcon className='w-5 h-5 text-primary-btn-icon' />
+                <BellIcon className={clsx('w-5 h-5 text-primary-btn-icon ', {
+                  'fill-blue-500 ': isNotificationsOpen,
+                  '': !isNotificationsOpen
+
+                })} />
                 <div className={clsx('absolute bg-primary-text text-black -right-3 top-full w-fit h-auto px-3 py-2 mt-1 rounded-lg text-[12px] tracking-tight shadow-2xl shadow-cyan-500/50 transition-all origin-top-left duration-300 select-none cursor-none z-[3000] invisible opacity-0 group-hover/messenger-icon:visible group-hover/messenger-icon:opacity-100',)}>
                   Notifications
                 </div>
@@ -113,7 +137,7 @@ const NavBar = () => {
                 'bg-blue-btb-bg-acitve bg-primary-deemphasized-bt-bg hover:bg-primary-deemphasized-bt-hover': isChatsOpen,
                 'bg-secondary-btn-bg hover:bg-primary-icon-clr-hover active:bg-primary-icon-clr-active': !isChatsOpen
               })}
-                onClick={(e) => chatsHandler(e)}
+                onClick={chatsHandler}
 
               >
                 <ChatBubbleBottomCenterIcon className={clsx('w-5 h-5 text-primary-btn-icon ', {
@@ -131,11 +155,10 @@ const NavBar = () => {
 
             </div>
           </div>
-
           {/* chat and notif pops up  */}
           <div className={clsx('  top-0 left-0 absolute  translate-y-[48px] -translate-x-[220px] z-[2] duration-200', {
-            'opacity-0 ': !isSidePanelOpen,
-            'opacity-100 ': isSidePanelOpen,
+            'opacity-0  invisible': !isSidePanelOpen,
+            'opacity-100 visible ': isSidePanelOpen,
           })}
             ref={refChatNotiPanel}
           >

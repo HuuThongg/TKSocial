@@ -46,6 +46,8 @@ module.exports = {
         'primary-deemphasized-bt-hover': '#3c4d63',
         'disabled-icon': 'rgba(255, 255, 255, 0.3)',
         'blue-btb-bg-acitve': '#263950',
+        'media-inner-border': 'rgba(255, 255, 255, 0.05)',
+        'divider': '#3E4042',
       },
       keyframes: {
         fadeIn: {
@@ -79,7 +81,18 @@ module.exports = {
         // xl: '899 1100 1160 1340 1420 1920',
         '2xl': '1921px',
       },
+      scrollbarRed: {
+        '::-webkit-scrollbar-thumb': {
+          backgroundColor: 'red',
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    // require('@headlessui/tailwindcss')
+
+    // Or with a custom prefix:
+    require('@headlessui/tailwindcss')({ prefix: 'ui' }),
+    require('tailwind-scrollbar')({ nocompatible: true }),
+  ],
 };
