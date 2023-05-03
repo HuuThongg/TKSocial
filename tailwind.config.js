@@ -19,6 +19,9 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)'],
       },
+      scale: {
+        '102': '102',
+      },
       colors: {
         gray: colors.neutral,
         hotPink: '#FF1966',
@@ -47,7 +50,12 @@ module.exports = {
         'disabled-icon': 'rgba(255, 255, 255, 0.3)',
         'blue-btb-bg-acitve': '#263950',
         'media-inner-border': 'rgba(255, 255, 255, 0.05)',
-        'divider': '#3E4042',
+        'media-outer-border': '#33363A',
+        divider: '#3E4042',
+        accent: 'hsl(214, 100%, 59%)',
+        'popover-bg': '#3E4042',
+
+        // hsl(214, 100%, 59%)
       },
       keyframes: {
         fadeIn: {

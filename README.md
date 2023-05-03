@@ -36,4 +36,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 
-navbar : z-40
+navbar : z-40 
+
+<span className=" line-clamp-2 "> if u put inline-block, then it does not work
+</span>
+
+focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white

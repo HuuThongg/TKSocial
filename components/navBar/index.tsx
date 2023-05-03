@@ -50,11 +50,11 @@ const NavBar = () => {
 
                   </Image>
                 </div>
-                <div className='bg-red-500 absolute top-[6px] right-[2px] w-[10px] h-[10px] rounded-full flex justify-center items-center border-2 border-secondary-clr box-content '
+                <div className='bg-red-500 absolute -top-1 right-[2px] w-[10px] h-[10px] rounded-full flex justify-center items-center border-2 border-secondary-clr box-content '
                 >
                   <span className='text-[10px] text-white dark:text-black font-semibold'></span>
                 </div>
-                <div className='bg-third-clr absolute bottom-1 right-0 w-3 h-3 rounded-full flex justify-center items-center border-2 border-secondary-clr box-content cursor-pointer'
+                <div className='bg-third-clr absolute bottom-0 right-0 w-3 h-3 rounded-full flex justify-center items-center border-2 border-secondary-clr box-content cursor-pointer'
                 >
                   <ChevronDownIcon className='text-primary-icon' />
                 </div>
@@ -66,7 +66,7 @@ const NavBar = () => {
                 <div className={clsx(' top-0 left-0 absolute  translate-y-[48px] -translate-x-[220px] z-[2] duration-200')}
                 >
                   <div className='mt-[5px] mr-[5px] '>
-                    <div className='overflow-hidden rounded-lg shadow-2xl shadow-slate-600/50 bg-secondary-clr text-[15px] ' >
+                    <div className='overflow-hidden rounded-lg shadow-md shadow-zinc-600/50 bg-secondary-clr text-[15px] ' >
                       <div className='flex flex-col max-w-[calc(100vw-24px])] max-h-[calc(100vh-90px)] w-[360px]  '>
                         {/* profile */}
                         <div className='flex flex-col overflow-hidden shrink-0 relative grow justify-start '>
@@ -165,7 +165,7 @@ const NavBar = () => {
                   </div>
                 </div>
 
-                <div className='bg-red-500 absolute top-1 right-0 w-4 h-4 rounded-full flex justify-center items-center select-none '>
+                <div className='bg-red-500 absolute -top-1 right-0 w-4 h-4 rounded-full flex justify-center items-center select-none '>
                   <span className='text-[10px] text-white dark:text-black font-semibold'>9</span>
                 </div>
 
@@ -173,7 +173,7 @@ const NavBar = () => {
                 
                 <Popover.Panel  className='top-0 left-0 absolute  ui-open:translate-y-[48px] ui-open:-translate-x-[220px] z-[2] duration-200'>
                   <div className='mt-[5px] mr-[5px] '>
-                    <div className='overflow-hidden rounded-lg shadow-2xl shadow-slate-600/50 bg-secondary-clr ' >
+                  <div className='overflow-hidden rounded-lg shadow-md shadow-zinc-600/50  bg-secondary-clr ' >
                       <div className='flex flex-col max-w-[calc(100vw-24px])] max-h-[calc(100vh-90px)] w-[360px]  '>
                         <div className='flex flex-col'>
                           <div className='flex flex-col overflow-hidden grow relative justify-start'>
@@ -329,14 +329,14 @@ const NavBar = () => {
                     Messenger
                   </div>
                 </div>
-                <div className='bg-red-500 absolute top-1 right-0 w-4 h-4 rounded-full flex justify-center items-center'>
+                <div className='bg-red-500 absolute -top-1 right-0 w-4 h-4 rounded-full flex justify-center items-center'>
                   <span className='text-[10px] text-white dark:text-black font-semibold'>99</span>
                 </div>
 
               </Popover.Button>
               <Popover.Panel as='div' className='top-0 left-0 absolute  translate-y-[48px] -translate-x-[220px] z-[2] duration-200'>
                 <div className='mt-[5px] mr-[5px] '>
-                  <div className='overflow-hidden rounded-lg shadow-2xl shadow-slate-600/50 bg-secondary-clr ' >
+                  <div className='overflow-hidden rounded-lg xl shadow-md shadow-zinc-600/50  bg-secondary-clr ' >
                     <div className='flex flex-col max-w-[calc(100vw-24px])] max-h-[calc(100vh-90px)] w-[360px]  h-full'>
                       {/* chats */}
                       <div className='flex flex-col '>

@@ -46,7 +46,7 @@ const SideBar = () => {
               <div className='pt-4 pb-2 max-w-full flex flex-col shrink-0 grow relative space-y-1'>
                 <div className=' flex'>
                   <span className='flex w-full'>
-                    <Link href="#" className='w-full py-2 px-5 basis-auto flex  text-start cursor-pointer relative  rounded-lg group/'>
+                    <Link href="#" className='py-2 px-5 basis-auto flex  text-start cursor-pointer relative  rounded-lg hover:bg-third-clr duration-300 group/'>
                       <div className='w-1 h-[36px]  absolute left-0 top-0 bottom-0 scale-100 opacity-100 ease-linear translate-y-[0%] bg-blue-500'>
                       </div>
                       <span>
@@ -64,7 +64,7 @@ const SideBar = () => {
                 </div>
                 <div className=''>
                   <div className='flex flex-col w-full'>
-                    <Link href="#" className='w-full max-w-full py-[6px] px-[18px] basis-auto flex  text-start cursor-pointer relative box-border'>
+                    <Link href="#" className='max-w-full py-[6px] px-[18px] basis-auto flex  text-start cursor-pointer relative box-border rounded-lg hover:bg-third-clr duration-300'>
                       {/* <div className='w-1 h-[36px] bg-blue-500 absolute left-0 top-0 bottom-0 scale-100 opacity-100 ease-linear translate-y-[0%]'>
                       </div> */}
                       { /* <span>  w-[calc(300px-60px-14px)]*/}
@@ -109,7 +109,7 @@ const SideBar = () => {
                                   {
                                     SideBarItems.map((item, index) =>
                                     (
-                                      <Link href={item.href} key={index} className='flex shrink-0 py-2 px-5 items-center min-w-0 basis-auto border-0 min-h-0 box-border w-full rounded-lg hover:bg-third-clr duration-300'>
+                                      <Link href={item.href} key={index} className='flex shrink-0 py-2 px-5 items-center min-w-0 basis-auto border-0 min-h-0 box-border  rounded-lg hover:bg-third-clr duration-300'>
                                         <div className='flex flex-col '>
                                           <item.icon className='w-6 h-6 text-primary-text' />
                                         </div>
@@ -201,7 +201,7 @@ const SideBar = () => {
                                   {
                                     shortcuts.map((item, index) =>
                                     (
-                                      <Link href={item.href} key={index} className='flex w-full shrink-0 py-2 px-[18px] items-center min-w-0 basis-auto border-0 min-h-0 outline-none rounded-lg hover:bg-third-clr  duration-300 '>
+                                      <Link href={item.href} key={index} className='flex shrink-0 py-2 px-[18px] items-center min-w-0 basis-auto border-0 min-h-0 outline-none rounded-lg hover:bg-third-clr  duration-300 '>
                                         <div className='w-6 h-6 rounded-md overflow-hidden'>
                                           <Image src={item.url} alt="group name" width={24} height={24} />
                                         </div>

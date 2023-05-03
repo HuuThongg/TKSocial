@@ -57,7 +57,7 @@ export default function RightSideBar() {
                   {onlineContacts.map((contact, index) => (
                     <li key={index} className='flex    w-full'>
                       <div className='flex flex-col justify-center  px-2  w-full '>
-                        <div className='flex items-center px-2 p-[1.5px] gap-3 duration-400 hover:bg-hover-overlay rounded-lg'>
+                        <div className='flex items-center px-2 p-[1.5px] gap-3 duration-400 hover:bg-hover-overlay rounded-lg cursor-pointer'>
 
                           <div className='flex items-center justify-center w-6 h-6 rounded-full bg-zinc-600 my-2 grow-0 shrink-0 relative'>
                             <svg className='w-6 h-6' aria-hidden="true" >
@@ -65,7 +65,7 @@ export default function RightSideBar() {
                                 <circle cx="12" cy="12" r="12" className='fill-white'  >
                                 </circle>
                                 {/* has story  */}
-                                {contact.haveStories ? <circle cx="12" cy="12" fill="transparent" r="9" stroke="black" stroke-width="2"></circle> : null}
+                                {contact.haveStories ? <circle cx="12" cy="12" fill="transparent" r="9" stroke="black" strokeWidth="2"></circle> : null}
 
                                 <circle cx="20" cy="20" r="4.5 " className='fill-black'  ></circle>
 
@@ -136,7 +136,7 @@ export default function RightSideBar() {
                   {onlineContacts.map((contact,index) => (
                     <li key={index} className='flex    w-full'>
                       <div className='flex flex-col justify-center  px-2  w-full '>
-                        <div className='flex items-center px-2 p-[1.5px] gap-3 duration-400 hover:bg-hover-overlay rounded-lg'>
+                        <div className='flex items-center px-2 p-[1.5px] gap-3 duration-400 hover:bg-hover-overlay rounded-lg cursor-pointer'>
 
                           <div className='flex items-center justify-center w-6 h-6 rounded-full  my-2 grow-0 shrink-0 relative'>
                             <svg className='w-6 h-6 ' aria-hidden="true" >
@@ -146,9 +146,7 @@ export default function RightSideBar() {
                                 <circle cx="20" cy="20" r="4.5 " className='fill-black'  ></circle> 
                                 {/* has story  */}
                                 {contact.haveStories ? <circle cx="12" cy="12" fill="transparent" r="9" stroke="black" 
-                                stroke-width="2" className='stroke-black'></circle> : null}
-                                
-                                
+                                strokeWidth="2" className='stroke-black'></circle> : null}
                                 
                               </mask>
                               <g mask={`url(#:${index}:)`}>
@@ -194,13 +192,13 @@ export default function RightSideBar() {
                   ))}
                 </ul>
                 <div className='flex items-center gap-2 px-2  mb-[70px]'>
-                  <div className='flex w-full py-1 rounded-lg hover:bg-hover-overlay items-center gap-x-4 drop-shadow-2xl'>
-                    <div className='flex items-center justify-center w-10 h-10 rounded-full bg-third-clr drop-shadow-lg'>
-                      <PlusIcon className='' />
+                  <div className='flex w-full py-2 rounded-lg px-2 hover:bg-hover-overlay items-center gap-x-4 drop-shadow-2xl'>
+                    <div className='flex items-center justify-center w-10 h-10 rounded-full bg-third-clr drop-shadow-lg cursor-pointer'>
+                      <PlusIcon className='w-5 h-5 text-primary-text' />
                     </div>
                     <div className='flex flex-col grow basis-auto h-full '>
                       <span className='font-semibold text-sm line-clamp-1'>
-                        <span className='line-clamp-1'>
+                        <span className='line-clamp-1 text-[17px]'>
                           Create New Group
                         </span>
                       </span>
