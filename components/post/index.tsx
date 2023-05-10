@@ -2,10 +2,11 @@ import Image from 'next/image'
 import { Earth } from '@/components/icon'
 import {  EllipsisHorizontalIcon,  XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import Engagement from './Engagement'
 export default function Post() {
   return(
     <div className='w-full relative z-0 mb-4'>
-      <div className='bg-slate-400 rounded-lg overflow-hidden w-full relative z-0'>
+      <div className='bg-secondary-clr rounded-lg overflow-hidden w-full relative z-0 text-primary-text'>
         {/* head */}
         <div className='px-4 py-3 flex items-start'>
           {/* avatar */}
@@ -18,13 +19,13 @@ export default function Post() {
             <div className='my-1'>
               <span className='block min-w-0 break-words max-w-full font-semibold text-left text-xs'>
                 <h4 className='mt-1 text-left'>
-                  <Link href={"/"} className='cursor-pointer'>
+                  <Link href={"/"} className='cursor-pointer hover:underline'>
                     Huu Thong Channel
                   </Link>
                 </h4>
               </span>
             </div>
-            <div className='my-1'>
+            <div className='-my-1'>
               <span className='block min-w-0 break-words max-w-full font-normal text-left text-xs'>
                 <span className='flex'>
                   <span> 35
@@ -37,11 +38,11 @@ export default function Post() {
             </div>
           </div>
           <div className='flex justify-center items-center  p-2 gap-x-2'>
-            <span className='bg-red-100 rounded-full overflow-hidden'>
-              <EllipsisHorizontalIcon className='w-9 h-9' />
+            <span className='hover:bg-third-clr rounded-full overflow-hidden cursor-pointer p-1'>
+              <EllipsisHorizontalIcon className='w-6 h-6' />
             </span>
-            <span className='bg-red-100 rounded-full overflow-hidden'>
-              <XMarkIcon className='w-9 h-9' />
+            <span className='hover:bg-third-clr rounded-full overflow-hidden cursor-pointer p-1'>
+              <XMarkIcon className='w-6 h-6' />
             </span>
           </div>
 
@@ -64,10 +65,8 @@ export default function Post() {
                 {/* use hook to measure element dimension */}
                 <div className='max-w-full min-w-[500px] w-[calc((100vh-325px)*1.1257)] '>
                   <div className='pt-[88.83333%] h-0 overflow-hidden relative'>
-                    <div className='absolute left-0 h-full w-full top-0
-                                      '>
+                    <div className='absolute left-0 h-full w-full top-0'>
                       <div className='flex items-center justify-center w-full h-full  object-cover'>
-
                         <Image src='/images/thiendieu.png' alt='content' width={800} height={800} />
                       </div>
                     </div>
@@ -79,6 +78,7 @@ export default function Post() {
 
         </div>
         {/* comment */}
+        <Engagement/>
       </div>
     </div>
   )

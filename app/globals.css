@@ -3,10 +3,8 @@
 @tailwind utilities;
 
 @layer utilities {
-  @variants responsive {
-    .text-unset {
-      text-align: unset;
-    }
+  .text-unset {
+    text-align: unset;
   }
 }
 body{

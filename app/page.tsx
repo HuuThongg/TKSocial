@@ -29,7 +29,7 @@ export default function Home() {
                 {/* story */}
                 <Story/>
                 {/* posts */}
-                <div className='flex justify-center bg-yellow-900'>
+                <div className='flex justify-center bg-primary-clr'>
                   <div className='w-[500px] 2sm:w-[680px] max-w-full '>
                     {/* create post */}
                     <CreatePost/>

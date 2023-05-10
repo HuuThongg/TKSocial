@@ -20,7 +20,7 @@ module.exports = {
         sans: ['var(--font-inter)'],
       },
       scale: {
-        '102': '102',
+        102: '102',
       },
       colors: {
         gray: colors.neutral,
@@ -30,6 +30,7 @@ module.exports = {
         violetDark: '#4c2889',
         'primary-clr': '#18191a',
         'secondary-clr': '#242526',
+        'secondary-darker-clr': '#202122',
         'third-clr': '#3a3b3c',
         'fourth-clr': '#4e4f50',
         'fifth-clr': '#525355',
@@ -54,6 +55,7 @@ module.exports = {
         divider: '#3E4042',
         accent: 'hsl(214, 100%, 59%)',
         'popover-bg': '#3E4042',
+        'comment-bg': '#3a3b3c',
 
         // hsl(214, 100%, 59%)
       },
@@ -94,6 +96,9 @@ module.exports = {
           backgroundColor: 'red',
         },
       },
+    },
+    fontSize: {
+      ss: ['.8125rem', '16px'],
     },
   },
   plugins: [

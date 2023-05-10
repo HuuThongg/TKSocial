@@ -68,8 +68,8 @@ const SideBar = () => {
                       {/* <div className='w-1 h-[36px] bg-blue-500 absolute left-0 top-0 bottom-0 scale-100 opacity-100 ease-linear translate-y-[0%]'>
                       </div> */}
                       { /* <span>  w-[calc(300px-60px-14px)]*/}
-                      <div className='flex items-center justify-center w-[24px] h-[24px] rounded-full overflow-hidden bg-secondary-clr relative'>
-                        <div className='absolute inset-0 w-full h-full flex flex-col'>
+                      <div className='flex items-center justify-center w-[24px] h-[24px] rounded-full overflow-hidden bg-secondary-clr relative shrink-0'>
+                        <div className='absolute inset-0 w-full h-full flex flex-col shrink-0'>
 
                           <Image src="/images/avatar.jpg" alt="avatar" width={24} height={24} className='w-full h-full' />
                         </div>
