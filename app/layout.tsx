@@ -2,6 +2,7 @@ import NavBar from '@/components/navBar'
 import  SideBar from '@/components/sideBar'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import WindowChat from '@/components/windowChat/WindowChat'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
         <NavBar />
         <SideBar />
         {children}
+        <WindowChat/>
       </body>
     </html>
   )

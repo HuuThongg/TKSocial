@@ -12,11 +12,14 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Fragment } from 'react'
 import { CreatePost } from '@/components/createPost'
 import Story from '@/components/story'
+import { commentsData } from '@/components/post/comment/constanst'
 
 
 
 
-export default function Home() {
+export default async function Home() {
+
+  
   return (
     <div className=" relative flex flex-col   min-h-0   left-[60px] lg:left-[300px]  origin-top-left mr-[60px] lg:mr-[300px]  ">
       <div className='relative min-h-[56px] overflow-visible w-full h-full flex '>
@@ -37,10 +40,9 @@ export default function Home() {
                     <div className='transition-all duration-300 opacity-100 '>
                       {/* feed */}
                       {
-                        Array.from(Array(10).keys()).map((item, index) => (
-
-                          <Post key={index} />
-                        ))
+                        Array.from(Array(1).keys()).map((item, index) => {
+                          return <Post comments={commentsData[index]} key={index} />
+                        })
                       }
                     </div>
                   </div>

@@ -3,15 +3,20 @@ import React, { useId, useState } from 'react'
 import { ChevronDownIcon, FaceSmileIcon, PhotoIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline'
 import TextareaAutosize from 'react-textarea-autosize';
 import Link from 'next/link';
+import { SchemaComment } from './constanst';
 
-// interface CommentProps {
-//   commentText: string;
-//   className?: string;
-// }
-interface CommentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CommentProps {
   commentText: string;
+  className?: string;
+  // comments: SchemaComment
 }
-const Comment = ({ commentText, ...props }: CommentProps) => {
+// interface CommentProps extends React.HTMLAttributes<HTMLDivElement> {
+//   commentText: string;
+//   comments: SchemaComment
+// }
+const Comment = ({comments, commentText, ...props }: CommentProps) => {
+  console.log("object");
+  console.log(comments);
   return (
     <div {...props}
     >
@@ -62,7 +67,7 @@ const Comment = ({ commentText, ...props }: CommentProps) => {
                           Huu Thong
                         </span>
                       </Link>
-                      {commentText}
+                      {comments.content}
                     </span>
                   </div>
                 </div>

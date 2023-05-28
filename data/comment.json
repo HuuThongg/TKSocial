@@ -1,0 +1,205 @@
+[
+  {
+    "id": "1",
+    "postId": "post1",
+    "comments": {
+      "id": "comment1",
+      "content": "Great post!",
+      "image": "/images/comment1.jpg",
+      "video": "",
+      "createdAt": "2023-05-01T12:00:00",
+      "updatedAt": "2023-05-01T12:30:00",
+      "user": {
+        "id": "user1",
+        "name": "Kim Chi",
+        "avatar": "kimchi.jpg",
+        "avatarUrl": "/images/contact/kimchi.jpg"
+      },
+      "interactions": {
+        "likes": [
+          {
+            "id": "like1",
+            "user": {
+              "id": "user2",
+              "name": "Tran Thanh Nha",
+              "avatar": "tranthanhnha.jpg",
+              "avatarUrl": "/images/contact/tranthanhnha.jpg"
+            }
+          },
+          {
+            "id": "like2",
+            "user": {
+              "id": "user3",
+              "name": "Trang Duong",
+              "avatar": "trangduong.jpg",
+              "avatarUrl": "/images/contact/trangduong.jpg"
+            }
+          }
+        ],
+        "tym": [],
+        "haha": []
+      },
+      "replies": [
+        {
+          "id": "reply1",
+          "content": "Thanks!",
+          "image": "",
+          "video": "",
+          "createdAt": "2023-05-01T12:35:00",
+          "updatedAt": "2023-05-01T12:35:00",
+          "user": {
+            "id": "user4",
+            "name": "Duc ri",
+            "avatar": "ducri.jpg",
+            "avatarUrl": "/images/contact/ducri.jpg"
+          },
+          "interactions": {
+            "likes": [],
+            "tym": [],
+            "haha": []
+          },
+          "replies": []
+        },
+        {
+          "id": "reply2",
+          "content": "You're welcome!",
+          "image": "",
+          "video": "",
+          "createdAt": "2023-05-01T13:00:00",
+          "updatedAt": "2023-05-01T13:00:00",
+          "user": {
+            "id": "user5",
+            "name": "Diem Quynh",
+            "avatar": "diemquynh.jpg",
+            "avatarUrl": "/images/contact/diemquynh.jpg"
+          },
+          "interactions": {
+            "likes": [],
+            "tym": [],
+            "haha": []
+          },
+          "replies": [
+            {
+              "id": "reply3",
+              "content": "I enjoyed it!",
+              "image": "",
+              "video": "",
+              "createdAt": "2023-05-01T13:05:00",
+              "updatedAt": "2023-05-01T13:05:00",
+              "user": {
+                "id": "user6",
+                "name": "Duyen",
+                "avatar": "duyen.jpg",
+                "avatarUrl": "/images/contact/duyen.jpg"
+              },
+              "interactions": {
+                "likes": [],
+                "tym": [],
+                "haha": []
+              },
+              "replies": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "2",
+    "postId": "post2",
+    "comments": {
+      "id": "comment2",
+      "content": "Nice work!",
+      "image": "/images/comment2.jpg",
+      "video": "",
+      "createdAt": "2023-05-02T14:00:00",
+      "updatedAt": "2023-05-02T14:30:00",
+      "user": {
+        "id": "user7",
+        "name": "Trang La",
+        "avatar": "trangla.png",
+        "avatarUrl": "/images/contact/trangla.png"
+      },
+      "interactions": {
+        "likes": [],
+        "tym": [
+          {
+            "id": "tym1",
+            "user": {
+              "id": "user8",
+              "name": "Duy Hung",
+              "avatar": "duyhuynh.png",
+              "avatarUrl": "/images/contact/duyhuynh.png"
+            }
+          }
+        ],
+        "haha": []
+      },
+      "replies": [
+        {
+          "id": "reply4",
+          "content": "Thank you!",
+          "image": "",
+          "video": "",
+          "createdAt": "2023-05-02T14:35:00",
+          "updatedAt": "2023-05-02T14:35:00",
+          "user": {
+            "id": "user9",
+            "name": "An Khuong",
+            "avatar": "ankhuong.jpg",
+            "avatarUrl": "/images/contact/ankhuong.jpg"
+          },
+          "interactions": {
+            "likes": [],
+            "tym": [],
+            "haha": []
+          },
+          "replies": [
+            {
+              "id": "reply5",
+              "content": "You're welcome!",
+              "image": "",
+              "video": "",
+              "createdAt": "2023-05-02T14:40:00",
+              "updatedAt": "2023-05-02T14:40:00",
+              "user": {
+                "id": "user10",
+                "name": "Kieu Trinh",
+                "avatar": "kieutrinh.jpg",
+                "avatarUrl": "/images/contact/kieutrinh.jpg"
+              },
+              "interactions": {
+                "likes": [],
+                "tym": [],
+                "haha": []
+              },
+              "replies": [
+                {
+                  "id": "reply6",
+                  "content": "Glad you liked it!",
+                  "image": "",
+                  "video": "",
+                  "createdAt": "2023-05-02T14:45:00",
+                  "updatedAt": "2023-05-02T14:45:00",
+                  "user": {
+                    "id": "user11",
+                    "name": "Hoai Bao",
+                    "avatar": "hoaibao.jpg",
+                    "avatarUrl": "/images/contact/hoaibao.jpg"
+                  },
+                  "interactions": {
+                    "likes": [],
+                    "tym": [],
+                    "haha": []
+                  },
+                  "replies": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
+

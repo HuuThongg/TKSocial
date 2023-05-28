@@ -56,6 +56,9 @@ module.exports = {
         accent: 'hsl(214, 100%, 59%)',
         'popover-bg': '#3E4042',
         'comment-bg': '#3a3b3c',
+        'messenger-card-bg': '#242526',
+        'comment-foot': '#4f4f50',
+        'wash': '#3E4042',
 
         // hsl(214, 100%, 59%)
       },

@@ -3,7 +3,13 @@ import { Earth } from '@/components/icon'
 import {  EllipsisHorizontalIcon,  XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import Engagement from './Engagement'
-export default function Post() {
+import { SchemaComment } from './comment/constanst'
+
+interface PostProps{
+  comments: SchemaComment
+}
+
+export default function Post({comments}: PostProps) {
   return(
     <div className='w-full relative z-0 mb-4'>
       <div className='bg-secondary-clr rounded-lg overflow-hidden w-full relative z-0 text-primary-text'>
@@ -78,7 +84,7 @@ export default function Post() {
 
         </div>
         {/* comment */}
-        <Engagement/>
+        <Engagement comments={comments} />
       </div>
     </div>
   )

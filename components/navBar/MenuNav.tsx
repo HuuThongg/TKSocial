@@ -164,7 +164,7 @@ const MenuNav = () => {
                               <div className='flex flex-col py-[6px]  shrink-0 min-w-0  self-center'>
                                 <h1 className=' text-2xl leading-5  break-words outline-none mx-0 p-0 font-bold  text-primary-text '>
                                   <span>
-                                    Notifications
+                                    Notifications 
                                   </span>
                                 </h1>
                               </div>
