@@ -1,11 +1,23 @@
 'use client'
 import clsx from 'clsx'
-import { ChevronDownIcon,PhoneIcon,FaceSmileIcon,EllipsisVerticalIcon } from "@heroicons/react/24/outline"
+import { ChevronDownIcon,PhoneIcon,FaceSmileIcon,EllipsisVerticalIcon, PlayCircleIcon,PhotoIcon,PaperAirplaneIcon, PencilSquareIcon, XMarkIcon,VideoCameraIcon,MinusIcon } from "@heroicons/react/24/outline"
   import Link from "next/link"
 import Image from 'next/image'
 import { ReplyIcon } from '../icons'
+import { PlusCircleIcon } from '@heroicons/react/20/solid'
+import TextareaAutosize from 'react-textarea-autosize';
+import React, { useId, useState } from 'react'
 
 const WindowChat = () => {
+
+  const [text, setText] = useState('')
+  const [isTyping, setIsTyping] = useState(false)
+  const onChangeInputText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const inputValue = e.target.value
+    setIsTyping(inputValue.length > 0);
+    setText(inputValue)
+  }
+  console.log(isTyping);
   return (
     <div className="fixed right-0 bottom-0 ">
       <div className="flex isolate items-end">
@@ -58,13 +70,26 @@ const WindowChat = () => {
                         </div>
                       </div>
                       <ul className="bg-transparent flex items-center -mr-1">
-                        {Array.from(Array(4).keys()).map((item, index) => (
-                          <li key={index} className='p-[1px]'>
-                            <div className='flex items-center rounded-full overflow-hidden hover:bg-third-clr p-[3px] box-border pointer-events-auto cursor-pointer '>
-                              <PhoneIcon className=' w- h-5 text-disabled-icon'/>
-                            </div>
-                          </li>
-                        ))}
+                        <li  className='p-[1px]'>
+                          <div className='flex items-center rounded-full overflow-hidden hover:bg-third-clr p-[3px] box-border pointer-events-auto cursor-pointer '>
+                            <PhoneIcon className=' w- h-5 text-disabled-icon'/>
+                          </div>
+                        </li>
+                        <li className='p-[1px]'>
+                          <div className='flex items-center rounded-full overflow-hidden hover:bg-third-clr p-[3px] box-border pointer-events-auto cursor-pointer '>
+                            <VideoCameraIcon className=' w- h-5 text-disabled-icon' />
+                          </div>
+                        </li>
+                        <li className='p-[1px]'>
+                          <div className='flex items-center rounded-full overflow-hidden hover:bg-third-clr p-[3px] box-border pointer-events-auto cursor-pointer '>
+                            <MinusIcon className=' w- h-5 text-disabled-icon' />
+                          </div>
+                        </li>
+                        <li className='p-[1px]'>
+                          <div className='flex items-center rounded-full overflow-hidden hover:bg-third-clr p-[3px] box-border pointer-events-auto cursor-pointer '>
+                            <XMarkIcon className=' w- h-5 text-disabled-icon' />
+                          </div>
+                        </li>
                       </ul>
                     </div>
                     
@@ -75,6 +100,7 @@ const WindowChat = () => {
                         <div className='flex flex-col relative overflow-hidden max-h-full flex-1 border-r-2 border-l-2 border-messenger-card-bg'>
                           <div className='flex flex-col relative flex-1 overflow-x-hidden overflow-y-scroll '>
                             {/* each message */}
+                            
                             <div className='relative'>
                               <div className='flex flex-col relative'>
                                 {/* for Assistive Techonology  clip-path:inset(50%) */}
@@ -165,6 +191,63 @@ const WindowChat = () => {
 
                       </div>
                     </div>
+                    {/* type message box */}
+                    <div className='py-3 flex items-end leading-4 text-[0.9375] shadow-md'>
+                      {/* more */}
+                      <div className=' min-w-0  shrink-0 grow-0 basis-auto m-1 p-1 rounded-full overflow-hidden hover:bg-third-clr' >
+                        <div className='flex items-center    box-border pointer-events-auto cursor-pointer '>
+                          <PlusCircleIcon className=' w-5 h-5 text-disabled-icon' />
+                        </div>
+                      </div>
+                      {/* input message */}
+                      <div className='min-w-0 basis-0 overflow-x-hidden grow relative  -ml-1  '>
+                        <div className={clsx(`absolute left-0 mr-1 flex justify-center items-center mb-1 z-[1] bottom-0 transition-transform delay-100  `,{
+                          'scale-0': isTyping,
+                          'scale-100': !isTyping
+                        })}>
+                          <input type="file" multiple className='hidden' />
+                          <div className='p-1 min-w-0 shrink-0 grow-0 basis-auto   rounded-full overflow-hidden hover:bg-third-clr' >
+                            <div className='flex items-center    box-border pointer-events-auto cursor-pointer  '>
+                              <PhotoIcon className=' w-5 h-5 text-disabled-icon' />
+                            </div>
+                          </div>
+                        </div>
+                        <div className={clsx(`transition-[margin]   flex`,{
+                          'ml-[36px]': !isTyping,
+                          'ml-0': isTyping
+                        })}>
+                          <div className='rounded-[20px] grow bg-comment-bg min-w-0 box-border'>
+                            <div className='flex flex-wrap justify-start'>
+                              <div className='m-2 mr-3 min-w-0 relative '>
+                                {/* <div className='relative outline-none text-primary-text grow  select-text whitespace-pre-wrap break-before-all min-h-[20px] max-h-[124px] min-w-0 overflow-x-hidden overflow-y-auto'>
+                                  <p className='text-left '>
+                                    <span>
+                                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima eligendi a excepturi? Voluptatibus expedita dolore dolorum ratione? Unde, saepe ipsum quasi vel sit eos consequuntur! Libero architecto natus nihil mollitia et consectetur quibusdam labore dolorem illo, tempore ipsa ad dolorum.
+                                    </span>
+                                  </p>
+                                </div> */}
+                                <TextareaAutosize
+                                  minRows={1}
+                                  maxRows={6}
+                                  placeholder='Aa'
+                                  value={text}
+                                  style={{ height: 17 }}
+                                  className='grow     resize-none bg-transparent text-primary-text'
+                                  onChange={onChangeInputText}
+                                  
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* send message */}
+                      <div className='inline-flex grow-0'>
+                        <div className=' min-w-0  shrink-0 grow-0 basis-auto mx-1 p-2 rounded-full overflow-hidden hover:bg-third-clr cursor-pointer'>
+                          <PaperAirplaneIcon className='w-5 h-5 fill-disabled-icon stroke-transparent'/>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -172,6 +255,29 @@ const WindowChat = () => {
           }
         </ul>
         {/* util for chat  */}
+        <div className='absolute right-[16px]  w-[48px] bottom-[16px] '>
+          <div>
+            {Array.from(Array(3).keys()).map((item, index) => (
+              <div key={ index+ item} className='mb-[10px]  h-[48px] w-[48px] flex justify-center items-center group relative'>
+                <div className='h-[48px] w-[48px] flex justify-center items-center '>
+                  <button  className=' w-full h-full flex justify-center items-center p-0 m-0 border-0 border-none focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white rounded-full  '>
+                    <div className='shadow-xl bg-messenger-card-bg rounded-full overflow-hidden w-full h-full'>
+                      <Image className=" w-full h-full object-cover" src="/images/avatar.jpg" alt="avatar" width={48} height={48} />
+                    </div>
+                  </button>
+                </div>
+                {/* close chat */}
+                <div className='absolute rounded-full  cursor-pointer flex justify-center items-center  flex-auto grow-0 shrink-0 w-5 h-5 -top-1 bg-messenger-card-bg scale-0 invisible -right-1 group/close group-hover:scale-100 group-hover:visible hover:bg-fourth-clr'>
+                  <XMarkIcon className='w-4 h-4 text-disabled-icon'/>
+                </div>
+              </div>
+
+            ))}
+            <div className='flex items-center justify-center rounded-full overflow-hidden  w-[48px] h-[48px] box-border pointer-events-auto cursor-pointer shadow-xl bg-sec-btn-bg hover:bg-sec-btn-bg-hover '>
+              <PencilSquareIcon className=' w- h-5 text-white' />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -59,6 +59,11 @@ module.exports = {
         'messenger-card-bg': '#242526',
         'comment-foot': '#4f4f50',
         'wash': '#3E4042',
+        'sec-btn-bg': '#4B4C4F',
+        'sec-btn-bg-hover': '#5d5e61',
+
+        
+
 
         // hsl(214, 100%, 59%)
       },

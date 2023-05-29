@@ -9,7 +9,7 @@ const TypeComment = () => {
   const [text, setText] = useState('')
   const [isWritingCommentOpen, setIsWritingCommentOpen] = useState(false)
   const avatarId = useId()
-  const onChangeInputText = (e) => {
+  const onChangeInputText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value)
   }
   return (
