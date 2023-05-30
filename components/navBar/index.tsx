@@ -15,7 +15,7 @@ const NavBar = () => {
     console.log("notificationsHandler");
   }
   return (
-    <div className=' sticky top-0 z-40  '>
+    <div className=' sticky top-0 z-40 border-b border-[1px] border-wash  '>
       <nav className='bg-secondary-clr  w-full h-[56px]  flex items-center'>
         {/* logo */}
 

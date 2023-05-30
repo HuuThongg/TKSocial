@@ -11,10 +11,12 @@ module.exports = {
       transitionTimingFunction: {
         'fade-out': 'cubic-bezier(0, 0, 1, 1)',
         'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+        'quick-move-in': 'cubic-bezier(0.1, 0.9, 0.2, 1)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-always-dark-gradient': 'linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6))',
       },
       fontFamily: {
         sans: ['var(--font-inter)'],
@@ -58,13 +60,11 @@ module.exports = {
         'comment-bg': '#3a3b3c',
         'messenger-card-bg': '#242526',
         'comment-foot': '#4f4f50',
-        'wash': '#3E4042',
+        wash: '#3E4042',
         'sec-btn-bg': '#4B4C4F',
         'sec-btn-bg-hover': '#5d5e61',
-
-        
-
-
+        'primary-btn-bg': '#2374e1',
+        'primary-btn-bg-hover': '#3982e4',
         // hsl(214, 100%, 59%)
       },
       keyframes: {
@@ -104,9 +104,17 @@ module.exports = {
           backgroundColor: 'red',
         },
       },
+      transitionProperty: {
+        height: 'height',
+        'opacity-visible': 'opacity, visible',
+      },
+      transitionDuration: {
+        '200-1000': '200ms,1000ms',
+      },
     },
     fontSize: {
       ss: ['.8125rem', '16px'],
+      md: ['.9378rem', '19.9999px'],
     },
   },
   plugins: [

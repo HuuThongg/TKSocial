@@ -42,3 +42,8 @@ navbar : z-40
 </span>
 
 focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white
+
+inline-flex wont take effect
+<span className="block text-center md:text-left ">
+   89 friends
+ </span>

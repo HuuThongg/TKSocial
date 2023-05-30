@@ -29,7 +29,8 @@ const SideBar = () => {
     };
   }, []);
   return (
-    <div className=' flex fixed z-[1] min-h-0 bottom-0 left-0 top-[56px] origin-top-left w-[60px] lg:w-[300px]'>
+    // lg:w-[300px]
+    <div className=' flex fixed z-[1] min-h-0 bottom-0 left-0 top-[56px] origin-top-left w-[60px] '>
       <div className='relative w-full h-full bg-primary-clr overflow-hidden  text-[0.9375rem] '>
         <div className={clsx('flex flex-col relative grow min-0-h h-full  overflow-y-scroll overflow-x-hidden scrollbar-thumb-fifth-clr scrollbar-track-transparent hover:scrollbar-track-[#2c2d2f]    scrollbar-w-2 scrollbar-thumb-rounded-md lg:scrollbar-none', {
           'scrollbar-none ': hideScrollbar,
