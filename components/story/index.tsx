@@ -17,7 +17,7 @@ export default function Story() {
   const [isReachingEnd, setIsReachingEnd] = useState(false);
   const [defaultWidthScrollbar, setDefaultWidthScrollbar] = useState(618.75);
   useEffect(()=>{
-    (window.innerWidth < 800 )&& setDefaultWidthScrollbar(500);
+    (window.innerWidth < 800 ) && setDefaultWidthScrollbar(500);
   }, [defaultWidthScrollbar])
   const prevHandler = () => {
     console.log(currentIndex);

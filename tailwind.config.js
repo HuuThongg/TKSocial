@@ -65,6 +65,7 @@ module.exports = {
         'sec-btn-bg-hover': '#5d5e61',
         'primary-btn-bg': '#2374e1',
         'primary-btn-bg-hover': '#3982e4',
+        'surface-bg': '#242526',
         // hsl(214, 100%, 59%)
       },
       keyframes: {
@@ -114,7 +115,7 @@ module.exports = {
     },
     fontSize: {
       ss: ['.8125rem', '16px'],
-      md: ['.9378rem', '19.9999px'],
+      md: ['.9375rem', '19.9999px'],
     },
   },
   plugins: [

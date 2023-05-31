@@ -1,15 +1,33 @@
+'use client'
 import Link from "next/link";
 import { CameraIcon,PlusSmallIcon,PencilIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
 import clsx from "clsx";
 import { ChevronDownIconn, PlusSmIcon ,DownIcon} from "@/components/icons";
 import { PencilIconn } from "@/components/icons/PencilIconn";
-
+import { useRef, useEffect, useState } from "react";
+import Collection from "@/components/profile/collection";
 
 export default function Page() {
   const haveStories = false
   const seen = false;
   const isTabChose = true;
   const flip=false;
+  const ref = useRef<HTMLDivElement>(null);
+  const [isFlip, setIsFlip] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const navTop = ref.current?.getBoundingClientRect().top || 0;
+      setIsFlip(navTop - 56 === 0)
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+    
+  }, [ isFlip]);
+  console.log(isFlip);
+  
   return (
     <div className=" relative flex flex-col   min-h-0   left-[60px]   origin-top-left mr-[60px]   ">
       <div className='relative min-h-[56px] overflow-visible w-full h-full flex '>
@@ -196,20 +214,20 @@ export default function Page() {
             </div>
           </div>
           {/* navigation */}
-          <div className="sticky top-[56px] z-auto flex w-full ">
-            <div className="flex justify-center items-stretch flex-nowrap shrink-0 grow  bg-secondary-clr  ">
+          <div  ref={ref} className="sticky top-[56px] z-auto flex w-full ">
+            <div className="flex justify-center items-stretch flex-nowrap shrink grow  bg-secondary-clr  ">
               <div className="flex flex-col max-w-[1218px] relative  min-w-0 flex-1 z-0 px-4 ">
                 <div className="flex justify-between items-center relative z-0 border-t-2  border-third-clr">
                   <div className="shrink-0 flex flex-col  min-w-0 max-w-full flex-1 relative ">
                     <div className="flex  overflow-hidden relative z-0">
                       <div className={clsx(`transition-transform ease-quick-move-in `,{
-                        'translate-y-0': !flip,
-                        '-translate-y-full':flip
+                        'translate-y-0': !isFlip,
+                        '-translate-y-full': isFlip
                       })}>
                         {/* first nav */}
                         <div className={clsx(`flex justify-between z-0 relative ease-fade-out min-h-[60px] flex-nowrap visible opacity-100  transition-opacity-visible duration-200-1000   `,{
-                          'visible opacity-100': !flip,
-                          'invisible opacity-0': flip
+                          'visible opacity-100': !isFlip,
+                          'invisible opacity-0': isFlip
 
                         })}>
                           <div className="h-[60px]   overflow-hidden  z-0 flex justify-start items-center flex-wrap ">
@@ -251,13 +269,13 @@ export default function Page() {
                         </div>
                         {/* this nav will be visible when the first nav is hidden */}
                         <div className={clsx(`absolute flex justify-between items-center w-full h-[60px]   z-0`,{
-                          'invisible opacity-0': !flip,
-                          'visible opacity-100': flip
+                          'invisible opacity-0': !isFlip,
+                          'visible opacity-100': isFlip
                         })}>
                           <div className="flex flex-col  min-w-0 shrink-0 justify-center max-w-full  h-full">
                             <div className="px-2">
                               <Link href={'#'} className="p-0 m-0 w-full flex relative z-0 min-w-0 group/infoNav">
-                                <div className="p-2 h-full flex justify-between items-center min-w-0 gap-x-4">
+                                <div className="p-2 h-full flex justify-between items-center min-w-0 gap-x-3">
                                   {/* avatar */}
                                   <div className="flex justify-center items-center w-10 h-10 relative rounded-full overflow-hidden">
                                     <img src="/images/avatar.jpg" alt="avtar" />
@@ -292,8 +310,120 @@ export default function Page() {
 
           </div>
           {/* main */}
-          <div className="min-h-[2000px]">
-          
+          <div className=" flex flex-col max-w-full items-center relative w-full  z-0 bg-zinc-600 min-h-[2000px]">
+            {/* something here */}
+            <div>
+            </div>
+            <div className="px-4 mt-4 max-w-[1218px] box-border w-full">
+              <div className="-m-2 flex items-stretch z-0 flex-wrap text-primary-text justify-center">
+                {/* left : intro, photos, friends */}
+                <div className="flex grow-[18] basis-[360px] max-w-[600px] m-2  bg-red-300">
+                  <div className="grow sticky">
+                    <div className="flex flex-col ">
+                      {/* intro */}
+                      <div className="">
+                        <div className="mb-4 bg-surface-bg rounded-lg overflow-hidden relative z-0">
+                          <div className="pt-5 pb-1 flex flex-col">
+                            <div className="flex flex-col min-h-0 grow z-0">
+                              <div className="px-4 flex flex-col shrink-0 grow">
+                                <div className="flex flex-col my-[6px]">
+                                  <span className="block min-w-0 max-w-full  text-[1.25rem] font-bold text-primary-text break-before-all leading-[1.2]">
+                                    <span>
+                                      intro
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/*  */}
+                          <div className="mb-5">
+                            {/* edit Bio */}
+                            <div className="px-4 pt-4 flex flex-col relative">
+                              <div className="flex flex-col items-center grow shrink min-w-0  ">
+                                <div className="flex flex-col ">
+                                  <span className="block min-w-0 max-w-full  text-md font-normal text-primary-text break-before-all ">
+                                    <span>
+                                      There are no gains without pains
+                                    </span>
+                                  </span>
+                                </div>
+                                <div className="mt-4 w-full">
+                                  <div className="flex flex-col w-full h-[36px] items-center justify-center  ">
+                                    <div className="flex flex-col rounded-md  w-full h-full active:scale-x-[0.96] active:scale-y-[0.98] bg-third-clr items-center justify-center active:bg-fourth-clr">
+                                      <button className="block min-w-0 max-w-full w-full  text-md  text-primary-text break-before-all font-semibold ">
+                                        Edit Bio
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {/* edit details */}
+                            <div className="px-4 pt-2 flex flex-col relative">
+                              <div className="flex flex-col items-center grow shrink min-w-0">
+                                <div className="mt-4 w-full">
+                                  <div className="flex flex-col w-full h-[36px] items-center justify-center  ">
+                                    <div className="flex flex-col rounded-md  w-full h-full active:scale-x-[0.96] active:scale-y-[0.98] bg-third-clr items-center justify-center active:bg-fourth-clr">
+                                      <button className="block min-w-0 max-w-full w-full  text-md  text-primary-text break-before-all font-semibold ">
+                                        Edit details
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {/* add hobbies */}
+                            <div className="px-4 pt-2 flex flex-col relative">
+                              <div className="flex flex-col items-center grow shrink min-w-0">
+                                <div className="mt-4 w-full">
+                                  <div className="flex flex-col w-full h-[36px] items-center justify-center  ">
+                                    <div className="flex flex-col rounded-md  w-full h-full active:scale-x-[0.96] active:scale-y-[0.98] bg-third-clr items-center justify-center active:bg-fourth-clr">
+                                      <button className="block min-w-0 max-w-full w-full  text-md  text-primary-text break-before-all font-semibold ">
+                                        Add Hobbies
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="px-4 pt-2 flex flex-col relative">
+                              <div className="flex flex-col grow relative items-center">
+                                {/*story collection */}
+                                <div className=" flex w-full bg-zinc-500">
+                                  
+                                  <Collection/>
+                                </div>
+
+                                {/* edit feawtured */}
+                                <div className="w-full">
+                                  <div className="flex flex-col items-center grow shrink min-w-0">
+                                    <div className="mt-4 w-full">
+                                      <div className="flex flex-col w-full h-[36px] items-center justify-center  ">
+                                        <div className="flex flex-col rounded-md  w-full h-full active:scale-x-[0.96] active:scale-y-[0.98] bg-third-clr items-center justify-center active:bg-fourth-clr">
+                                          <button className="block min-w-0 max-w-full w-full  text-md  text-primary-text break-before-all font-semibold ">
+                                            Edit Featured
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* right : post */}
+                <div className="flex m-2 grow-[25] shrink min-w-0 z-0 max-w-[680px] basis-[500px] bg-red-400">
+                  bb
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
