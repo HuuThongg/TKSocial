@@ -21,7 +21,7 @@ export default function RootLayout({
         <NavBar />
         <SideBar />
         {children}
-        {/* <WindowChat/> */}
+        <WindowChat/>
       </body>
     </html>
   )
