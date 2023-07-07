@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { ChevronDownIconn, PlusSmIcon ,DownIcon} from "@/components/icons";
 import { PencilIconn } from "@/components/icons/PencilIconn";
 import { useRef, useEffect, useState } from "react";
-import Collection from "@/components/profile/collection";
+import Collection from "@/components/profile/Collection";
 
 export default function Page() {
   const haveStories = false

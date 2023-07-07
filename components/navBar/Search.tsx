@@ -1,5 +1,7 @@
 'use client'
 import { useState, useRef, useEffect, forwardRef, Fragment } from "react";
+import clsx from "clsx";
+
 import {
   useFloating,
   useInteractions,
@@ -8,7 +10,6 @@ import {
   useDismiss,
   FloatingFocusManager,
   useRole,
-  
   autoUpdate,
   useId,
   useFloatingPortalNode,
@@ -17,7 +18,6 @@ import type { Placement } from "@floating-ui/react";
 import Image from 'next/image'
 import Link from 'next/link'
 
-import clsx from 'clsx'
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/solid'
 
 type OptionProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -27,9 +27,10 @@ type OptionProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   img:string;
   url:string;
+  handleDelete: (name: string) => void;
 }
 
-const Options = forwardRef<HTMLDivElement, OptionProps>(function Options({ img, url,name, active, selected, children, ...props }, ref) {
+const Options = forwardRef<HTMLDivElement, OptionProps>(function Options({ handleDelete, img, url,name, active, selected, children, ...props }, ref) {
   const id = useId();
   return (
     <div key={name} className='w-full'
@@ -61,7 +62,12 @@ const Options = forwardRef<HTMLDivElement, OptionProps>(function Options({ img, 
             </div>
             {/* delete */}
             <div className='flex flex-col p-[6px] hover:bg-primary-icon-clr-hover min-w-0 max-w-full rounded-full'>
-              <div className='flex items-center justify-center w-[20px] h-[20px] rounded-full overflow-hidden cursor-pointer'>
+              <div className='flex items-center justify-center w-[20px] h-[20px] rounded-full overflow-hidden cursor-pointer'
+                onClick={(event: React.MouseEvent<HTMLDivElement>)=>{
+                  event.stopPropagation();
+                  handleDelete(name);
+              }}
+              >
                 <XMarkIcon />
               </div>
             </div>
@@ -74,6 +80,9 @@ const Options = forwardRef<HTMLDivElement, OptionProps>(function Options({ img, 
 
 
 const Search = () => {
+
+  const [onlineContacts, setOnlineContacts] = useState<OnlineContact[]>(onlineContactsData);
+
   const [open,setOpen] = useState(false);
   const [search,setSearch] = useState("");
   const [alternativeSearch,setAlternativeSearch] = useState("")
@@ -118,10 +127,9 @@ const Search = () => {
       // onNavigate: open ? setActiveIndex : undefined,
       onNavigate(index) {
         setActiveIndex(index);
-        if (index !== null){
-          setAlternativeSearch(filteredSearch[index].name)
-        }
-        // index && 
+        // if (index !== null){
+        //   setAlternativeSearch(filteredSearch[index].name)
+        // }
       },
       activeIndex,
       cols: 1,
@@ -129,7 +137,8 @@ const Search = () => {
       loop: true,
       focusItemOnOpen: false,
       virtual: true,
-      allowEscape: true
+      allowEscape: true,
+      focusItemOnHover: false,
     })
   ]);
 
@@ -144,20 +153,19 @@ const Search = () => {
   }, [open, resultantPlacement]);
 
   const filteredSearch = onlineContacts.filter(({name}) => name.toLowerCase().includes(search.toLowerCase()));
-  console.log(filteredSearch);
   const handlePersonClick = (index: number) =>{
     const name = filteredSearch[index].name
     setSelectedPerson(name);
     setOpen(false);
     setSearch(name)
-    setAlternativeSearch("");
+    // setAlternativeSearch("");
   }
 
-  const handleKeydown = (event: KeyboardEvent) =>{
+  const handleKeydown = (event) =>{
     if(event.key ==="Enter" && activeIndex!==null){
       event.preventDefault();
       handlePersonClick(activeIndex);
-      setAlternativeSearch("");
+      // setAlternativeSearch("");
 
     }
   }
@@ -165,6 +173,13 @@ const Search = () => {
   const handleInputSearchChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
     setActiveIndex(null);
     setSearch(event.target.value);
+  }
+
+  const handleDelete = (name:string) =>{
+    
+    const updatedContacts = onlineContacts.filter((person) => person.name.toLowerCase() !== name.toLowerCase());
+    setOnlineContacts(updatedContacts);
+    console.log("online");
   }
 
 
@@ -212,7 +227,13 @@ const Search = () => {
                 <span className='flex items-center whitespace-nowrap pointer-events-none ease-linear pl-3'>
                   <MagnifyingGlassIcon className='w-4 h-4 text-primary-text' />
                 </span>
-                <input type="text" className='w-full bg-transparent grow shrink pt-[7px] px-2 pb-[9px]  rounded-[50px] cursor-text text-left basis-auto text-[15px] h-[40px] text-primary-text font-normal' placeholder='Search T&K Social Media' value={ alternativeSearch !== "" ? alternativeSearch : search} 
+                <input type="text" className={clsx(`w-full bg-transparent grow shrink pt-[7px] px-2 pb-[9px]  rounded-[50px] cursor-text text-left basis-auto text-[15px] h-[40px]  font-normal`,{
+                  'text-secondary-text':!open,
+                  'text-primary-text':open,
+                })} placeholder='Search T&K Social Media' 
+                // value={ alternativeSearch !== "" ? alternativeSearch : search} 
+                value={search}
+
                   {...getInputProps({
                     ref: refs.setReference,
                     onKeyDown: handleKeydown,
@@ -253,6 +274,7 @@ const Search = () => {
                             <ul className={'outline-none border-none'}>
                               {filteredSearch.map(({ name, img, url }, index) => (
                                 <Options
+                                  handleDelete={handleDelete}
                                   key={name}
                                   name={name}
                                   img={img}
@@ -266,9 +288,9 @@ const Search = () => {
                                   active={activeIndex === index}
                                   {...getItemProps({
                                     onClick: () => {
-
+                                      console.log("click");
                                       handlePersonClick(index)
-                                      // refs.domReference.current?.focus();
+                                      
                                     }
                                   })}
                                 >
@@ -312,7 +334,7 @@ type OnlineContact = {
   img: string;
 };
 
-const onlineContacts: OnlineContact[] = [
+const onlineContactsData: OnlineContact[] = [
   {
     name: 'Kim Chi',
     url: '#',
