@@ -46,88 +46,176 @@ const MenuNav = () => {
             <div className={clsx(' top-0 left-0 absolute  translate-y-[48px] -translate-x-[220px] z-[2] duration-200')}
             >
               <div className='mt-[5px] mr-[5px] '>
-                <div className='overflow-hidden rounded-lg shadow-md shadow-zinc-600/50 bg-secondary-clr text-[15px] ' >
-                  <div className='flex flex-col max-w-[calc(100vw-24px])] max-h-[calc(100vh-90px)] w-[360px]  '>
-                    {/* profile */}
-                    <div className='flex flex-col overflow-hidden shrink-0 relative grow justify-start '>
-                      <div className='flex flex-col px-1'>
-                        <div className='flex flex-col  mt-2 mx-4 mb-4'>
-                          <div className='flex flex-col   rounded-2xl overflow-hidden my-1 '>
-                            <Link href='/' className='flex flex-col  cursor-pointer hover:bg-third-clr  select-auto'>
+                <div className=' rounded-lg shadow-md shadow-zinc-600/50 bg-secondary-clr text-[15px]  overflow-hidden' >
+                  <div className='flex flex-col max-w-[calc(100vw-24px])] max-h-[calc(100vh-90px)] w-[360px] overflow-auto   overscroll-contain scrollbar-thumb-fifth-clr scrollbar-track-transparent hover:scrollbar-track-[#2c2d2f] scrollbar   scrollbar-w-3 scrollbar-thumb-rounded-md    relative'>
+                    <div className='w-auto  ' >
+                      <div className='absolute w-full opacity-100 bg-red-500 pointer-events-none z-0 left-0 top-0 -translate-x-full visible duration-200 ease-fds-soft transition-opacity-transform'>
+                        {/* profile */}
+                        <div className='flex flex-col overflow-hidden shrink-0 relative grow justify-start '>
+                          <div className='flex flex-col px-2'>
+                            <div className='flex flex-col rounded-2xl  mt-2 mx-2 mb-4  shadow-[0_2px_12px_rgba(0,0,0,0.2)]'>
+                              <div className='flex flex-col   rounded-2xl overflow-hidden my-1 '>
+                                <Link href='/' className='flex flex-col  cursor-pointer hover:bg-third-clr  select-auto'>
 
-                              <div className='p-1 flex items-center flex-nowrap z-0 text-white '>
+                                  <div className='p-1 flex items-center flex-nowrap z-0 text-white '>
 
-                                {/* avatar */}
-                                <div className='flex flex-col min-w-0 relative shrink-0 max-w-full p-1'>
-                                  <div className='flex select-none'>
-                                    <div className='h-[36px] w-[36px] relative'>
-                                      <div className='absolute inset-0 w-full h-full '>
-                                        <div className='overflow-hidden rounded-full bg-primary-clr block z-0'>
-                                          <div className='pt-[100%] h-0 relative'>
-                                            <div className='absolute inset-0 m-0 p-0 w-full h-full'>
-                                              <Image src="/images/avatar.jpg" width={56} height={56} alt="user acvatar" />
+                                    {/* avatar */}
+                                    <div className='flex flex-col min-w-0 relative shrink-0 max-w-full p-1'>
+                                      <div className='flex select-none'>
+                                        <div className='h-[36px] w-[36px] relative'>
+                                          <div className='absolute inset-0 w-full h-full '>
+                                            <div className='overflow-hidden rounded-full bg-primary-clr block z-0'>
+                                              <div className='pt-[100%] h-0 relative'>
+                                                <div className='absolute inset-0 m-0 p-0 w-full h-full'>
+                                                  <Image src="/images/avatar.jpg" width={56} height={56} alt="user acvatar" />
+                                                </div>
+                                              </div>
                                             </div>
                                           </div>
                                         </div>
+
                                       </div>
                                     </div>
+                                    {/* Owner name */}
+                                    <div className='grow flex flex-col shrink items-start basis-0 min-w-0 p-1'>
+                                      <div className='flex flex-col min-w-0 relative shrink grow max-w-full flex-wrap basis-auto '>
+                                        {/* name */}
+                                        <div className='leading-[1.33rem] min-w-0 text-left break-words max-w-full text-primary-text text-[17px]'>
+                                          <span className='overflow-hidden relative block whitespace-nowrap text-ellipsis'>BE Yeu</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    {/* fake */}
+                                    <div className='flex flex-col shrink-0 relative max-w-full  min-0 z-0'>
+                                      <div className='pl-3 select-none'>
+                                        <div className='flex items-center justify-center flex-nowrap rounded-full cursor-pointer'>
+                                        </div>
+                                      </div>
 
-                                  </div>
-                                </div>
-                                {/* Owner name */}
-                                <div className='grow flex flex-col shrink items-start basis-0 min-w-0 p-1'>
-                                  <div className='flex flex-col min-w-0 relative shrink grow max-w-full flex-wrap basis-auto '>
-                                    {/* name */}
-                                    <div className='leading-[1.33rem] min-w-0 text-left break-words max-w-full text-primary-text text-[17px]'>
-                                      <span className='overflow-hidden relative block whitespace-nowrap text-ellipsis'>BE Yeu</span>
                                     </div>
                                   </div>
-                                </div>
-                                {/* fake */}
-                                <div className='flex flex-col shrink-0 relative max-w-full  min-0 z-0'>
-                                  <div className='pl-3 select-none'>
-                                    <div className='flex items-center justify-center flex-nowrap rounded-full cursor-pointer'>
-                                    </div>
-                                  </div>
-
-                                </div>
-                              </div>
-                            </Link>
-                          </div>
-                        </div>
-                        {/* hr */}
-                        <div className='mx-6 h-[1px] bg-gray-700' />
-
-                      </div>
-                      {/* ma */}
-                      <div className='flex flex-col py-1 mb-2 '>
-                        <div className='flex flex-col'>
-                          {profileToolkit.map((item, i) => (
-                            <div className='flex flex-col px-2' key={i}>
-                              <div className='flex  px-2 items-center w-full rounded-xl hover:bg-hover-overlay cursor-pointer'>
-                                <div className='flex flex-col items-center justify-center pointer-events-auto m-2 ml-0'>
-                                  <div className='flex flex-col items-center justify-center w-[36px] h-[36px] rounded-full border-none outline-none overflow-hidden'>
-                                    <item.icon className='w-7 h-7 text-primary-icon' />
-                                  </div>
-                                </div>
-                                <div className='flex w-full items-center '>
-                                  <div className='flex flex-col min-w-0 basis-0 grow py-3'>
-                                    <div className='leading-[1.33rem] min-w-0 text-left break-words max-w-full text-primary-text text-[15px]'>
-                                      <span className='overflow-hidden relative block whitespace-nowrap text-ellipsis'>{item.name}</span>
-                                    </div>
-                                  </div>
-                                  <div className='flex flex-col m-3 mr-0 tems-center justify-center pointer-events-auto'>
-                                    <div className='flex flex-col items-center justify-center w-[36px] h-[36px] rounded-full border-none outline-none overflow-hidden'>
-                                      <ChevronRightIcon className='w-7 h-7 text-primary-icon' />
-                                    </div>
-                                  </div>
-                                </div>
+                                </Link>
                               </div>
                             </div>
-                          ))}
+                            {/* hr */}
+                            <div className='mx-6 h-[1px] bg-gray-700' />
+
+                          </div>
+                          {/* ma */}
+                          <div className='flex flex-col py-1 mb-2 '>
+                            <div className='flex flex-col'>
+                              {profileToolkit.map((item, i) => (
+                                <div className='flex flex-col px-2' key={i}>
+                                  <div className='flex  px-2 items-center w-full rounded-xl hover:bg-hover-overlay cursor-pointer'>
+                                    <div className='flex flex-col items-center justify-center pointer-events-auto m-2 ml-0 rounded-full bg-primary-icon-clr-hover'>
+                                      <div className='flex flex-col items-center justify-center w-[36px] h-[36px] rounded-full border-none outline-none overflow-hidden'>
+                                        <item.icon className='w-5 h-5 text-primary-icon' />
+                                      </div>
+                                    </div>
+                                    <div className='flex w-full items-center '>
+                                      <div className='flex flex-col min-w-0 basis-0 grow py-3'>
+                                        <div className='leading-[1.33rem] min-w-0 text-left break-words max-w-full text-primary-text text-[15px]'>
+                                          <span className='overflow-hidden relative block whitespace-nowrap text-ellipsis'>{item.name}</span>
+                                        </div>
+                                      </div>
+                                      <div className='flex flex-col m-3 mr-0 tems-center justify-center pointer-events-auto'>
+                                        <div className='flex flex-col items-center justify-center w-[36px] h-[36px] rounded-full border-none outline-none overflow-hidden'>
+                                          <ChevronRightIcon className='w-7 h-7 text-primary-icon' />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className='absolute w-full opacity-100 bg-blue-500 pointer-events-none z-[10] left-0 top-0 -translate-x-0 visible duration-200 ease-fds-soft transition-opacity-transform'>
+                        {/* profile */}
+                        <div className='flex flex-col overflow-hidden shrink-0 relative grow justify-start '>
+                          <div className='flex flex-col px-2'>
+                            <div className='flex flex-col rounded-2xl  mt-2 mx-2 mb-4  shadow-[0_2px_12px_rgba(0,0,0,0.2)]'>
+                              <div className='flex flex-col   rounded-2xl overflow-hidden my-1 '>
+                                <Link href='/' className='flex flex-col  cursor-pointer hover:bg-third-clr  select-auto'>
+
+                                  <div className='p-1 flex items-center flex-nowrap z-0 text-white '>
+
+                                    {/* avatar */}
+                                    <div className='flex flex-col min-w-0 relative shrink-0 max-w-full p-1'>
+                                      <div className='flex select-none'>
+                                        <div className='h-[36px] w-[36px] relative'>
+                                          <div className='absolute inset-0 w-full h-full '>
+                                            <div className='overflow-hidden rounded-full bg-primary-clr block z-0'>
+                                              <div className='pt-[100%] h-0 relative'>
+                                                <div className='absolute inset-0 m-0 p-0 w-full h-full'>
+                                                  <Image src="/images/avatar.jpg" width={56} height={56} alt="user acvatar" />
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                      </div>
+                                    </div>
+                                    {/* Owner name */}
+                                    <div className='grow flex flex-col shrink items-start basis-0 min-w-0 p-1'>
+                                      <div className='flex flex-col min-w-0 relative shrink grow max-w-full flex-wrap basis-auto '>
+                                        {/* name */}
+                                        <div className='leading-[1.33rem] min-w-0 text-left break-words max-w-full text-primary-text text-[17px]'>
+                                          <span className='overflow-hidden relative block whitespace-nowrap text-ellipsis'>BE Yeu</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    {/* fake */}
+                                    <div className='flex flex-col shrink-0 relative max-w-full  min-0 z-0'>
+                                      <div className='pl-3 select-none'>
+                                        <div className='flex items-center justify-center flex-nowrap rounded-full cursor-pointer'>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </Link>
+                              </div>
+                            </div>
+                            {/* hr */}
+                            <div className='mx-6 h-[1px] bg-gray-700' />
+
+                          </div>
+                          {/* ma */}
+                          <div className='flex flex-col py-1 mb-2 '>
+                            <div className='flex flex-col'>
+                              {profileToolkit.map((item, i) => (
+                                <div className='flex flex-col px-2' key={i}>
+                                  <div className='flex  px-2 items-center w-full rounded-xl hover:bg-hover-overlay cursor-pointer'>
+                                    <div className='flex flex-col items-center justify-center pointer-events-auto m-2 ml-0 rounded-full bg-primary-icon-clr-hover'>
+                                      <div className='flex flex-col items-center justify-center w-[36px] h-[36px] rounded-full border-none outline-none overflow-hidden'>
+                                        <item.icon className='w-5 h-5 text-primary-icon' />
+                                      </div>
+                                    </div>
+                                    <div className='flex w-full items-center '>
+                                      <div className='flex flex-col min-w-0 basis-0 grow py-3'>
+                                        <div className='leading-[1.33rem] min-w-0 text-left break-words max-w-full text-primary-text text-[15px]'>
+                                          <span className='overflow-hidden relative block whitespace-nowrap text-ellipsis'>{item.name}</span>
+                                        </div>
+                                      </div>
+                                      <div className='flex flex-col m-3 mr-0 tems-center justify-center pointer-events-auto'>
+                                        <div className='flex flex-col items-center justify-center w-[36px] h-[36px] rounded-full border-none outline-none overflow-hidden'>
+                                          <ChevronRightIcon className='w-7 h-7 text-primary-icon' />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>

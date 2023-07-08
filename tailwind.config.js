@@ -12,6 +12,7 @@ module.exports = {
         'fade-out': 'cubic-bezier(0, 0, 1, 1)',
         'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
         'quick-move-in': 'cubic-bezier(0.1, 0.9, 0.2, 1)',
+        'fds-soft': 'cubic-bezier(.08,.52,.52,1)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -108,6 +109,7 @@ module.exports = {
       transitionProperty: {
         height: 'height',
         'opacity-visible': 'opacity, visible',
+        'opacity-transform': 'opacity, transform',
       },
       transitionDuration: {
         '200-1000': '200ms,1000ms',

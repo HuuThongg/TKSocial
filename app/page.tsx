@@ -17,13 +17,12 @@ import { commentsData } from '@/components/post/comment/constanst'
 
 
 
-export default async function Home() {
-
+export default  function Home() {
   
   return (
     <div className=" relative flex flex-col   min-h-0   left-[60px] lg:left-[300px]  origin-top-left mr-[60px] lg:mr-[300px]  ">
       <div className='relative min-h-[56px] overflow-visible w-full h-full flex '>
-        <div className='flex relative grow min-w-0 z-0 shrink justify-between items-start flex-nowrap basis-0 max-w-none 2xl:max-w-[1464px]'>
+        <div className='flex relative grow min-w-0 z-0 shrink justify-between items-start flex-nowrap basis-0 max-w-none 2xl:max-w-[1464px] '>
           {/*  main */}
 
           <main role='main' className=' md:px-8 relative flex justify-center grow min-w-0  shrink flex-nowrap bg-primary-clr  basis-[744px] w-[744] ' >
