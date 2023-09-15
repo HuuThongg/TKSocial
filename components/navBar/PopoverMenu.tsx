@@ -12,6 +12,7 @@ export const PopoverMenu = () => {
   const [isNotificationsOpen, setIsNotificationsOpen] = useState<Boolean>(false)
   const [isSidePanelOpen, setIsSidePanelOpen] = useState<Boolean>(false)
   const refChatNotiPanel = useRef<HTMLDivElement>(null);
+  const reset = useRef(1);
 
   const chatsHandler = () => {
     console.log("chatsHandler", isChatsOpen);
@@ -37,17 +38,17 @@ export const PopoverMenu = () => {
     setIsSidePanelOpen(true)
 
   }
-  let reset = 1;
+  
   useEffect(() => {
     const checkIfLickedOutside = (e: MouseEvent) => {
       if (isSidePanelOpen && refChatNotiPanel.current && !refChatNotiPanel.current.contains(e.target as Node)) {
         console.log("in if");
         setIsSidePanelOpen(false);
-        if (reset === 1) {
+        if (reset.current === 1) {
 
           setIsChatsOpen(false)
           setIsNotificationsOpen(false)
-          reset = 0;
+          reset.current = 0;
         }
 
       }

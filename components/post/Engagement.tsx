@@ -10,7 +10,7 @@ const Engagement = ({comments} : EngagementProps) => {
   return (
     <section className='overflow-hidden relative'>
       <InteractionMetric />
-      <CommentSection comments={comments} />
+      {/* <CommentSection comments={comments} /> */}
     </section>
   )
 }
