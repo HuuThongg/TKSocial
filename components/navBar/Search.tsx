@@ -25,12 +25,12 @@ type OptionProps = React.HTMLAttributes<HTMLDivElement> & {
   active: boolean;
   selected: boolean;
   children: React.ReactNode;
-  img:string;
-  url:string;
+  img: string;
+  url: string;
   handleDelete: (name: string) => void;
 }
 
-const Options = forwardRef<HTMLDivElement, OptionProps>(function Options({ handleDelete, img, url,name, active, selected, children, ...props }, ref) {
+const Options = forwardRef<HTMLDivElement, OptionProps>(function Options({ handleDelete, img, url, name, active, selected, children, ...props }, ref) {
   const id = useId();
   return (
     <div key={name} className='w-full'
@@ -63,10 +63,10 @@ const Options = forwardRef<HTMLDivElement, OptionProps>(function Options({ handl
             {/* delete */}
             <div className='flex flex-col p-[6px] hover:bg-primary-icon-clr-hover min-w-0 max-w-full rounded-full'>
               <div className='flex items-center justify-center w-[20px] h-[20px] rounded-full overflow-hidden cursor-pointer'
-                onClick={(event: React.MouseEvent<HTMLDivElement>)=>{
+                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                   event.stopPropagation();
                   handleDelete(name);
-              }}
+                }}
               >
                 <XMarkIcon />
               </div>
@@ -83,36 +83,36 @@ const Search = () => {
 
   const [onlineContacts, setOnlineContacts] = useState<OnlineContact[]>(onlineContactsData);
 
-  const [open,setOpen] = useState(false);
-  const [search,setSearch] = useState("");
-  const [alternativeSearch,setAlternativeSearch] = useState("")
-  const [selectedPerson,setSelectedPerson] = useState<string | null>(null);
-  const [activeIndex, setActiveIndex] = useState<number|null>(null);
-  const [placement, setPlacement] = useState<Placement| null>(null);
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const [alternativeSearch, setAlternativeSearch] = useState("")
+  const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [placement, setPlacement] = useState<Placement | null>(null);
   const listRef = useRef<Array<HTMLDivElement | null>>([]);
 
   const noResultsId = useId();
   const buttonId = useId();
   const listboxId = useId();
 
-  const {refs,context,placement:resultantPlacement} = useFloating({
+  const { refs, context, placement: resultantPlacement } = useFloating({
     open,
     placement: placement ?? "bottom-start",
-    onOpenChange:setOpen,
-    
-    whileElementsMounted:autoUpdate,
+    onOpenChange: setOpen,
+
+    whileElementsMounted: autoUpdate,
   })
 
   // handles opening the floating element via clicking on the search button
-  const {getReferenceProps, getFloatingProps} = useInteractions([
+  const { getReferenceProps, getFloatingProps } = useInteractions([
     useClick(context),
     useDismiss(context),
-    useRole(context,{
-      role:"listbox"
+    useRole(context, {
+      role: "listbox"
     })
   ]);
 
-  const handleOnNavgiate = ()=>{
+  const handleOnNavgiate = () => {
     setActiveIndex
   }
 
@@ -152,8 +152,8 @@ const Search = () => {
     }
   }, [open, resultantPlacement]);
 
-  const filteredSearch = onlineContacts.filter(({name}) => name.toLowerCase().includes(search.toLowerCase()));
-  const handlePersonClick = (index: number) =>{
+  const filteredSearch = onlineContacts.filter(({ name }) => name.toLowerCase().includes(search.toLowerCase()));
+  const handlePersonClick = (index: number) => {
     const name = filteredSearch[index].name
     setSelectedPerson(name);
     setOpen(false);
@@ -161,8 +161,8 @@ const Search = () => {
     // setAlternativeSearch("");
   }
 
-  const handleKeydown = (event) =>{
-    if(event.key ==="Enter" && activeIndex!==null){
+  const handleKeydown = (event) => {
+    if (event.key === "Enter" && activeIndex !== null) {
       event.preventDefault();
       handlePersonClick(activeIndex);
       // setAlternativeSearch("");
@@ -170,13 +170,13 @@ const Search = () => {
     }
   }
 
-  const handleInputSearchChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
+  const handleInputSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setActiveIndex(null);
     setSearch(event.target.value);
   }
 
-  const handleDelete = (name:string) =>{
-    
+  const handleDelete = (name: string) => {
+
     const updatedContacts = onlineContacts.filter((person) => person.name.toLowerCase() !== name.toLowerCase());
     setOnlineContacts(updatedContacts);
     console.log("online");
@@ -197,14 +197,14 @@ const Search = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  
+
   let w = `40px`;
 
-  if (innerWidth < 692 && open ) {
+  if (innerWidth < 692 && open) {
     // i want to render width dynamicly insteading of hard code  w-[500px]. if this is true then we need to render the search bar with width: 40px;
     w = `500px`;
-    
-  }else{
+
+  } else {
     w = `40px`;
   }
 
@@ -216,9 +216,9 @@ const Search = () => {
           <div className='w-full flex flex-col '>
             {/* search form */}
             <div className='flex h-[56px] items-center w-full'>
-              <label  htmlFor="" className={clsx('rounded-[50px] flex items-stretch w-full relative outline-none min-h-[40px] min-w-[40px] text-xs font-semibold align-middle hover:bg-fourth-clr bg-third-clr')}
+              <label htmlFor="" className={clsx('rounded-[50px] flex items-stretch w-full relative outline-none min-h-[40px] min-w-[40px] text-xs font-semibold align-middle hover:bg-fourth-clr bg-third-clr')}
                 ref={refs.setReference}
-      
+
                 id={buttonId}
                 {...getReferenceProps()}
                 aria-label="choose a search"
@@ -227,97 +227,97 @@ const Search = () => {
                 <span className='flex items-center whitespace-nowrap pointer-events-none ease-linear pl-3'>
                   <MagnifyingGlassIcon className='w-4 h-4 text-primary-text' />
                 </span>
-                <input type="text" className={clsx(`w-full bg-transparent grow shrink pt-[7px] px-2 pb-[9px]  rounded-[50px] cursor-text text-left basis-auto text-[15px] h-[40px]  font-normal`,{
-                  'text-secondary-text':!open,
-                  'text-primary-text':open,
-                })} placeholder='Search T&K Social Media' 
-                // value={ alternativeSearch !== "" ? alternativeSearch : search} 
-                value={search}
+                <input type="text" className={clsx(`w-full bg-transparent grow shrink pt-[7px] px-2 pb-[9px]  rounded-[50px] cursor-text text-left basis-auto text-[15px] h-[40px]  font-normal`, {
+                  'text-secondary-text': !open,
+                  'text-primary-text': open,
+                })} placeholder='Search T&K Social Media'
+                  // value={ alternativeSearch !== "" ? alternativeSearch : search} 
+                  value={search}
 
                   {...getInputProps({
                     ref: refs.setReference,
                     onKeyDown: handleKeydown,
                     onChange: handleInputSearchChange,
                   })}
-                  />
+                />
               </label>
             </div>
             {/* add box shadow */}
-              {open && (
-              <FloatingFocusManager initialFocus={-1}  context={context} modal={true} order={['content']} visuallyHiddenDismiss>
-                  <div 
-                    className="shadow-xl"
-                    ref={refs.setFloating}
-                    aria-describedby={buttonId}
-                  >
-                    
-                    <div className={clsx('mt-2 px-2 flex  rounded-[8px] bg-secondary-clr  max-h-[calc(100vh_-_80px)] shrink')}>
-                      <div className='overflow-x-hidden overflow-y-auto flex flex-col relative z-0 w-full'>
-                        <div className='flex flex-col '>
-                          <div >
-                            <div className='mb-2'>
-                              <div className='flex flex-col pt-3 pb-2 max-w-full z-0'>
-                                <div className='min-h-0 flex flex-col grow relative z-0 w-full'>
-                                  <div className='px-2 ,mt-[5px] '>
-                                    <div className='flex items-center justify-between flex-nowrap w-full'>
-                                      <div className='grow'>
-                                        <h2 className='text-white text-base font-semibold'>Recent</h2>
-                                      </div>
-                                      <div className='grow-0 '>
-                                        <button className='text-blue-500 text-sm font-medium bg-hover-overlay p-2 py-[6px] rounded-md'>Edit</button>
-                                      </div>
+            {open && (
+              <FloatingFocusManager initialFocus={-1} context={context} modal={true} order={['content']} visuallyHiddenDismiss>
+                <div
+                  className="shadow-xl"
+                  ref={refs.setFloating}
+                  aria-describedby={buttonId}
+                >
+
+                  <div className={clsx('mt-2 px-2 flex  rounded-[8px] bg-secondary-clr  max-h-[calc(100vh_-_80px)] shrink')}>
+                    <div className='overflow-x-hidden overflow-y-auto flex flex-col relative z-0 w-full'>
+                      <div className='flex flex-col '>
+                        <div >
+                          <div className='mb-2'>
+                            <div className='flex flex-col pt-3 pb-2 max-w-full z-0'>
+                              <div className='min-h-0 flex flex-col grow relative z-0 w-full'>
+                                <div className='px-2 ,mt-[5px] '>
+                                  <div className='flex items-center justify-between flex-nowrap w-full'>
+                                    <div className='grow'>
+                                      <h2 className='text-white text-base font-semibold'>Recent</h2>
+                                    </div>
+                                    <div className='grow-0 '>
+                                      <button className='text-blue-500 text-sm font-medium bg-hover-overlay p-2 py-[6px] rounded-md'>Edit</button>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <ul className={'outline-none border-none'}>
-                              {filteredSearch.map(({ name, img, url }, index) => (
-                                <Options
-                                  handleDelete={handleDelete}
-                                  key={name}
-                                  name={name}
-                                  img={img}
-                                  url={url}
-                                  ref={(node) => {
-                                    if (listRef.current) {
-                                      listRef.current[index] = node as HTMLDivElement;
-                                    }
-                                  }}
-                                  selected={selectedPerson === name}
-                                  active={activeIndex === index}
-                                  {...getItemProps({
-                                    onClick: () => {
-                                      console.log("click");
-                                      handlePersonClick(index)
-                                      
-                                    }
-                                  })}
-                                >
-                                  {name}
-                                </Options>
-                              ))}
-                            </ul>
                           </div>
+                          <ul className={'outline-none border-none'}>
+                            {filteredSearch.map(({ name, img, url }, index) => (
+                              <Options
+                                handleDelete={handleDelete}
+                                key={name}
+                                name={name}
+                                img={img}
+                                url={url}
+                                ref={(node) => {
+                                  if (listRef.current) {
+                                    listRef.current[index] = node as HTMLDivElement;
+                                  }
+                                }}
+                                selected={selectedPerson === name}
+                                active={activeIndex === index}
+                                {...getItemProps({
+                                  onClick: () => {
+                                    console.log("click");
+                                    handlePersonClick(index)
+
+                                  }
+                                })}
+                              >
+                                {name}
+                              </Options>
+                            ))}
+                          </ul>
                         </div>
                       </div>
                     </div>
-                    {filteredSearch.length === 0 && (
-                      <p
-                        key={search}
-                        id={noResultsId}
-                        className=""
-                        role="region"
-                        aria-atomic="true"
-                        aria-live="assertive"
-                      >
-                        No results
-                      </p>
-                    )}
                   </div>
-                </FloatingFocusManager>
-              )}
-            
+                  {filteredSearch.length === 0 && (
+                    <p
+                      key={search}
+                      id={noResultsId}
+                      className=""
+                      role="region"
+                      aria-atomic="true"
+                      aria-live="assertive"
+                    >
+                      No results
+                    </p>
+                  )}
+                </div>
+              </FloatingFocusManager>
+            )}
+
           </div>
         </div>
       </div>

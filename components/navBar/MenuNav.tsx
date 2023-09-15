@@ -9,10 +9,11 @@ import { BellIcon, ChatBubbleBottomCenterIcon, ChevronDownIcon, EllipsisHorizont
 import Search from './Search'
 import { Popover, Transition } from '@headlessui/react'
 import { profileToolkit } from './constant'
+import { useRouter } from 'next/navigation'
 
 
 const MenuNav = () => {
-
+  const router = useRouter()
   const chatsHandler = () => {
     console.log("chatsHandler");
   }
@@ -26,7 +27,9 @@ const MenuNav = () => {
           <Popover.Button className='h-full flex items-center justify-center relative active:scale-95 active:opacity-50 group/account-icon rounded-full'>
             <div className='flex relative p-0 m-0 min-h-0 rounded-full overflow-hidden select-none cursor-pointer '
             >
-              <Image src="/images/avatar.jpg" alt="avatar" width={40} height={40}>
+              <Image src="/images/avatar.jpg" alt="avatar" width={40} height={40}
+                onClick={() => router.push('/profile')}
+              >
 
               </Image>
             </div>
