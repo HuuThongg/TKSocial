@@ -14,9 +14,11 @@ interface CommentProps {
 //   commentText: string;
 //   comments: SchemaComment
 // }
+
+
 const Comment = ({comments, commentText, ...props }: CommentProps) => {
-  console.log("object");
-  console.log(comments);
+  // console.log("object");
+  // console.log(comments);
   return (
     <div {...props}
     >
