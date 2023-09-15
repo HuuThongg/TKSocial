@@ -10,12 +10,12 @@ const InteractionMetric = () => {
           <span aria-label='See how reacted to this' role="toolbar" className='flex'>
             <span id="1" className='flex items-center '>
               <span>
-                <button  className='w-[18px] h-[18px]  rounded-full '>
+                <button type="button" className='w-[18px] h-[18px]  rounded-full' title="Like button">
                   <Image className='w-full h-full'  src="/images/like.svg" width={18} height={18} alt="" priority={false}/>
                 </button>
               </span>
               <span>
-                <button className='w-[18px] h-[18px]  rounded-full '>
+                <button type="button" title='like ' className='w-[18px] h-[18px]  rounded-full '>
                   <Image className='w-full h-full' src="/images/haha.svg" width={18} height={18} alt="" priority={false} />
                 </button>
               </span>

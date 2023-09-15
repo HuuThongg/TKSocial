@@ -33,71 +33,68 @@ type OptionProps = React.HTMLAttributes<HTMLDivElement> & {
 const Options = forwardRef<HTMLDivElement, OptionProps>(function Options({ handleDelete, img, url, name, active, selected, children, ...props }, ref) {
   const id = useId();
   return (
-    <div key={name} className='w-full'
-      {...props}
-      ref={ref}
-      id={id}
-      role="option"
-      aria-selected={selected}
-    >
-      <div className={clsx('rounded-[8px] cursor-pointer flex px-1 py-[2px] text-left relative overflow-hidden my-0 text-primary-text text-xs leading-5 space-y-1  hover:bg-third-clr', {
-        'bg-third-clr': active,
-      })}>
-        <Link href={url} className='w-full '
 
+
+        <div key={name} className='w-full'
+          {...props}
+          ref={ref}
+          role="option"
+          aria-selected={selected}
         >
-          <div className='flex items-center justify-between z-0 relative w-full '>
-            <div className='p-[6px] flex shrink-0 flex-col select-none'>
-              <div className='flex items-center justify-center w-[36px] h-[36px] rounded-full overflow-hidden'>
-                <Image src={img} alt="avatar" width={40} height={40} />
+          <div className={clsx('rounded-[8px] cursor-pointer flex px-1 py-[2px] text-left relative overflow-hidden my-0 text-primary-text text-xs leading-5 space-y-1  hover:bg-third-clr', {
+            'bg-third-clr': active,
+          })}>
+            <Link href={url} className='w-full'>
+              <div className='flex items-center justify-between z-0 relative w-full'>
+                <div className='p-[6px] flex shrink-0 flex-col select-none'>
+                  <div className='flex items-center justify-center w-[36px] h-[36px] rounded-full overflow-hidden'>
+                    <Image src={img} alt="avatar" width={40} height={40} />
+                  </div>
+                </div>
+                <div className='flex flex-col grow shrink min-w-0 basis-0   max-w-full p-[6px] '>
+                  <div className='my-[5px]'>
+                    <span>
+                      {name}
+                    </span>
+                  </div>
+                </div>
+                {/* delete */}
+                <div className='flex flex-col p-[6px] hover:bg-primary-icon-clr-hover min-w-0 max-w-full rounded-full'>
+                  <div className='flex items-center justify-center w-[20px] h-[20px] rounded-full overflow-hidden cursor-pointer'
+                    onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+                      event.stopPropagation();
+                      handleDelete(name);
+                    }}
+                  >
+                    <XMarkIcon />
+                  </div>
+                </div>
               </div>
-
-            </div>
-            <div className='flex flex-col grow shrink min-w-0 basis-0   max-w-full p-[6px] '>
-              <div className='my-[5px]'>
-                <span>
-                  {name}
-                </span>
-              </div>
-            </div>
-            {/* delete */}
-            <div className='flex flex-col p-[6px] hover:bg-primary-icon-clr-hover min-w-0 max-w-full rounded-full'>
-              <div className='flex items-center justify-center w-[20px] h-[20px] rounded-full overflow-hidden cursor-pointer'
-                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
-                  event.stopPropagation();
-                  handleDelete(name);
-                }}
-              >
-                <XMarkIcon />
-              </div>
-            </div>
+            </Link>
           </div>
-        </Link>
-      </div>
-    </div>
-  )
-})
+        </div>
+      )
+    })
 
+    const Search = () => {
 
-const Search = () => {
+      const [onlineContacts, setOnlineContacts] = useState<OnlineContact[]>(onlineContactsData);
 
-  const [onlineContacts, setOnlineContacts] = useState<OnlineContact[]>(onlineContactsData);
+      const [open, setOpen] = useState(false);
+      const [search, setSearch] = useState("");
+      const [alternativeSearch, setAlternativeSearch] = useState("")
+      const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
+      const [activeIndex, setActiveIndex] = useState<number | null>(null);
+      const [placement, setPlacement] = useState<Placement | null>(null);
+      const listRef = useRef<Array<HTMLDivElement | null>>([]);
 
-  const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState("");
-  const [alternativeSearch, setAlternativeSearch] = useState("")
-  const [selectedPerson, setSelectedPerson] = useState<string | null>(null);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [placement, setPlacement] = useState<Placement | null>(null);
-  const listRef = useRef<Array<HTMLDivElement | null>>([]);
+      const noResultsId = useId();
+      const buttonId = useId();
+      const listboxId = useId();
 
-  const noResultsId = useId();
-  const buttonId = useId();
-  const listboxId = useId();
-
-  const { refs, context, placement: resultantPlacement } = useFloating({
-    open,
-    placement: placement ?? "bottom-start",
+      const { refs, context, placement: resultantPlacement } = useFloating({
+        open,
+          placement: placement ?? "bottom-start",
     onOpenChange: setOpen,
 
     whileElementsMounted: autoUpdate,

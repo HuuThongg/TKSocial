@@ -8,7 +8,7 @@ import { SchemaComment } from './constanst';
 interface CommentProps {
   commentText: string;
   className?: string;
-  // comments: SchemaComment
+  comments: SchemaComment
 }
 // interface CommentProps extends React.HTMLAttributes<HTMLDivElement> {
 //   commentText: string;
@@ -69,7 +69,10 @@ const Comment = ({comments, commentText, ...props }: CommentProps) => {
                           Huu Thong
                         </span>
                       </Link>
-                      {comments.content}
+                      {/* {comments.content} */}
+                      compressing obkject
+
+
                     </span>
                   </div>
                 </div>
