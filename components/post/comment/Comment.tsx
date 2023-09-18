@@ -1,3 +1,4 @@
+
 import Image from 'next/image'
 import React, { useId, useState } from 'react'
 import { ChevronDownIcon, FaceSmileIcon, PhotoIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline'
@@ -27,7 +28,7 @@ const Comment = ({comments, commentText, ...props }: CommentProps) => {
         <button className='relative rounded-full p-0 m-0 inline-flex min-w-0 min-h-0' tabIndex={-1} aria-hidden="true">
           <div className='w-[32px] h-[32px] flex items-stretch relative'>
 
-            <svg className='w-8 h-8 ' role='none' aria-hidden="true" >
+            <svg className='w-8 h-8 ' aria-hidden="true" >
               <mask id={`:1:`}>
                 <circle cx="16" cy="16" r="16" className='fill-white'  >
                 </circle>

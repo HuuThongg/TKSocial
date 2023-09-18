@@ -1,3 +1,4 @@
+import { ClerkProvider } from '@clerk/nextjs'
 import NavBar from '@/components/navBar'
 import  SideBar from '@/components/sideBar'
 import './globals.css'
@@ -16,13 +17,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} box-border bg-secondary-clr`}>
-        <NavBar />
-        <SideBar />
-        {children}
-        <WindowChat/>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${inter.className} box-border bg-secondary-clr text-neutral-700 dark:text-primary-text  `}>
+          <NavBar />
+          <SideBar />
+          {children}
+          <WindowChat/>
+        </body>
+      </html>
+    </ClerkProvider>
+
   )
 }

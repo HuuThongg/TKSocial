@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { VideoCameraIcon, PhotoIcon, FaceSmileIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import InputPost from './InputPost'
 
 
 export function CreatePost() {
@@ -19,6 +20,8 @@ export function CreatePost() {
             <div className='w-full'>
               <span className='line-clamp-2 text-secondary-text '>What&#39;s on your mind,Thong?</span>
             </div>
+            <InputPost/>
+            
           </div>
         </div>
         {/* live/video/phto/ feeling */}

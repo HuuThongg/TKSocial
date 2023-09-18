@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image'
 import React, { useId, useState } from 'react'
 import { ChevronDownIcon, FaceSmileIcon, PhotoIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline'

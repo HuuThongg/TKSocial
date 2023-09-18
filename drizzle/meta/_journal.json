@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1694994521595,
+      "tag": "0000_flippant_phantom_reporter",
+      "breakpoints": true
+    }
+  ]
+}

@@ -19,7 +19,7 @@ const envSchema = z.object({
 export type Env = z.infer<typeof envSchema>;
 
 // export env object for  typesage access throughout the app
-export const env: Env = {
+export const env: Env = envSchema.parse({
   DATABASE_URL: process.env.DATABASE_URL!,
   DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID!,
   DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET!,
@@ -31,7 +31,5 @@ export const env: Env = {
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET!,
   NEXTAUTH_URL: process.env.NEXTAUTH_URL!,
   NEXT_PUBLIC_WS_URL: process.env.NEXT_PUBLIC_WS_URL!,
-};
-
+});
 // assure the expected env vars are present. if not throw an error
-envSchema.parse(env);
