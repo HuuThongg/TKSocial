@@ -7,7 +7,7 @@ import clsx from 'clsx';
 export default function RightSideBar() {
 
   return (
-    <div className='hidden md:flex overflow-visible basis-[360px]  sticky top-[56px] min-w-[280px] grow shrink-[9999] max-w-[360px] bg-primary-clr overflow-x-hidden max-h-screen h-screen -mb-[56px] text-primary-text text-[15px] font-medium'>
+    <div className='hidden md:flex overflow-visible basis-[360px]  sticky top-[56px] min-w-[280px] grow shrink-[9999] max-w-[360px] bg-primary-clr overflow-x-hidden max-h-screen h-screen -mb-[56px] text-primary-text text-[15px] font-medium '>
       <div className='flex relative flex-col min-h-0 grow shrink overflow-x-hidden basis-full pt-2 overflow-y-scroll scrollbar-thumb-fifth-clr scrollbar-track-transparent hover:scrollbar-track-[#2c2d2f]  scrollbar   scrollbar-w-2 scrollbar-thumb-rounded-md box'>
         <div className=' flex flex-col  relative grow '>
           <div className='pt-2'>

@@ -1,12 +1,32 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
-module.exports = {
+const colors = require('tailwindcss/colors');
+import { withUt } from 'uploadthing/tw';
+module.exports = withUt({
   content: [
     './components/**/*.{js,ts,jsx,tsx}',
     './app/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
+    screens: {
+      xs: '480px',
+      ss: '649px',
+      sm: '768px',
+      '2sm': '790px',
+      md: '899px',
+      lg: '1159px',
+      '2lg': '1340px',
+      xl: '1420px',
+      // xl: '899 1100 1160 1340 1420 1920',
+      '2xl': '1921px',
+    },
     extend: {
       transitionTimingFunction: {
         'fade-out': 'cubic-bezier(0, 0, 1, 1)',
@@ -26,6 +46,39 @@ module.exports = {
         102: '102',
       },
       colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
         gray: colors.neutral,
         hotPink: '#FF1966',
         dark: '#111111',
@@ -69,6 +122,11 @@ module.exports = {
         'surface-bg': '#242526',
         // hsl(214, 100%, 59%)
       },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
       keyframes: {
         fadeIn: {
           from: { opacity: 0 },
@@ -83,24 +141,23 @@ module.exports = {
           '20%': { opacity: 1 },
           '100% ': { opacity: 0.2 },
         },
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
       },
       animation: {
         fadeIn: 'fadeIn .3s ease-in-out',
         carousel: 'marquee 60s linear infinite',
         blink: 'blink 1.4s both infinite',
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
-      screens: {
-        xs: '480px',
-        ss: '649px',
-        sm: '768px',
-        '2sm': '790px',
-        md: '899px',
-        lg: '1159px',
-        '2lg': '1340px',
-        xl: '1420px',
-        // xl: '899 1100 1160 1340 1420 1920',
-        '2xl': '1921px',
-      },
+
       scrollbarRed: {
         '::-webkit-scrollbar-thumb': {
           backgroundColor: 'red',
@@ -126,5 +183,13 @@ module.exports = {
     // Or with a custom prefix:
     require('@headlessui/tailwindcss')({ prefix: 'ui' }),
     require('tailwind-scrollbar')({ nocompatible: true }),
+    require('tailwindcss-animate'),
   ],
-};
+});
+
+
+
+
+
+
+

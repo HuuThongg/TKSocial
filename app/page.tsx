@@ -49,6 +49,7 @@ export default async  function  Home() {
           <main role='main' className=' md:px-8 relative flex justify-center grow min-w-0  shrink flex-nowrap bg-primary-clr  basis-[744px] w-[744] ' >
             <div className='min-w-0 flex flex-col shrink-0 relative z-0 max-w-full'>
               <div className='w-full  mt-4 '>
+                
                 {/* story */}
                 <Story/>
                 {/* posts */}
@@ -71,7 +72,7 @@ export default async  function  Home() {
               </div>
             </div>
           </main>
-
+                        
           <RightSideBar />
         </div>
       </div>
