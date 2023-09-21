@@ -4,6 +4,7 @@ import  SideBar from '@/components/sideBar'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import WindowChat from '@/components/windowChat/WindowChat'
+import Provider from '@/components/providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -20,10 +21,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body className={`${inter.className} box-border bg-secondary-clr text-neutral-700 dark:text-primary-text  `}>
-          <NavBar />
-          <SideBar />
-          {children}
-          <WindowChat/>
+          <Provider>
+            <NavBar />
+            <SideBar />
+            {children}
+            <WindowChat/>
+          </Provider>
         </body>
       </html>
     </ClerkProvider>

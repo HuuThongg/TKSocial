@@ -11,6 +11,7 @@ import {
   index,
   text,
   timestamp,
+  json
 } from 'drizzle-orm/mysql-core';
 import { relations, sql } from 'drizzle-orm';
 
@@ -59,7 +60,8 @@ export var posts = mysqlTable(
   {
     id: int('id').autoincrement().notNull(),
     profileId: int('profile_Id').notNull(),
-    content: text('content').notNull(),
+    content: text('content'),
+    imageUrls: json('imageUrls'),
     createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
     updatedAt: timestamp('updated_at')
       .default(sql`CURRENT_TIMESTAMP`)

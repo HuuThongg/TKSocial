@@ -345,7 +345,7 @@ const WindowChat = () => {
             {Array.from(Array(3).keys()).map((item, index) => (
               <div key={index } className='mb-[10px]  h-[48px] w-[48px] flex justify-center items-center group relative order-2'>
                 <div className='h-[48px] w-[48px] flex justify-center items-center '>
-                  <button className=' w-full h-full flex justify-center items-center p-0 m-0 border-0 border-none focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white rounded-full  select-none ' 
+                  <button aria-label="Open chat" className=' w-full h-full flex justify-center items-center p-0 m-0 border-0 border-none focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white rounded-full  select-none ' 
                   onMouseEnter={() => setIsShownChatBoxOptions(true)}
                   onMouseLeave={() => setIsShownChatBoxOptions(false)}
                   >

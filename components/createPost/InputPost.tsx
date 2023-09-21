@@ -151,7 +151,6 @@ export default function InputPost() {
       
       
       <Form {...form}>
-        daswdas
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="space-y-8 px-6">
             <div className="flex items-center justify-center text-center">
@@ -180,7 +179,7 @@ export default function InputPost() {
             
           </div>
           <DialogFooter className="bg-gray-100 px-6 py-4">
-            <Button variant="ghost" disabled={isLoading}>
+            <Button type='submit' variant="ghost" disabled={isLoading}>
               Create
             </Button>
           </DialogFooter>

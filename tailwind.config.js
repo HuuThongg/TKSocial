@@ -171,10 +171,11 @@ module.exports = withUt({
       transitionDuration: {
         '200-1000': '200ms,1000ms',
       },
-    },
-    fontSize: {
-      ss: ['.8125rem', '16px'],
-      md: ['.9375rem', '19.9999px'],
+      fontSize: {
+        ss: ['.8125rem', '16px'],
+        sd: ['.9375rem', '15px'],
+        md: ['.9375rem', '19.9999px'],
+      },
     },
   },
   plugins: [
