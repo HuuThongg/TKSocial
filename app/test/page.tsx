@@ -30,23 +30,23 @@ export default function Test() {
   // })
   const handleSubmit = (e) =>{
     e.preventDefault();
-    const url = qs.stringifyUrl({
-      url: apiUrl,
-      query: {
-        cursor: pageParam,
-        [paramKey]: paramValue,
-      }
-    }, { skipNull: true });
+    // const url = qs.stringifyUrl({
+    //   url: apiUrl,
+    //   query: {
+    //     cursor: pageParam,
+    //     [paramKey]: paramValue,
+    //   }
+    // }, { skipNull: true });
 
-    const res = await fetch(url);
-    return res.json();
-    if(e.target){
-      console.log("hello");
-      socket.on('chat message', (msg) => {
-        socket.emit('chat message', msg);
-      });
-      setInput('');
-    }
+    // const res = await fetch(url);
+    // return res.json();
+    // if(e.target){
+    //   console.log("hello");
+    //   socket.on('chat message', (msg) => {
+    //     socket.emit('chat message', msg);
+    //   });
+    //   setInput('');
+    // }
   }
   socket?.on('chat message', (msg) => {
     console.log("listeing to");

@@ -2,7 +2,7 @@
 
 import { db } from '@/db';
 import { posts } from '@/drizzle/schema';
-import { currentProfile } from '@/lib/query/db/getCurrentProfile';
+import { currentProfile } from '@/lib/query/db/current-profile';
 import { redirectToSignIn } from '@clerk/nextjs';
 import { revalidatePath } from 'next/cache';
 
@@ -18,7 +18,7 @@ export default async function create(formData: FormData) {
   await db.insert(posts).values({
     content: messageForPost,
     profileId: profile[0].id,
-  } );
-  console.log("done")
+  });
+  console.log('done');
   revalidatePath('/');
 }

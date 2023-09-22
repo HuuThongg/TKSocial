@@ -1,0 +1,89 @@
+import { NextApiRequest } from 'next';
+import { NextApiResponseServerIo } from '@/types';
+import { currentProfilePages } from '@/lib/query/db/current-profile-pages';
+import { db } from '@/db';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponseServerIo) {
+  if (req.method !== 'DELETE' && req.method !== 'PATCH') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+  try {
+    const profile = await currentProfilePages(req);
+    const { directMessageId, conversationId } = req.query;
+    const { content } = req.body;
+
+    if (!profile) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    if (!conversationId) {
+      return res.status(400).json({ error: 'Conversation ID missing' });
+    }
+    // find conversation based on conversationID
+    let conversation;
+
+    if (!conversation) {
+      return res.status(404).json({ error: 'Conversation not found' });
+    }
+
+    let directMessage = 'directMessage'; // find first direct message
+
+    // if (!directMessage || directMessage.deleted) {
+    if (!directMessage) {
+      return res.status(404).json({ error: 'Message not found' });
+    }
+    if (req.method === 'DELETE') {
+      console.log('delete');
+      // directMessage = await db.directMessage.update({
+      //   where: {
+      //     id: directMessageId as string,
+      //   },
+      //   data: {
+      //     fileUrl: null,
+      //     content: 'This message has been deleted.',
+      //     deleted: true,
+      //   },
+      //   include: {
+      //     member: {
+      //       include: {
+      //         profile: true,
+      //       },
+      //     },
+      //   },
+      // });
+    }
+    if (req.method === 'PATCH') {
+      // if (!isMessageOwner) {
+      //   return res.status(401).json({ error: 'Unauthorized' });
+      // }
+
+      // directMessage = await db.directMessage.update({
+      //   where: {
+      //     id: directMessageId as string,
+      //   },
+      //   data: {
+      //     content,
+      //   },
+      //   include: {
+      //     member: {
+      //       include: {
+      //         profile: true,
+      //       },
+      //     },
+      //   },
+      // });
+      console.log('patch message');
+    }
+    conversation = {
+      id: 1,
+    };
+    const updateKey = `chat:${conversation.id}:messages:update`;
+
+    res?.socket?.server?.io?.emit(updateKey, directMessage);
+
+    return res.status(200).json(directMessage);
+  } catch (error) {
+    console.log('[MESSAGE_ID]', error);
+    return res.status(500).json({ error: 'Internal Error' });
+  }
+}

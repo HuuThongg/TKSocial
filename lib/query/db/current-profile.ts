@@ -3,6 +3,7 @@ import { auth } from '@clerk/nextjs';
 
 import { profile } from '@/drizzle/schema';
 import { sql } from 'drizzle-orm';
+import { NextApiRequest } from 'next';
 
 type NewProfile = typeof profile.$inferInsert;
 type Profile = typeof profile.$inferSelect;
@@ -14,7 +15,9 @@ export const currentProfile = async () => {
     return null;
   }
 
-  const results: Profile[] = await db.select().from(profile).where(sql`${profile.userId}= ${userId}`);
+  const results: Profile[] = await db
+    .select()
+    .from(profile)
+    .where(sql`${profile.userId}= ${userId}`);
   return results;
 };
-
