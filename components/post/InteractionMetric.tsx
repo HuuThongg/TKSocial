@@ -1,8 +1,22 @@
+"use client"
 import { PhotoIcon,HandThumbUpIcon, PaperAirplaneIcon,ChatBubbleLeftIcon  } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import React from 'react'
+import likeButtonFn from './action';
 
-const InteractionMetric = () => {
+type InteractionMetricProps ={
+  likeAmount : number;
+  commentAmount : number;
+  shareAmount : number;
+  postId:number;
+}
+
+export default function InteractionMetric({ commentAmount, likeAmount, shareAmount, postId }:InteractionMetricProps) {
+
+  async function handleLikeButton({ postId }: { postId : number}) {
+    console.log(postId);
+    await likeButtonFn({ postId });
+  }
   return (
     <div className='flex flex-col '>
       <div className=' mx-4 py-[10px] border-b border-solid border-divider text-secondary-text leading-[1.3333] flex justify-between items-center'>
@@ -23,7 +37,7 @@ const InteractionMetric = () => {
           </span>
           <div>
             <span>
-              1.7k
+              {likeAmount}
             </span>
           </div>
         </div>
@@ -31,20 +45,22 @@ const InteractionMetric = () => {
           <div className='flex  text-[15px] gap-x-1'>
             <div className='py-1 px-[2px] flex gap-1 '>
               <span className='hover:underline cursor-pointer select-none'>
-                38 
+                {commentAmount}
               </span>
               <span>
                 <ChatBubbleLeftIcon className='w-5 h-5 stroke stroke-secondary-text' />
               </span>
             </div>
-            <div className='py-1 px-[2px] flex gap-x-1'>
-              <span className='hover:underline cursor-pointer select-none font-normal' >
-                380 
-              </span>
-              <span>
-                <PaperAirplaneIcon className='w-5 h-5 stroke stroke-secondary-text' />
-              </span>
-            </div>
+            {shareAmount!==0 && (
+              <div className='py-1 px-[2px] flex gap-x-1'>
+                <span className='hover:underline cursor-pointer select-none font-normal' >
+                  {shareAmount} 
+                </span>
+                <span>
+                  <PaperAirplaneIcon className='w-5 h-5 stroke stroke-secondary-text' />
+                </span>
+              </div>
+              )}
           </div>
         </div>
       </div>
@@ -53,7 +69,9 @@ const InteractionMetric = () => {
 
         <div className=' flex w-full items-center justify-around  py-1 -px-1 gap-x-1  text-[15px]  mx-1'>
           {/* like */}
-          <div className='p-2 rounded-lg grow hover:bg-third-clr flex justify-center items-center flex-auto cursor-pointer focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white' tabIndex={1} >
+          <div className='p-2 rounded-lg grow hover:bg-third-clr flex justify-center items-center flex-auto cursor-pointer focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white' tabIndex={1} 
+            onClick={(event) => handleLikeButton({ postId: postId })}
+          >
             <div className='flex justify-center items-center overflow-hidden gap-2'>
               <span>
                 <HandThumbUpIcon className='w-6 h-6 stroke-2 stroke-secondary-text' />
@@ -92,4 +110,4 @@ const InteractionMetric = () => {
   )
 }
 
-export default InteractionMetric
+

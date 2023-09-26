@@ -1,12 +1,10 @@
 import { db } from '@/db';
 import { getAuth } from '@clerk/nextjs/server';
 
-import { profile } from '@/drizzle/schema';
 import { sql } from 'drizzle-orm';
 import { NextApiRequest } from 'next';
+import { User, users } from '@/db/schema';
 
-type NewProfile = typeof profile.$inferInsert;
-type Profile = typeof profile.$inferSelect;
 
 export const currentProfilePages = async (req: NextApiRequest) => {
   const { userId } = getAuth(req);
@@ -15,10 +13,10 @@ export const currentProfilePages = async (req: NextApiRequest) => {
     return null;
   }
 
-  const results: Profile[] = await db
+  const results: User[] = await db
     .select()
-    .from(profile)
-    .where(sql`${profile.userId}= ${userId}`);
+    .from(users)
+    .where(sql`${users.userIdAuth}= ${userId}`);
   return results;
 };
 

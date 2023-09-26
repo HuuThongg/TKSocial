@@ -10,9 +10,11 @@
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check ",
     "introspect": "drizzle-kit introspect:mysql",
-    "generate": "drizzle-kit generate:pg",
+    "generate": "drizzle-kit generate:mysql",
     "push": "drizzle-kit push:mysql",
-    "studio": "drizzle-kit studio"
+    "studio": "drizzle-kit studio",
+    "migration:generate": "drizzle-kit generate:mysql --schema=./db/schema.ts",
+    "migration:push": "node -r ./db/migrate.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.23.5",
@@ -32,10 +34,10 @@
     "@types/node": "18.16.0",
     "@types/react": "18.0.38",
     "@types/react-dom": "18.0.11",
-    "@uploadthing/react": "^5.6.1",
     "axios": "^1.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^1.2.1",
+    "dayjs": "^1.11.10",
     "drizzle-orm": "^0.28.6",
     "emoji-mart": "^5.5.2",
     "framer-motion": "^10.16.4",
@@ -56,7 +58,6 @@
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "^3.3.3",
     "tailwindcss-animate": "^1.0.7",
-    "uploadthing": "^5.6.1",
     "uuid": "^9.0.1",
     "zod": "^3.22.2",
     "zustand": "^4.4.1"
@@ -64,7 +65,9 @@
   "devDependencies": {
     "autoprefixer": "^10.4.15",
     "csstype": "^3.1.2",
+    "dotenv": "^16.3.1",
     "drizzle-kit": "^0.19.13",
+    "encoding": "^0.1.13",
     "eslint": "^8.49.0",
     "eslint-config-next": "^13.5.1",
     "postcss": "^8.4.30",

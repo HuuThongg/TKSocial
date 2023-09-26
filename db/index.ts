@@ -1,6 +1,7 @@
-import {connect} from "@planetscale/database";
-import {config} from "@/db/config";
+import * as schema from './schema';
+import { connect } from '@planetscale/database';
+import { config } from '@/db/config';
 import { drizzle } from 'drizzle-orm/planetscale-serverless';
 
 const conn = connect(config);
-export const db =  drizzle(conn);
+export const db = drizzle(conn, { schema });

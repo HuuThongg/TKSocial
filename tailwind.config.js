@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors');
-import { withUt } from 'uploadthing/tw';
-module.exports = withUt({
+module.exports = {
   content: [
     './components/**/*.{js,ts,jsx,tsx}',
     './app/**/*.{js,ts,jsx,tsx}',
@@ -186,7 +185,7 @@ module.exports = withUt({
     require('tailwind-scrollbar')({ nocompatible: true }),
     require('tailwindcss-animate'),
   ],
-});
+};
 
 
 

@@ -1,34 +1,31 @@
 import { currentUser, redirectToSignIn } from '@clerk/nextjs';
 
 import { db } from '@/db';
-import { profile } from '@/drizzle/schema';
+import { User,users, NewUser } from '@/db/schema';
+
 import { sql } from 'drizzle-orm';
-type NewProfile = typeof profile.$inferInsert;
-type Profile = typeof profile.$inferSelect;
 
 export const initialProfile = async () => {
   const user = await currentUser();
-  const id = user?.id;
   if (!user) {
     return redirectToSignIn();
   }
-
-  const data_profile = await db
+  const data_profile: User[] = await db
     .select()
-    .from(profile)
-    .where(sql`${user.id} = ${profile.userId}`);
+    .from(users)
+    .where(sql`${user.id} = ${users.userIdAuth}`);
 
   if (data_profile.length !== 0) {
     return data_profile;
   }
 
-  const newProfile = await db.insert(profile).values({
-    userId: user.id,
+
+  const newProfile = await db.insert(users).values({
+    userIdAuth: user.id,
     name: `${user.firstName} ${user.lastName}`,
     imageUrl: user.imageUrl,
     email: user.emailAddresses[0].emailAddress,
   });
-
   return newProfile;
 };
 

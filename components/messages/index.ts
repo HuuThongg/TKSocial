@@ -1,4 +1,7 @@
-// export interface MessagesState {
-//   addToConvoQueue: (conversationId: string, recipient: Partial<User>) => void;
-//   closeMessages: () => void;
-// }
+import { Profiles } from "@/drizzle/schema";
+
+export interface MessagesState {
+  addToConvoQueue: (conversationId: string, recipient: Partial<Profile>) => void;
+  closeMessages: () => void;
+}
+

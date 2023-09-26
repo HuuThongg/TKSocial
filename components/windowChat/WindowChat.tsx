@@ -61,7 +61,7 @@ const WindowChat = () => {
                                     </div>
                                   </div>
                                   
-                                  <ChevronDownIcon className='pl-2 w-15px] h-[15px]  fill-disabled-icon'/>
+                                  <ChevronDownIcon className='pl-2 w-[15px] h-[15px]  fill-disabled-icon'/>
                                 </div>
                               </div>
                             </div>

@@ -1,23 +1,23 @@
 import { db } from '@/db';
 import { auth } from '@clerk/nextjs';
 
-import { profile } from '@/drizzle/schema';
+import { User, users } from '@/db/schema';
+
 import { sql } from 'drizzle-orm';
-import { NextApiRequest } from 'next';
 
-type NewProfile = typeof profile.$inferInsert;
-type Profile = typeof profile.$inferSelect;
 
-export const currentProfile = async () => {
+export const currentProfile = async ():Promise<User[] | null>  => {
   const { userId } = auth();
 
   if (!userId) {
     return null;
   }
 
-  const results: Profile[] = await db
+
+  const results: User[] = await db
     .select()
-    .from(profile)
-    .where(sql`${profile.userId}= ${userId}`);
+    .from(users)
+    .where(sql`${users.userIdAuth}= ${userId}`);
+  console.log(results);
   return results;
 };

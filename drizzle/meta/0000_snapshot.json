@@ -4,82 +4,8 @@
   "version": "5",
   "dialect": "mysql",
   "tables": {
-    "authors": {
-      "name": "authors",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "author": {
-          "autoincrement": false,
-          "name": "author",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "authors_id": {
-          "name": "authors_id",
-          "columns": [
-            "id"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {
-        "author": {
-          "name": "author",
-          "columns": [
-            "author"
-          ]
-        }
-      }
-    },
-    "categories": {
-      "name": "categories",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "category": {
-          "autoincrement": false,
-          "name": "category",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "categories_id": {
-          "name": "categories_id",
-          "columns": [
-            "id"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {
-        "category": {
-          "name": "category",
-          "columns": [
-            "category"
-          ]
-        }
-      }
-    },
-    "cities": {
-      "name": "cities",
+    "comments": {
+      "name": "comments",
       "columns": {
         "id": {
           "autoincrement": true,
@@ -88,142 +14,356 @@
           "primaryKey": false,
           "notNull": true
         },
-        "name": {
+        "post_id": {
           "autoincrement": false,
-          "name": "name",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "country_id": {
-          "autoincrement": false,
-          "name": "country_id",
+          "name": "post_id",
           "type": "int",
           "primaryKey": false,
           "notNull": false
         },
-        "popularity": {
+        "content": {
           "autoincrement": false,
-          "name": "popularity",
-          "type": "enum('unknown','known','popular')",
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "author_Id": {
+          "autoincrement": false,
+          "name": "author_Id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parent_id": {
+          "autoincrement": false,
+          "name": "parent_id",
+          "type": "int",
           "primaryKey": false,
           "notNull": false
+        },
+        "created_at": {
+          "default": "CURRENT_TIMESTAMP",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "CURRENT_TIMESTAMP",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "onUpdate": true
         }
       },
       "compositePrimaryKeys": {
-        "cities_id": {
-          "name": "cities_id",
-          "columns": [
-            "id"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {}
-    },
-    "countries": {
-      "name": "countries",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "serial",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "name": {
-          "autoincrement": false,
-          "name": "name",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "compositePrimaryKeys": {
-        "countries_id": {
-          "name": "countries_id",
-          "columns": [
-            "id"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {
-        "name_idx": {
-          "name": "name_idx",
-          "columns": [
-            "name"
-          ]
-        }
-      }
-    },
-    "quotes": {
-      "name": "quotes",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "quote": {
-          "autoincrement": false,
-          "name": "quote",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "author_id": {
-          "autoincrement": false,
-          "name": "author_id",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "category_id": {
-          "autoincrement": false,
-          "name": "category_id",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "quotes_id": {
-          "name": "quotes_id",
+        "comments_id": {
+          "name": "comments_id",
           "columns": [
             "id"
           ]
         }
       },
       "indexes": {
-        "author_id_idx": {
-          "name": "author_id_idx",
+        "parent_id_idx": {
+          "name": "parent_id_idx",
           "columns": [
-            "author_id"
+            "parent_id"
           ],
           "isUnique": false
         },
-        "category_id_idx": {
-          "name": "category_id_idx",
+        "post_id_idx": {
+          "name": "post_id_idx",
           "columns": [
-            "category_id"
+            "post_id"
           ],
           "isUnique": false
         }
       },
       "foreignKeys": {},
-      "uniqueConstraints": {
-        "quote": {
-          "name": "quote",
+      "uniqueConstraints": {}
+    },
+    "conversations": {
+      "name": "conversations",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lastMessage  Id": {
+          "autoincrement": false,
+          "name": "lastMessage  Id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "autoincrement": false,
+          "name": "user_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "default": "CURRENT_TIMESTAMP",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "conversations_id": {
+          "name": "conversations_id",
           "columns": [
-            "quote"
+            "id"
           ]
         }
-      }
+      },
+      "indexes": {
+        "last_message_id_idx": {
+          "name": "last_message_id_idx",
+          "columns": [
+            "lastMessage  Id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "likes": {
+      "name": "likes",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "postId": {
+          "autoincrement": false,
+          "name": "postId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "commentId": {
+          "autoincrement": false,
+          "name": "commentId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "userId": {
+          "autoincrement": false,
+          "name": "userId",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "default": "now()",
+          "autoincrement": false,
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "likes_id": {
+          "name": "likes_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {
+        "commentId_idx": {
+          "name": "commentId_idx",
+          "columns": [
+            "commentId"
+          ],
+          "isUnique": false
+        },
+        "postId_idx": {
+          "name": "postId_idx",
+          "columns": [
+            "postId"
+          ],
+          "isUnique": false
+        },
+        "userId_idx": {
+          "name": "userId_idx",
+          "columns": [
+            "userId"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "messages": {
+      "name": "messages",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "messageText": {
+          "autoincrement": false,
+          "name": "messageText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fileUrl": {
+          "autoincrement": false,
+          "name": "fileUrl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "senderId": {
+          "autoincrement": false,
+          "name": "senderId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "conversationId": {
+          "autoincrement": false,
+          "name": "conversationId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "deleted",
+          "type": "tinyint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "default": "CURRENT_TIMESTAMP",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "messages_id": {
+          "name": "messages_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {
+        "conversation_id_idx": {
+          "name": "conversation_id_idx",
+          "columns": [
+            "conversationId"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "posts": {
+      "name": "posts",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "author_Id": {
+          "autoincrement": false,
+          "name": "author_Id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "content": {
+          "autoincrement": false,
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "imageUrls": {
+          "autoincrement": false,
+          "name": "imageUrls",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "imgURL": {
+          "autoincrement": false,
+          "name": "imgURL",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "default": "CURRENT_TIMESTAMP",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "CURRENT_TIMESTAMP",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "onUpdate": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "posts_id": {
+          "name": "posts_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {
+        "profile_id_idx": {
+          "name": "profile_id_idx",
+          "columns": [
+            "author_Id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
     },
     "users": {
       "name": "users",
@@ -235,24 +375,93 @@
           "primaryKey": false,
           "notNull": true
         },
-        "full_name": {
+        "userId": {
           "autoincrement": false,
-          "name": "full_name",
-          "type": "text",
+          "name": "userId",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imageUrl": {
+          "autoincrement": false,
+          "name": "imageUrl",
+          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false
         },
-        "phone": {
+        "email": {
           "autoincrement": false,
-          "name": "phone",
-          "type": "varchar(256)",
+          "name": "email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "default": "CURRENT_TIMESTAMP",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": false
+        },
+        "updated_at": {
+          "default": "CURRENT_TIMESTAMP",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "onUpdate": true
         }
       },
       "compositePrimaryKeys": {
         "users_id": {
           "name": "users_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "usersToConversations": {
+      "name": "usersToConversations",
+      "columns": {
+        "user_id": {
+          "autoincrement": false,
+          "name": "user_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "conversation_id": {
+          "autoincrement": false,
+          "name": "conversation_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "default": "'member'",
+          "autoincrement": false,
+          "name": "role",
+          "type": "enum('owner','admin','member')",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "usersToConversations_id": {
+          "name": "usersToConversations_id",
           "columns": [
             "id"
           ]
