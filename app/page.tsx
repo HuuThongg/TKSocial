@@ -113,10 +113,6 @@ export default async  function  Home() {
                   <div className='w-[500px] 2sm:w-[680px] max-w-full '>
                     {/* create post */}
                     <CreatePost/>
-                    <div>
-
-                      {JSON.stringify(allPosts)}
-                    </div>
                     <div className='transition-all duration-300 opacity-100 '>
                       {/* feed */}
                       

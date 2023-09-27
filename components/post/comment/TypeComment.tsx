@@ -5,13 +5,32 @@ import { ChevronDownIcon, FaceSmileIcon, PhotoIcon, PaperAirplaneIcon } from '@h
 import TextareaAutosize from 'react-textarea-autosize';
 import Link from 'next/link';
 import Comment from './Comment';
+import commentFn from './action';
 
-const TypeComment = () => {
+
+interface TypeCommentProps {
+  postId: number;
+  parentId?: number | null;
+}
+
+
+const TypeComment = ({ postId ,parentId }: TypeCommentProps) => {
   const [text, setText] = useState('')
   const [isWritingCommentOpen, setIsWritingCommentOpen] = useState(false)
   const avatarId = useId()
   const onChangeInputText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value)
+  }
+  const scrollStyle = "scrollbar-thumb-fifth-clr scrollbar-track-transparent hover:scrollbar-track-[#2c2d2f]  scrollbar   scrollbar-w-2 scrollbar-thumb-rounded-md";
+  async function onCreateComment(formData: FormData) {
+    console.log("pppp" + parentId);
+    await commentFn(formData);
+    setText("");
+    setIsWritingCommentOpen(!isWritingCommentOpen);
+    // form.reset();
+    // setSelectedFile([]);
+    // setIsModalOpen(!isModalOpen);
+    // router.refresh();
   }
   return (
     <div>
@@ -21,7 +40,7 @@ const TypeComment = () => {
           <div className='mt-[2px] mr-[6px]'>
             <button className='relative rounded-full p-0 m-0 inline-flex min-w-0 min-h-0' tabIndex={-1} aria-hidden="true">
               <div className='w-[32px] h-[32px] flex items-stretch relative'>
-                <svg className='w-8 h-8 ' role='none' aria-hidden="true" >
+                <svg className='w-8 h-8 ' role='none'  >
                   <mask id={`:${avatarId}:`}>
                     <circle cx="16" cy="16" r="16" className='fill-white'  >
                     </circle>
@@ -65,15 +84,19 @@ const TypeComment = () => {
             </button>
           </div>
           <div className='flex flex-col overflow-hidden flex-1'>
-            <form action="" className='flex  flex-wrap text-xs relative p-0 m-0  grow  rounded-2xl bg-third-clr   justify-between'>
+            <form action={onCreateComment} className='flex  flex-wrap text-xs relative p-0 m-0  grow  rounded-2xl bg-third-clr   justify-between'>
               {/* type here */}
+              <input className=' sr-only' type="number" name='postId' readOnly value={postId} />
+              <input className='sr-only' type="number" name='parentId' value={parentId !== null ? parentId?.toString() : undefined} readOnly />
+
               <TextareaAutosize
                 minRows={1}
                 maxRows={6}
+                name='comment'
                 placeholder='Write a comment...'
                 value={text}
                 style={{ height: 45 }}
-                className='grow   px-3 py-2 resize-none bg-transparent text-primary-text'
+                className={`grow   px-3 py-2 resize-none bg-transparent text-primary-text ${scrollStyle}`}
                 onChange={onChangeInputText}
                 onFocus={() => setIsWritingCommentOpen(true)}
               />
@@ -98,7 +121,7 @@ const TypeComment = () => {
               {/*  icons, gift , images */}
               {isWritingCommentOpen && (
                 <div className='flex w-full pb-[6px]'>
-                  <div className=' flex justify-between items-center w-full flex-wrap px-2'>
+                  <div className=' flex justify-between items-center w-full flex-wrap px-2 '>
                     <ul className='flex items-center text-xs p-1 h-[36px] -ml-1'>
                       <li className='-mx-[3px]  hover:bg-fourth-clr w-[32px] h-full flex items-center justify-center rounded-full'>
                         <span>
@@ -111,11 +134,11 @@ const TypeComment = () => {
                         </span>
                       </li>
                     </ul>
-                    <div className='flex justify-center items-center p-[6px]'>
+                    <button type='submit' title='Post Comment'  className='flex justify-center items-center p-2 rounded-full hover:bg-gray-500 cursor-pointer transition-colors '>
                       <span>
                         <PaperAirplaneIcon className='w-4 h-4 stroke-2 stroke-secondary-text' />
                       </span>
-                    </div>
+                    </button>
                   </div>
                 </div>
               )}

@@ -9,12 +9,12 @@ export default function Test() {
   const [input, setInput] = useState('')
   const [inputValue, setInputValue] = useState(['']) // added state variable
   const { isConnected, socket } = useSocket();
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
     if (!isConnected) {
       console.log("not connected");
     }
     setInput(e.target.value)
-    socket.emit('input-change', e.target.value)
+    socket.emit('input-change', (e.target as HTMLInputElement).value)
   }
   useEffect(()=>{
     if (!socket) {
@@ -28,7 +28,7 @@ export default function Test() {
   // socket.on('input-change', msg => { // added event listener
   //   setInputValue(msg)
   // })
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
     // const url = qs.stringifyUrl({
     //   url: apiUrl,

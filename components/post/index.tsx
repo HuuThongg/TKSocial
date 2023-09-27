@@ -123,6 +123,7 @@ export default function Post({ post }: PostProps ) {
 
         </div>
         {/* comment */}
+        {/* @ts-expect-error Async Server Component */}
         <Engagement comments={post.comments} likes={post.likes} author={post.author!} postId={post.id} />
       </div>
     </div>

@@ -49,9 +49,9 @@ export function CreatePost() {
     form.reset();
     setIsModalOpen(!isModalOpen);
   } 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    console.log("object");
-  }
+  // async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  //   console.log("object");
+  // }
   const selectImage = () => {
     if (fileInput.current) {
       fileInput.current.click();
@@ -77,7 +77,6 @@ export function CreatePost() {
     setIsModalOpen(!isModalOpen);
     router.refresh();
   }
-
   return(
     <div className='mb-4   max-w-full w-full relative rounded-lg overflow-x-hidden z-0 shadow-xl bg-secondary-clr '>
       <div className='flex flex-wrap pt-[12px] px-4 pb-[10px] justify-center   '>

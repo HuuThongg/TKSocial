@@ -1,21 +1,24 @@
 "use client"
 import { PhotoIcon,HandThumbUpIcon, PaperAirplaneIcon,ChatBubbleLeftIcon  } from '@heroicons/react/24/outline'
 import Image from 'next/image'
-import React from 'react'
+import { useTransition } from 'react';
 import likeButtonFn from './action';
+import { cn } from '@/lib/utils';
 
 type InteractionMetricProps ={
   likeAmount : number;
   commentAmount : number;
   shareAmount : number;
   postId:number;
+  isLiked: boolean;
 }
 
-export default function InteractionMetric({ commentAmount, likeAmount, shareAmount, postId }:InteractionMetricProps) {
+export default function InteractionMetric({ commentAmount, likeAmount, shareAmount, postId, isLiked }:InteractionMetricProps) {
 
-  async function handleLikeButton({ postId }: { postId : number}) {
-    console.log(postId);
-    await likeButtonFn({ postId });
+  const [isPending, startTransition] = useTransition();
+
+  async function handleLikeButton({ postId, isLiked }: { postId : number; isLiked: boolean}) {
+    await likeButtonFn({ postId, isLiked });
   }
   return (
     <div className='flex flex-col '>
@@ -69,18 +72,29 @@ export default function InteractionMetric({ commentAmount, likeAmount, shareAmou
 
         <div className=' flex w-full items-center justify-around  py-1 -px-1 gap-x-1  text-[15px]  mx-1'>
           {/* like */}
-          <div className='p-2 rounded-lg grow hover:bg-third-clr flex justify-center items-center flex-auto cursor-pointer focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white' tabIndex={1} 
-            onClick={(event) => handleLikeButton({ postId: postId })}
+          <button className='p-2 rounded-lg grow hover:bg-third-clr flex justify-center items-center flex-auto cursor-pointer focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white' disabled={isPending} 
+            onClick={()=>{
+              startTransition(()=>{
+                handleLikeButton({postId,isLiked})
+              })
+            }}
           >
             <div className='flex justify-center items-center overflow-hidden gap-2'>
               <span>
-                <HandThumbUpIcon className='w-6 h-6 stroke-2 stroke-secondary-text' />
+                <HandThumbUpIcon className={cn(`w-6 h-6 stroke-2 stroke-secondary-text`,{
+                  'stroke-blue-link' : isLiked,
+                }
+                )} />
               </span>
               <div className='flex justify-center items-center font-semibold break-words text-[15px]  min-w-0 text-start m-0 p-0'>
-                <span className='inline-block relative  overflow-x-hidden text-ellipsis whitespace-nowrap leading-5 text-secondary-text'>Like</span>
+                <span className={cn(`inline-block relative  overflow-x-hidden text-ellipsis whitespace-nowrap leading-5 `, {
+                  'text-blue-link': isLiked,
+                  'text-secondary-text':!isLiked,
+                }
+                )}>Like</span>
               </div>
             </div>
-          </div>
+          </button>
           {/* comment */}
           <div className='p-2 rounded-lg grow hover:bg-third-clr flex justify-center items-center flex-auto cursor-pointer focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white' tabIndex={1}>
             <div className='flex justify-center items-center overflow-hidden gap-2'>

@@ -18,6 +18,5 @@ export const currentProfile = async ():Promise<User[] | null>  => {
     .select()
     .from(users)
     .where(sql`${users.userIdAuth}= ${userId}`);
-  console.log(results);
   return results;
 };
