@@ -30,7 +30,7 @@ export default async function commentFn(formData:FormData) {
       postId,
       authorId: user[0].id,
       comment: data.comment,
-      parentId,
+      // parentId,
     });
 
     revalidatePath('/');

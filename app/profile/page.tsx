@@ -6,6 +6,7 @@ import { ChevronDownIconn, PlusSmIcon ,DownIcon} from "@/components/icons";
 import { PencilIconn } from "@/components/icons/PencilIconn";
 import { useRef, useEffect, useState } from "react";
 import Collection from "@/components/profile/Collection";
+import Image from "next/image";
 
 export default function Page() {
   const haveStories = false
@@ -45,7 +46,7 @@ export default function Page() {
                       <div className="p-0 m-0 flex flex-col min-w-0 min-h-0 absolute inset-0 justify-between">
                         <div className="absolute pt-[75%]  h-0 w-full overflow-hidden left-1/2 top-[64.5%] -translate-x-1/2 -translate-y-[64.5%]">
                           <div className="absolute inset-0 p-0 m-0 flex flex-col justify-between">
-                            <img src="/images/backgroundCover.jpg" alt="background Image" draggable="false" />
+                            <Image src="/images/backgroundCover.jpg" alt="background Image" draggable="false" />
                           </div>
 
                         </div>
@@ -167,7 +168,7 @@ export default function Page() {
                               <li key={index} className="flex-shrink-0 relative -ml-1">
                                 <Link href={"#"}>
                                   <div className="inline-block w-8 h-8 rounded-full overflow-hidden ">
-                                    <img src="/images/avatar.jpg" alt="" />
+                                    <Image src="/images/avatar.jpg" alt="" />
                                   </div>
                                 </Link>
                               </li>
@@ -278,7 +279,7 @@ export default function Page() {
                                 <div className="p-2 h-full flex justify-between items-center min-w-0 gap-x-3">
                                   {/* avatar */}
                                   <div className="flex justify-center items-center w-10 h-10 relative rounded-full overflow-hidden">
-                                    <img src="/images/avatar.jpg" alt="avtar" />
+                                    <Image src="/images/avatar.jpg" alt="avtar" />
                                   </div>
                                   {/* name */}
                                   <div className="flex flex-col justify-center items-start min-w-0 max-w-full">

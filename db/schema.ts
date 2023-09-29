@@ -66,7 +66,7 @@ export const comments = mysqlTable(
     postId: int('post_id'),
     comment: text('content').notNull(),
     authorId: int('author_Id').notNull(),
-    parentId: int('parent_id'),
+    parentId: int('parent_id').default(sql`NULL`),
     // likes: int('likes').default(0),
     createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
     updatedAt: timestamp('updated_at')

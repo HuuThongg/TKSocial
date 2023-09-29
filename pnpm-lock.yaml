@@ -18,6 +18,7 @@ specifiers:
   '@types/node': 18.16.0
   '@types/react': 18.0.38
   '@types/react-dom': 18.0.11
+  '@types/uuid': ^9.0.4
   autoprefixer: ^10.4.15
   axios: ^1.5.0
   class-variance-authority: ^0.7.0
@@ -106,6 +107,7 @@ dependencies:
   zustand: 4.4.1_mj3jo2baq3jslihcop7oivercy
 
 devDependencies:
+  '@types/uuid': 9.0.4
   autoprefixer: 10.4.15_postcss@8.4.30
   csstype: 3.1.2
   dotenv: 16.3.1
@@ -1344,6 +1346,10 @@ packages:
       '@types/mime': 3.0.1
       '@types/node': 18.16.0
     dev: false
+
+  /@types/uuid/9.0.4:
+    resolution: {integrity: sha512-zAuJWQflfx6dYJM62vna+Sn5aeSWhh3OB+wfUEACNcqUSc0AGc5JKl+ycL1vrH7frGTXhJchYjE1Hak8L819dA==}
+    dev: true
 
   /@typescript-eslint/parser/6.7.2_rngtr6f3b25lvetpihwplgecf4:
     resolution: {integrity: sha512-KA3E4ox0ws+SPyxQf9iSI25R6b4Ne78ORhNHeVKrPQnoYsb9UhieoiRoJgrzgEeKGOXhcY1i8YtOeCHHTDa6Fw==}
