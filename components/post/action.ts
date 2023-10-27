@@ -1,4 +1,4 @@
-'use server'
+'use server';
 
 import { db } from '@/db';
 import { posts, likes } from '@/drizzle/schema';
@@ -7,20 +7,27 @@ import { redirectToSignIn } from '@clerk/nextjs';
 import { and, eq } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 
-
-export default async function likeButtonFn({ postId, isLiked }: { postId: number; isLiked : boolean}) {
+export default async function likeButtonFn({
+  postId,
+  isLiked,
+}: {
+  postId: number;
+  isLiked: boolean;
+}) {
   const user = await currentProfile();
   if (!user) {
     return redirectToSignIn();
   }
   try {
-    if (!isLiked){
+    if (!isLiked) {
       await db.insert(likes).values({
         userId: user[0].id,
         postId,
       });
-    }else{
-      await db.delete(likes).where(and(eq(likes.postId ,postId),eq(likes.userId,user[0].id)))
+    } else {
+      await db
+        .delete(likes)
+        .where(and(eq(likes.postId, postId), eq(likes.userId, user[0].id)));
     }
     revalidatePath('/');
     console.log('Database insertion like successful');

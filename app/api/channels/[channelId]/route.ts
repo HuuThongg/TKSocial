@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server';
 // import { MemberRole } from '@prisma/client';
 
-import { currentProfile } from '@/lib/query/db/current-profile'; 
+import { currentProfile } from '@/lib/query/db/current-profile';
 import { db } from '@/db';
 
-export async function DELETE(req: Request, { params }: { params: { channelId: string } }) {
+export async function DELETE(
+  req: Request,
+  { params }: { params: { channelId: string } },
+) {
   try {
     const profile = await currentProfile();
     const { searchParams } = new URL(req.url);
@@ -23,7 +26,7 @@ export async function DELETE(req: Request, { params }: { params: { channelId: st
       return new NextResponse('Channel ID missing', { status: 400 });
     }
 
-    let server = "server delete"
+    let server = 'server delete';
     // const server = await db.server.update({
     //   where: {
     //     id: serverId,
@@ -55,7 +58,10 @@ export async function DELETE(req: Request, { params }: { params: { channelId: st
   }
 }
 
-export async function PATCH(req: Request, { params }: { params: { channelId: string } }) {
+export async function PATCH(
+  req: Request,
+  { params }: { params: { channelId: string } },
+) {
   try {
     const profile = await currentProfile();
     const { name, type } = await req.json();
@@ -108,7 +114,7 @@ export async function PATCH(req: Request, { params }: { params: { channelId: str
     //     },
     //   },
     // });
-    let server ="update channel"
+    let server = 'update channel';
 
     return NextResponse.json(server);
   } catch (error) {

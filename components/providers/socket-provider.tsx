@@ -1,12 +1,7 @@
-"use client";
+'use client';
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState
-} from "react";
-import { io as ClientIO } from "socket.io-client";
+import { createContext, useContext, useEffect, useState } from 'react';
+import { io as ClientIO } from 'socket.io-client';
 type SocketContextType = {
   socket: any | null;
   isConnected: boolean;
@@ -21,44 +16,40 @@ export const useSocket = () => {
   return useContext(SocketContext);
 };
 
-export const SocketProvider = ({
-  children
-}: {
-  children: React.ReactNode
-}) => {
+export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
   const [socket, setSocket] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const socketInstance = new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL!, {
-      
-      path: "/api/socket/io",
-      addTrailingSlash: false,
-      transports: ["polling", "websocket", "webtransport"]
-      
-    });
+    const socketInstance = new (ClientIO as any)(
+      process.env.NEXT_PUBLIC_SITE_URL!,
+      {
+        path: '/api/socket/io',
+        addTrailingSlash: false,
+        transports: ['polling', 'websocket', 'webtransport'],
+      },
+    );
 
-    socketInstance.on("connect", () => {
+    socketInstance.on('connect', () => {
       setIsConnected(true);
     });
 
-    socketInstance.on("disconnect", () => {
+    socketInstance.on('disconnect', () => {
       setIsConnected(false);
     });
-    socketInstance.on("connect_error", (err) => {
+    socketInstance.on('connect_error', (err) => {
       console.log(`connect_error due to ${err.message}`);
     });
     setSocket(socketInstance);
 
-    
     return () => {
       socketInstance.disconnect();
-    }
+    };
   }, []);
 
   return (
     <SocketContext.Provider value={{ socket, isConnected }}>
       {children}
     </SocketContext.Provider>
-  )
-}
+  );
+};

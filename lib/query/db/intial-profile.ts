@@ -1,11 +1,11 @@
+'server-only';
 import { currentUser, redirectToSignIn } from '@clerk/nextjs';
-
 import { db } from '@/db';
-import { User,users, NewUser } from '@/db/schema';
-
+import { User, users, NewUser } from '@/db/schema';
 import { sql } from 'drizzle-orm';
+import { unstable_cache as cache } from 'next/cache';
 
-export const initialProfile = async () => {
+export const initialProfile = cache(async () => {
   const user = await currentUser();
   if (!user) {
     return redirectToSignIn();
@@ -19,7 +19,6 @@ export const initialProfile = async () => {
     return data_profile;
   }
 
-
   const newProfile = await db.insert(users).values({
     userIdAuth: user.id,
     name: `${user.firstName} ${user.lastName}`,
@@ -27,5 +26,4 @@ export const initialProfile = async () => {
     email: user.emailAddresses[0].emailAddress,
   });
   return newProfile;
-};
-
+});

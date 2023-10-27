@@ -3,7 +3,10 @@ import { NextApiResponseServerIo } from '@/types';
 import { currentProfilePages } from '@/lib/query/db/current-profile-pages';
 import { db } from '@/db';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponseServerIo) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponseServerIo,
+) {
   if (req.method !== 'DELETE' && req.method !== 'PATCH') {
     return res.status(405).json({ error: 'Method not allowed' });
   }

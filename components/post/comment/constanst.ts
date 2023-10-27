@@ -213,7 +213,6 @@ export const commentsData: SchemaComment[] = [
   // Add more comments here following the same structure
 ];
 
-
 type User = {
   id: string;
   name: string;
@@ -243,7 +242,7 @@ type Comments = {
       user: User;
     }[];
   };
-  replies? : Comments[];
+  replies?: Comments[];
 };
 
 export type SchemaComment = {

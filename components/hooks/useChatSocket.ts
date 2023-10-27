@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useSocket } from '@/components/providers/socket-provider';
@@ -8,7 +10,11 @@ type ChatSocketProps = {
   queryKey: string;
 };
 
-export const useChatSocket = ({ addKey, updateKey, queryKey }: ChatSocketProps) => {
+export const useChatSocket = ({
+  addKey,
+  updateKey,
+  queryKey,
+}: ChatSocketProps) => {
   const { socket } = useSocket();
   const queryClient = useQueryClient();
 
@@ -17,7 +23,7 @@ export const useChatSocket = ({ addKey, updateKey, queryKey }: ChatSocketProps) 
       return;
     }
 
-    socket.on(updateKey, (message:any) => {
+    socket.on(updateKey, (message: any) => {
       queryClient.setQueryData([queryKey], (oldData: any) => {
         if (!oldData || !oldData.pages || oldData.pages.length === 0) {
           return oldData;

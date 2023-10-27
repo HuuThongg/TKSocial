@@ -1,9 +1,12 @@
 import { NextResponse } from 'next/server';
 
-import { currentProfile } from '@/lib/query/db/current-profile'; 
+import { currentProfile } from '@/lib/query/db/current-profile';
 import { db } from '@/db';
 
-export async function DELETE(req: Request, { params }: { params: { serverId: string } }) {
+export async function DELETE(
+  req: Request,
+  { params }: { params: { serverId: string } },
+) {
   try {
     const profile = await currentProfile();
 
@@ -17,7 +20,7 @@ export async function DELETE(req: Request, { params }: { params: { serverId: str
     //     profileId: profile.id,
     //   },
     // });
-    let server = "delete server"
+    let server = 'delete server';
     return NextResponse.json(server);
   } catch (error) {
     console.log('[SERVER_ID_DELETE]', error);
@@ -25,7 +28,10 @@ export async function DELETE(req: Request, { params }: { params: { serverId: str
   }
 }
 
-export async function PATCH(req: Request, { params }: { params: { serverId: string } }) {
+export async function PATCH(
+  req: Request,
+  { params }: { params: { serverId: string } },
+) {
   try {
     const profile = await currentProfile();
     const { name, imageUrl } = await req.json();
@@ -44,7 +50,7 @@ export async function PATCH(req: Request, { params }: { params: { serverId: stri
     //     imageUrl,
     //   },
     // });
-    const server = "update server";
+    const server = 'update server';
     return NextResponse.json(server);
   } catch (error) {
     console.log('[SERVER_ID_PATCH]', error);

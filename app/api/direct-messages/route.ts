@@ -21,10 +21,9 @@ export async function GET(req: Request) {
     if (!conversationId) {
       return new NextResponse('Conversation ID missing', { status: 400 });
     }
-    
-    // let messages: DirectMessage[] = [];
-    let messages :[] = [];
 
+    // let messages: DirectMessage[] = [];
+    let messages: [] = [];
 
     // if (cursor) {
     //   messages = await db.directMessage.findMany({

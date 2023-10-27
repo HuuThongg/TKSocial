@@ -1,4 +1,4 @@
-'use server'
+'use server';
 import { db } from '@/db';
 import { and, eq } from 'drizzle-orm';
 import { comments, likes } from '@/db/schema';
@@ -12,7 +12,7 @@ const formSchema = z.object({
   parentId: z.number().optional(),
   postId: z.number(),
 });
-export default async function commentFn(formData:FormData) {
+export default async function commentFn(formData: FormData) {
   const user = await currentProfile();
   if (!user) {
     return redirectToSignIn();
@@ -22,9 +22,10 @@ export default async function commentFn(formData:FormData) {
     postId: Number(formData.get('postId')),
     parentId: Number(formData.get('parentId')),
   });
-  console.log("data: " + data.postId + "parentId" + data.postId);
-  const postId = data.postId, parentId = data.parentId ? data.parentId  : null;
-  console.log("parent ID " + parentId);
+  console.log('data: ' + data.postId + 'parentId' + data.postId);
+  const postId = data.postId,
+    parentId = data.parentId ? data.parentId : null;
+  console.log('parent ID ' + parentId);
   try {
     await db.insert(comments).values({
       postId,
@@ -39,7 +40,6 @@ export default async function commentFn(formData:FormData) {
     console.error('Error inserting comment into the database:', error);
   }
 }
-
 
 export async function likeCommentFn({
   postId,

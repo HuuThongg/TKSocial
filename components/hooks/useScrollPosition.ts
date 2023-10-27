@@ -1,19 +1,21 @@
-"use client"
+'use client';
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react';
 
-export default function useScrollPosition(){
-  const [scrollPosition, setScrollPosition] =useState(0);
+export default function useScrollPosition() {
+  const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
     const winScroll = document.documentElement.scrollTop;
     const scrolled = (winScroll / height) * 100;
     setScrollPosition(scrolled);
   };
 
-  useEffect(()=> {
-    window.addEventListener("scroll",handleScroll,{passive:true});
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  })
-  return
+  });
+  return;
 }

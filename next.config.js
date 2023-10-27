@@ -8,12 +8,19 @@ const nextConfig = {
 
     return config;
   },
-  experimental: {
-    serverActions: true,
-  },
   images: {
-    domains: ['uploadthing.com', 'utfs.io', 'img.clerk.com', 'res.cloudinary.com'],
+    // domains: ['uploadthing.com', 'utfs.io', 'img.clerk.com', 'res.cloudinary.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+      },
+    ],
   },
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;

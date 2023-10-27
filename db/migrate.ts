@@ -3,8 +3,6 @@ import { migrate } from 'drizzle-orm/mysql2/migrator';
 import mysql from 'mysql2/promise';
 import { config } from './config';
 
-
-
 // create the connection
 const poolConnection = mysql.createPool({
   host: config.host,
@@ -17,10 +15,13 @@ const poolConnection = mysql.createPool({
 const db = drizzle(poolConnection);
 
 // this will automatically run needed migrations on the database
-async function main(){
-  console.log("migrating started ....");
+async function main() {
+  console.log('migrating started ....');
   await migrate(db, { migrationsFolder: './drizzle' });
-  console.log("migrations finished ....");
+  console.log('migrations finished ....');
 }
 
-main().catch(err=> {console.log(err); process.exit(0);});
+main().catch((err) => {
+  console.log(err);
+  process.exit(0);
+});

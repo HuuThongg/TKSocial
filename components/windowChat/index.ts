@@ -1,33 +1,3 @@
-import { Feedback, HelpSupport, LogOut, Moon, Settings } from '../icon';
-
-export const profileToolkit = [
-  {
-    name: 'Settings & privacy',
-    href: '##',
-    icon: Settings,
-  },
-  {
-    name: 'Help & Support',
-    href: '##',
-    icon: HelpSupport,
-  },
-  {
-    name: 'Display & Accessibility',
-    href: '##',
-    icon: Moon,
-  },
-  {
-    name: 'Give feedback',
-    href: '##',
-    icon: Feedback,
-  },
-  {
-    name: 'Log Out',
-    href: '##',
-    icon: LogOut,
-  },
-];
-
 const contacts = [
   {
     name: 'Kim Chi',
@@ -135,16 +105,7 @@ export const messages: Message[] = contacts.map((contact, index) => {
     name: contact.name,
     url: contact.url,
     seen: contact.seen,
-    lastMessage: generateRandomText(Math.floor(Math.random() * 234)),
+    lastMessage: '',
     createdAt: '2023-09-26 07:03:11',
   };
 });
-function generateRandomText(length: number): string {
-  const characters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-}

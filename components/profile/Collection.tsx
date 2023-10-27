@@ -1,10 +1,13 @@
-'use client'
+'use client';
 import { useState, useRef, useEffect } from 'react';
-import Link from "next/link"
-import { ChevronLeftIcon, ChevronRightIcon, PlusIcon } from "@heroicons/react/24/outline"
+import Link from 'next/link';
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  PlusIcon,
+} from '@heroicons/react/24/outline';
 import clsx from 'clsx';
-import Image from "next/image"
-
+import Image from 'next/image';
 
 const Collection = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -13,77 +16,104 @@ const Collection = () => {
   const [isReachingEnd, setIsReachingEnd] = useState(false);
   const [defaultWidthScrollbar, setDefaultWidthScrollbar] = useState(618.75);
   useEffect(() => {
-    (window.innerWidth < 800) && setDefaultWidthScrollbar(500);
-  }, [defaultWidthScrollbar])
+    window.innerWidth < 800 && setDefaultWidthScrollbar(500);
+  }, [defaultWidthScrollbar]);
   const prevHandler = () => {
     console.log(currentIndex);
     carouselRef?.current?.scrollTo({
       top: 0,
       left: defaultWidthScrollbar * (currentIndex - 2),
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
     isReachingEnd && setIsReachingEnd(false);
     if (carouselRef.current) {
-
-      setIsReachingStart(carouselRef?.current?.scrollWidth - defaultWidthScrollbar * currentIndex >= defaultWidthScrollbar);
+      setIsReachingStart(
+        carouselRef?.current?.scrollWidth -
+          defaultWidthScrollbar * currentIndex >=
+          defaultWidthScrollbar,
+      );
     }
     setCurrentIndex(currentIndex - 1);
-  }
+  };
   const nextHandler = () => {
     carouselRef?.current?.scrollTo({
       top: 0,
       left: defaultWidthScrollbar * currentIndex,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
-    currentIndex >= 1 && setIsReachingStart(false)
+    currentIndex >= 1 && setIsReachingStart(false);
     if (carouselRef.current) {
-      setIsReachingEnd(carouselRef?.current?.scrollWidth - defaultWidthScrollbar * currentIndex <= defaultWidthScrollbar);
+      setIsReachingEnd(
+        carouselRef?.current?.scrollWidth -
+          defaultWidthScrollbar * currentIndex <=
+          defaultWidthScrollbar,
+      );
     }
     setCurrentIndex(currentIndex + 1);
-  }
+  };
 
   return (
-    <div className="flex flex-col z-0 w-full max-w-full">
+    <div className="z-0 flex w-full max-w-full flex-col">
       <div className=" relative">
-        <div className="relative box-border z-0">
+        <div className="relative z-0 box-border">
           {/* prev */}
-          <div className={clsx(`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-[1] left-[44px]  duration-300 transition-opacity  `, {
-            'opacity-0 pointer-events-none': isReachingStart,
-            'opacity-100 pointer-events-auto': !isReachingStart,
-          })}  >
-            <div className={clsx(`flex justify-center items-center p-0 m-0 relative rounded-full h-[48px] w-[48px] bg-popover-bg hover:bg-fourth-clr cursor-pointer focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white`)} onClick={prevHandler} tabIndex={0}>
-              <ChevronLeftIcon className='w-6 h-6 text-secondary-text' />
+          <div
+            className={clsx(
+              `absolute left-[44px] top-1/2 z-[1] -translate-x-1/2 -translate-y-1/2  transition-opacity duration-300  `,
+              {
+                'pointer-events-none opacity-0': isReachingStart,
+                'pointer-events-auto opacity-100': !isReachingStart,
+              },
+            )}
+          >
+            <div
+              className={clsx(
+                `relative m-0 flex h-[48px] w-[48px] cursor-pointer items-center justify-center rounded-full bg-popover-bg p-0 ring-blue-500 ring-offset-2 ring-offset-white hover:bg-fourth-clr focus:outline-none focus-visible:ring`,
+              )}
+              onClick={prevHandler}
+              tabIndex={0}
+            >
+              <ChevronLeftIcon className="h-6 w-6 text-secondary-text" />
             </div>
           </div>
 
           {/* stories */}
-          <div className=" py-2 -my-2 relative w-full h-full">
-            <div className=" flex flex-col scroll-px-[44px] py-2 relative m-0 z-0 snap-mandatory snap-x  scroll-smooth overflow-y-hidden overflow-x-auto scrollbar-none  "
+          <div className=" relative -my-2 h-full w-full py-2">
+            <div
+              className=" relative z-0 m-0 flex snap-x snap-mandatory scroll-px-[44px] flex-col overflow-x-auto  overflow-y-hidden scroll-smooth py-2 scrollbar-none  "
               ref={carouselRef}
             >
-              <div className="flex  relative grow space-x-2 scroll-px-[44px] ">
+              <div className="relative  flex grow scroll-px-[44px] space-x-2 ">
                 <span className="min-w-[8px]"></span>
-                
+
                 {stories.map((story, index) => (
-                  <div key={index} className="snap-start mx-1 flex shrink-0  w-[calc((100%-88px)/3-8px)] w-1/3 items-stretch">
-                    <div className='flex flex-col flex-1 basis-full  min-h-0'>
-                      <div className='flex shrink-0 relative w-full  max-w-full'>
-                        <div className='rounded-mg flex relative bg-red-400 w-full overflow-hidden'>
-                          <Link href={"#"} className='p-0 m-0 relative overflow-hidden border-none border-0'>
-                            <div className='w-full h-0 pt-[177.778%] select-none relative rounded-md overflow-hidden'>
-                              <div className='absolute inset-0 w-full h-full'>
-                                <img src="/images/storiesAva/sangnguyen.jpg" className='w-full h-full object-cover' alt="" />
+                  //w-1/3
+                  <div
+                    key={index}
+                    className="mx-1 flex w-[calc((100%-88px)/3-8px)] shrink-0  snap-start  items-stretch"
+                  >
+                    <div className="flex min-h-0 flex-1 basis-full  flex-col">
+                      <div className="relative flex w-full max-w-full  shrink-0">
+                        <div className="rounded-mg relative flex w-full overflow-hidden bg-red-400">
+                          <Link
+                            href={'#'}
+                            className="relative m-0 overflow-hidden border-0 border-none p-0"
+                          >
+                            <div className="relative h-0 w-full select-none overflow-hidden rounded-md pt-[177.778%]">
+                              <div className="absolute inset-0 h-full w-full">
+                                <Image
+                                  src="/images/storiesAva/sangnguyen.jpg"
+                                  className="h-full w-full object-cover"
+                                  alt=""
+                                />
                               </div>
                             </div>
                           </Link>
                         </div>
-
                       </div>
                       {/* name of collection */}
-                      <div className='pt-2 flex w-full max-w-full items-center justify-center'>
-                        <div>
-                          landScape
-                        </div>
+                      <div className="flex w-full max-w-full items-center justify-center pt-2">
+                        <div>landScape</div>
                       </div>
                     </div>
                   </div>
@@ -92,22 +122,30 @@ const Collection = () => {
             </div>
           </div>
           {/* next */}
-          <div className={clsx(`absolute top-1/2 -translate-y-1/2 translate-x-1/2 z-[1] right-[44px]  duration-300 transition-opacity `, {
-            'opacity-0 pointer-events-none': isReachingEnd,
-            'opacity-100 pointer-events-auto': !isReachingEnd,
-          })} >
-            <div className='flex justify-center items-center p-0 m-0 relative rounded-full h-[48px] w-[48px] bg-popover-bg hover:bg-fourth-clr cursor-pointer focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-white ' onClick={nextHandler} tabIndex={0}>
-              <ChevronRightIcon className='w-6 h-6 text-secondary-text' />
+          <div
+            className={clsx(
+              `absolute right-[44px] top-1/2 z-[1] -translate-y-1/2 translate-x-1/2  transition-opacity duration-300 `,
+              {
+                'pointer-events-none opacity-0': isReachingEnd,
+                'pointer-events-auto opacity-100': !isReachingEnd,
+              },
+            )}
+          >
+            <div
+              className="relative m-0 flex h-[48px] w-[48px] cursor-pointer items-center justify-center rounded-full bg-popover-bg p-0 ring-blue-500 ring-offset-2 ring-offset-white hover:bg-fourth-clr focus:outline-none focus-visible:ring "
+              onClick={nextHandler}
+              tabIndex={0}
+            >
+              <ChevronRightIcon className="h-6 w-6 text-secondary-text" />
             </div>
           </div>
-
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Collection
+export default Collection;
 export const stories = [
   {
     name: 'Trang Duong',
@@ -186,5 +224,4 @@ export const stories = [
     imgStory: '/images/stories/lotteStoryImg.jpg',
     seen: false,
   },
-  
 ];

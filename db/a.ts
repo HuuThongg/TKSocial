@@ -200,11 +200,12 @@ export type NewUsersToConversation = typeof usersToConversations.$inferInsert;
 // }));
 
 // Define relations
-export const usersRelations = relations(users, ({ many }) => ({
-  // usersToPosts: many(usersToPosts),
-  posts: many(posts),
-  usersToConversations: many(usersToConversations),
-}));
+// export const usersRelations = relations(users, ({ many }) => ({
+//   // usersToPosts: many(usersToPosts),
+//   posts: many(posts),
+//   usersToConversations: many(usersToConversations),
+//   friendships: many(friendships),
+// }));
 
 export const postsRelations = relations(posts, ({ one, many }) => ({
   author: one(users, {
@@ -258,3 +259,32 @@ export const usersToConversationsRelations = relations(
     }),
   }),
 );
+
+export const usersRelations = relations(users, ({ many }) => ({
+  friendships: many(friendships),
+}));
+
+// Friends table
+export const friendships = mysqlTable(
+  'friends',
+  {
+    userId: int('user_id').notNull(),
+    friendId: int('friend_id').notNull(),
+  },
+  (t) => {
+    return {
+      pk: primaryKey(t.userId, t.friendId),
+    };
+  },
+);
+// Define relationships
+export const friendshipsRelations = relations(friendships, ({ one }) => ({
+  user1: one(users, {
+    fields: [friendships.userId],
+    references: [users.id],
+  }),
+  user2: one(users, {
+    fields: [friendships.friendId],
+    references: [users.id],
+  }),
+}));

@@ -35,8 +35,10 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gradient-always-dark-gradient': 'linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-always-dark-gradient':
+          'linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6))',
       },
       fontFamily: {
         sans: ['var(--font-inter)'],
@@ -186,10 +188,3 @@ module.exports = {
     require('tailwindcss-animate'),
   ],
 };
-
-
-
-
-
-
-

@@ -46,7 +46,7 @@ export async function POST(req: Request) {
     //     },
     //   },
     // });
-    let server = "update server"
+    let server = 'update server';
 
     return NextResponse.json(server);
   } catch (error) {

@@ -1,34 +1,34 @@
-"use client"
-import qs from "query-string";
+'use client';
+import qs from 'query-string';
 
-import { useSocket } from "@/components/providers/socket-provider"
-import { SocketIndicator } from "@/components/socket-indicator";
-import { useState,useEffect } from "react"
+import { useSocket } from '@/components/providers/socket-provider';
+import { SocketIndicator } from '@/components/socket-indicator';
+import { useState, useEffect } from 'react';
 
 export default function Test() {
-  const [input, setInput] = useState('')
-  const [inputValue, setInputValue] = useState(['']) // added state variable
+  const [input, setInput] = useState('');
+  const [inputValue, setInputValue] = useState(['']); // added state variable
   const { isConnected, socket } = useSocket();
-  const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!isConnected) {
-      console.log("not connected");
+      console.log('not connected');
     }
-    setInput(e.target.value)
-    socket.emit('input-change', (e.target as HTMLInputElement).value)
-  }
-  useEffect(()=>{
+    setInput(e.target.value);
+    socket.emit('input-change', (e.target as HTMLInputElement).value);
+  };
+  useEffect(() => {
     if (!socket) {
       return;
     }
-    socket.on('input-change', mesg=>{
-      console.log("activated");
-    })
-    return ()=> socket.off('input-change');
-  })
+    socket.on('input-change', (mesg) => {
+      console.log('activated');
+    });
+    return () => socket.off('input-change');
+  });
   // socket.on('input-change', msg => { // added event listener
   //   setInputValue(msg)
   // })
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // const url = qs.stringifyUrl({
     //   url: apiUrl,
@@ -47,15 +47,15 @@ export default function Test() {
     //   });
     //   setInput('');
     // }
-  }
+  };
   socket?.on('chat message', (msg) => {
-    console.log("listeing to");
-    setInputValue(a => a + msg)
+    console.log('listeing to');
+    setInputValue((a) => a + msg);
   });
   return (
-    <div className="relative block  left-[300px]">
+    <div className="relative left-[300px]  block">
       <SocketIndicator />
-      
+
       {input}
       <form action="" onSubmit={handleSubmit}>
         <input
@@ -65,9 +65,7 @@ export default function Test() {
         />
         <button type="submit">Send</button>
       </form>
-      <li>
-        {inputValue}
-      </li>
+      <li>{inputValue}</li>
     </div>
-  )
+  );
 }

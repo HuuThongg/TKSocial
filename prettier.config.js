@@ -1,10 +1,12 @@
 module.exports = {
+  bracketSpacing: true,
   singleQuote: true,
-  arrowParens: "always",
-  trailingComma: "all",
-  printWidth: 100,
+  semi: true,
+  arrowParens: 'always',
+  trailingComma: 'all',
+  printWidth: 80,
   tabWidth: 2,
   // pnpm doesn't support plugin autoloading
   // https://github.com/tailwindlabs/prettier-plugin-tailwindcss#installation
-  plugins: [require("prettier-plugin-tailwindcss")],
+  plugins: ['prettier-plugin-tailwindcss'],
 };

@@ -1,4 +1,4 @@
-import { UserIcon,SeeAllIcon,GamingIcon,MarketplaceIcon } from '../icon';
+import { UserIcon, SeeAllIcon, GamingIcon, MarketplaceIcon } from '../icon';
 
 export const SideBarItems = [
   {
@@ -39,7 +39,6 @@ export const groups = [
     href: '##',
     url: '/images/groups/group3.jpg',
   },
-
 ];
 export const shortcuts = [
   {
@@ -62,5 +61,4 @@ export const shortcuts = [
     href: '##',
     url: '/images/shortcuts/shortcut4.jpg',
   },
-  
 ];

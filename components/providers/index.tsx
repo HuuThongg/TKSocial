@@ -1,15 +1,7 @@
-"use client"
+'use client';
 
-import { SocketProvider } from "./socket-provider"
+import { SocketProvider } from './socket-provider';
 
-export default function Provider({
-  children
-}: {
-  children: React.ReactNode
-}){
-  return(
-    <SocketProvider>
-      {children}
-    </SocketProvider>
-  )
+export default function Provider({ children }: { children: React.ReactNode }) {
+  return <SocketProvider>{children}</SocketProvider>;
 }

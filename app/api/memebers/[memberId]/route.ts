@@ -1,9 +1,12 @@
 import { NextResponse } from 'next/server';
 
-import { currentProfile } from '@/lib/query/db/current-profile'; 
+import { currentProfile } from '@/lib/query/db/current-profile';
 import { db } from '@/db';
 
-export async function DELETE(req: Request, { params }: { params: { memberId: string } }) {
+export async function DELETE(
+  req: Request,
+  { params }: { params: { memberId: string } },
+) {
   try {
     const profile = await currentProfile();
     const { searchParams } = new URL(req.url);
@@ -48,7 +51,7 @@ export async function DELETE(req: Request, { params }: { params: { memberId: str
     //     },
     //   },
     // });
-    let server = " member deleted"
+    let server = ' member deleted';
 
     return NextResponse.json(server);
   } catch (error) {
@@ -57,7 +60,10 @@ export async function DELETE(req: Request, { params }: { params: { memberId: str
   }
 }
 
-export async function PATCH(req: Request, { params }: { params: { memberId: string } }) {
+export async function PATCH(
+  req: Request,
+  { params }: { params: { memberId: string } },
+) {
   try {
     const profile = await currentProfile();
     const { searchParams } = new URL(req.url);
@@ -108,7 +114,7 @@ export async function PATCH(req: Request, { params }: { params: { memberId: stri
     //     },
     //   },
     // });
-    let server = "update server members"
+    let server = 'update server members';
 
     return NextResponse.json(server);
   } catch (error) {

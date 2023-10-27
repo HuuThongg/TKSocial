@@ -1,4 +1,4 @@
-import {z} from 'zod';
+import { z } from 'zod';
 // declare a zod schema  that describes the shape of our environment variables
 const envSchema = z.object({
   DATABASE_URL: z.string(),

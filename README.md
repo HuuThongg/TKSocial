@@ -35,8 +35,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
-navbar : z-40 
+navbar : z-40
 
 <span className=" line-clamp-2 "> if u put inline-block, then it does not work
 </span>
@@ -45,13 +44,14 @@ focus:outline-none focus-visible:ring ring-blue-500 ring-offset-2 ring-offset-wh
 
 inline-flex wont take effect
 <span className="block text-center md:text-left ">
-   89 friends
- </span>
+89 friends
+</span>
 
+inputpost
 
- inputpost
- ---------------------------------
- 'use client'
+---
+
+'use client'
 // @ts-expect-error
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 // @ts-expect-error
@@ -64,61 +64,59 @@ import { GrImage } from 'react-icons/gr'
 // import "@uploadthing/react/styles.css";
 import { UploadButton, Uploader, UploadDropzone } from '@/lib/uploadthing';
 import { FileUpload } from "@/components/file-upload";
-import * as z from "zod";
+import \* as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+Form,
+FormControl,
+FormDescription,
+FormField,
+FormItem,
+FormLabel,
+FormMessage,
 } from "@/components/ui/form";
 import { Button } from '../ui/button';
 import { DialogFooter } from '../ui/dialog';
 
-
 const formSchema = z.object({
-  imageUrl: z.string().min(1, {
-    message: "Server image is required."
-  })
+imageUrl: z.string().min(1, {
+message: "Server image is required."
+})
 });
 
-
 export default function InputPost() {
-  const [message, setMessage] = useState('a');
-  const fileInput = useRef<HTMLInputElement>(null);
-  const [selectedFile, setSelectedFile] = useState<File[]>([]);
+const [message, setMessage] = useState('a');
+const fileInput = useRef<HTMLInputElement>(null);
+const [selectedFile, setSelectedFile] = useState<File[]>([]);
 
-  async function onCreate(formData: FormData) {
-    await create(formData);
-  }
-  const selectImage = () => {
-    if (fileInput.current) {
-      fileInput.current.click();
-    }
-  };
+async function onCreate(formData: FormData) {
+await create(formData);
+}
+const selectImage = () => {
+if (fileInput.current) {
+fileInput.current.click();
+}
+};
 
-  function onFileChange (e: React.FormEvent<HTMLInputElement>) {
-    const files = e.currentTarget.files;
-    if (!files) return;
-    const newFiles: File[] = e.currentTarget.files ? Array.from(e.currentTarget.files) : [];
-    setSelectedFile(newFiles);
-  }
+function onFileChange (e: React.FormEvent<HTMLInputElement>) {
+const files = e.currentTarget.files;
+if (!files) return;
+const newFiles: File[] = e.currentTarget.files ? Array.from(e.currentTarget.files) : [];
+setSelectedFile(newFiles);
+}
 
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      imageUrl: "",
-    }
-  });
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    try {
-      console.log("hello!");
-      // await axios.post("/api/servers", values);
+const form = useForm({
+resolver: zodResolver(formSchema),
+defaultValues: {
+imageUrl: "",
+}
+});
+const onSubmit = async (values: z.infer<typeof formSchema>) => {
+try {
+console.log("hello!");
+// await axios.post("/api/servers", values);
 
       // form.reset();
       // router.refresh();
@@ -126,12 +124,14 @@ export default function InputPost() {
     } catch (error) {
       console.log(error);
     }
-  }
-  const isLoading = form.formState.isSubmitting;
-  return (
-    <div>
-      <form action={onCreate}>
-        
+
+}
+const isLoading = form.formState.isSubmitting;
+return (
+
+<div>
+<form action={onCreate}>
+
         <input
           value={message}
           onChange={e => setMessage(e.target.value)}
@@ -158,17 +158,19 @@ export default function InputPost() {
 
         <button type="submit">type here</button>
       </form>
-{/*       
-      {selectedFile.length > 0 &&selectedFile.map((file)=>(
-        <li key={file.name}  >
-          <img src={URL.createObjectURL(file)} alt={file.name} />
-        </li>
-      ))}
-      <UploadButton
-        endpoint="postFile"
-        content={{
-          button({ ready }) {
-            if (ready) return <div>Upload stuff</div>;
+
+{/\*  
+ {selectedFile.length > 0 &&selectedFile.map((file)=>(
+
+<li key={file.name}  >
+<img src={URL.createObjectURL(file)} alt={file.name} />
+</li>
+))}
+<UploadButton
+endpoint="postFile"
+content={{
+button({ ready }) {
+if (ready) return <div>Upload stuff</div>;
 
             return "Getting ready...";
           },
@@ -199,15 +201,15 @@ export default function InputPost() {
       <Uploader    endpoint='postFile' />
       <UploadDropzone
         onClientUploadComplete={(res) => {
-          
+
           console.log("log it out bro",res)
           console.log(res?.[0].url);
         }}
         onUploadBegin={(res) => {
           console.log("log it out bro 9099", res)
       }} className=" bg-slate-800 ut-button:bg-red-400 ut-label:text-[5px] ut-allowed-content:ut-uploading:text-red-300 ut-upload-icon:bg-blue-500" endpoint='postFile'/>
-      
-      
+
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="space-y-8 px-6">
@@ -230,11 +232,11 @@ export default function InputPost() {
                     <FormMessage />
                   </FormItem>
                 )}
-                
+
               />
             </div>
 
-            
+
           </div>
           <DialogFooter className="bg-gray-100 px-6 py-4">
             <Button type='submit' variant="ghost" disabled={isLoading}>
@@ -243,8 +245,10 @@ export default function InputPost() {
           </DialogFooter>
         </form>
       </Form> */}
-      
+
     </div>
-  )
+
+)
 }
--------------------------------------------------
+
+---

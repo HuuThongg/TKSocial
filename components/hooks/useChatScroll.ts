@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
+'use client';
+import { useEffect, useState } from 'react';
 
 type ChatScrollProps = {
   chatRef: React.RefObject<HTMLDivElement>;
   bottomRef: React.RefObject<HTMLDivElement>;
   shouldLoadMore: boolean;
-  loadMore:()=> void;
-  count : number;
+  loadMore: () => void;
+  count: number;
 };
-export const useChatScroll =({
+export const useChatScroll = ({
   chatRef,
   bottomRef,
   count,
   loadMore,
-  shouldLoadMore
-}:ChatScrollProps) => {
+  shouldLoadMore,
+}: ChatScrollProps) => {
   const [hasInitialized, setHasInitialized] = useState(false);
   useEffect(() => {
     const topDiv = chatRef?.current;
@@ -46,7 +47,8 @@ export const useChatScroll =({
         return false;
       }
 
-      const distanceFromBottom = topDiv.scrollHeight - topDiv.scrollTop - topDiv.clientHeight;
+      const distanceFromBottom =
+        topDiv.scrollHeight - topDiv.scrollTop - topDiv.clientHeight;
       return distanceFromBottom <= 100;
     };
 
@@ -58,4 +60,4 @@ export const useChatScroll =({
       }, 100);
     }
   }, [bottomRef, chatRef, count, hasInitialized]);
-}
+};

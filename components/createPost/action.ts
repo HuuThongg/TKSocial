@@ -7,19 +7,18 @@ import { redirectToSignIn } from '@clerk/nextjs';
 import { revalidatePath } from 'next/cache';
 import * as z from 'zod';
 
-const formSchema = z
-  .object({
-    message: z.string().min(1, {
-      message: 'Message is required.',
-    }),
-  })
-  
+const formSchema = z.object({
+  message: z.string().min(1, {
+    message: 'Message is required.',
+  }),
+});
+
 // export  async function create(formData: FormData) {
 //   const user = await currentProfile();
 //   if (!user) {
 //     return redirectToSignIn();
 //   }
-  
+
 //   const message = formData.get('message') as string;
 
 //   console.log(message, 'message');
@@ -71,12 +70,11 @@ const formSchema = z
 //     }
 //   });
 
-  
 //   console.log('done');
 //   revalidatePath('/');
 // }
 
-export  default async function create(formData: FormData) {
+export default async function create(formData: FormData) {
   const user = await currentProfile();
   if (!user) {
     return redirectToSignIn();
@@ -85,7 +83,7 @@ export  default async function create(formData: FormData) {
   // const message = formData.get('message') as string;
   const data = formSchema.parse({
     message: formData.get('message'),
-  })
+  });
 
   let formDataa, urls, url;
   let hasImage = false;

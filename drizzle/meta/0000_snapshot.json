@@ -63,24 +63,18 @@
       "compositePrimaryKeys": {
         "comments_id": {
           "name": "comments_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "parent_id_idx": {
           "name": "parent_id_idx",
-          "columns": [
-            "parent_id"
-          ],
+          "columns": ["parent_id"],
           "isUnique": false
         },
         "post_id_idx": {
           "name": "post_id_idx",
-          "columns": [
-            "post_id"
-          ],
+          "columns": ["post_id"],
           "isUnique": false
         }
       },
@@ -123,17 +117,13 @@
       "compositePrimaryKeys": {
         "conversations_id": {
           "name": "conversations_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "last_message_id_idx": {
           "name": "last_message_id_idx",
-          "columns": [
-            "lastMessage  Id"
-          ],
+          "columns": ["lastMessage  Id"],
           "isUnique": false
         }
       },
@@ -183,31 +173,23 @@
       "compositePrimaryKeys": {
         "likes_id": {
           "name": "likes_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "commentId_idx": {
           "name": "commentId_idx",
-          "columns": [
-            "commentId"
-          ],
+          "columns": ["commentId"],
           "isUnique": false
         },
         "postId_idx": {
           "name": "postId_idx",
-          "columns": [
-            "postId"
-          ],
+          "columns": ["postId"],
           "isUnique": false
         },
         "userId_idx": {
           "name": "userId_idx",
-          "columns": [
-            "userId"
-          ],
+          "columns": ["userId"],
           "isUnique": false
         }
       },
@@ -272,17 +254,13 @@
       "compositePrimaryKeys": {
         "messages_id": {
           "name": "messages_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "conversation_id_idx": {
           "name": "conversation_id_idx",
-          "columns": [
-            "conversationId"
-          ],
+          "columns": ["conversationId"],
           "isUnique": false
         }
       },
@@ -348,17 +326,13 @@
       "compositePrimaryKeys": {
         "posts_id": {
           "name": "posts_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {
         "profile_id_idx": {
           "name": "profile_id_idx",
-          "columns": [
-            "author_Id"
-          ],
+          "columns": ["author_Id"],
           "isUnique": false
         }
       },
@@ -424,9 +398,7 @@
       "compositePrimaryKeys": {
         "users_id": {
           "name": "users_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {},
@@ -462,9 +434,7 @@
       "compositePrimaryKeys": {
         "usersToConversations_id": {
           "name": "usersToConversations_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "indexes": {},
