@@ -109,7 +109,6 @@ export default async function create(formData: FormData) {
       );
       const cloudinaryData = await cloudinaryResponse.json();
       console.log('Cloudinary data:', cloudinaryData);
-
       url = cloudinaryData.secure_url;
       urls = { secure_url: cloudinaryData.secure_url };
     } catch (error) {

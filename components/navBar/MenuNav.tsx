@@ -42,7 +42,7 @@ const MenuNav = () => {
                 alt="avatar"
                 width={40}
                 height={40}
-                onClick={() => router.push('/profile')}
+                // onClick={() => router.push('/profile')}
               ></Image>
             </div>
             <div className="absolute -top-1 right-[2px] box-content flex h-[10px] w-[10px] items-center justify-center rounded-full border-2 border-secondary-clr bg-red-500 ">
@@ -62,186 +62,189 @@ const MenuNav = () => {
           <Popover.Panel>
             <div
               className={clsx(
-                ' absolute left-0 top-0  z-[2] -translate-x-[220px] translate-y-[48px] duration-200',
+                ' absolute left-0 top-0  z-[2] -translate-x-[220px] translate-y-[48px] duration-200 ',
               )}
             >
-              <div className="mr-[5px] mt-[5px] ">
-                <div className=" overflow-hidden rounded-lg bg-secondary-clr text-[15px] shadow-md  shadow-zinc-600/50">
-                  <div className="max-w-[calc(100vw-24px])] relative flex max-h-[calc(100vh-90px)] w-[360px] flex-col   overflow-auto overscroll-contain scrollbar scrollbar-track-transparent scrollbar-thumb-fifth-clr   scrollbar-thumb-rounded-md scrollbar-w-3    hover:scrollbar-track-[#2c2d2f]">
-                    <div className="w-auto  ">
-                      <div className="pointer-events-none visible absolute left-0 top-0 z-0 w-full -translate-x-full bg-red-500 opacity-100 transition-opacity-transform duration-200 ease-fds-soft">
-                        {/* profile */}
-                        <div className="relative flex shrink-0 grow flex-col justify-start overflow-hidden ">
-                          <div className="flex flex-col px-2">
-                            <div className="mx-2 mb-4 mt-2  flex flex-col rounded-2xl  shadow-[0_2px_12px_rgba(0,0,0,0.2)]">
-                              <div className="my-1 flex   flex-col overflow-hidden rounded-2xl ">
-                                <Link
-                                  href="/"
-                                  className="flex cursor-pointer  select-auto flex-col  hover:bg-third-clr"
-                                >
-                                  <div className="z-0 flex flex-nowrap items-center p-1 text-white ">
-                                    {/* avatar */}
-                                    <div className="relative flex min-w-0 max-w-full shrink-0 flex-col p-1">
-                                      <div className="flex select-none">
-                                        <div className="relative h-[36px] w-[36px]">
-                                          <div className="absolute inset-0 h-full w-full ">
-                                            <div className="z-0 block overflow-hidden rounded-full bg-primary-clr">
-                                              <div className="relative h-0 pt-[100%]">
-                                                <div className="absolute inset-0 m-0 h-full w-full p-0">
-                                                  <Image
-                                                    src="/images/avatar.jpg"
-                                                    width={56}
-                                                    height={56}
-                                                    alt="user acvatar"
-                                                  />
+              <div className="mr-[5px] mt-[5px]  ">
+                <div className=" overflow-hidden rounded-lg bg-secondary-clr text-[15px] shadow-md  shadow-zinc-600/50 ">
+                  <div className="max-w-[calc(100vw-24px])] relative flex flex-col h-full max-h-[calc(100vh-90px)] w-[360px]   overflow-auto overscroll-contain scrollbar scrollbar-track-transparent scrollbar-thumb-fifth-clr   scrollbar-thumb-rounded-md scrollbar-w-3    hover:scrollbar-track-[#2c2d2f]  ">
+                    <div className="flex w-auto  h-[400px] ">
+                      <div className="overflow-hidden rounded-lg bg-secondary-clr text-[15px] shadow-md shadow-zinc-600/50 ">
+                        {/* profile tab */}
+                        <div className="pointer-events-none visible absolute flex flex-col  left-0 top-0 z-0 w-full -translate-x-full  opacity-100 transition-opacity-transform duration-200 ease-fds-soft h-full">
+                          {/* profile */}
+                          <div className="relative flex shrink-0 grow flex-col justify-start overflow-hidden ">
+                            <div className="flex flex-col px-2">
+                              <div className="mx-2 mb-4 mt-2  flex flex-col rounded-2xl  shadow-[0_2px_12px_rgba(0,0,0,0.2)]">
+                                <div className="my-1 flex   flex-col overflow-hidden rounded-2xl ">
+                                  <Link
+                                    href="/"
+                                    className="flex cursor-pointer  select-auto flex-col  hover:bg-third-clr"
+                                  >
+                                    <div className="z-0 flex flex-nowrap items-center p-1 text-white ">
+                                      {/* avatar */}
+                                      <div className="relative flex min-w-0 max-w-full shrink-0 flex-col p-1">
+                                        <div className="flex select-none">
+                                          <div className="relative h-[36px] w-[36px]">
+                                            <div className="absolute inset-0 h-full w-full ">
+                                              <div className="z-0 block overflow-hidden rounded-full bg-primary-clr">
+                                                <div className="relative h-0 pt-[100%]">
+                                                  <div className="absolute inset-0 m-0 h-full w-full p-0">
+                                                    <Image
+                                                      src="/images/avatar.jpg"
+                                                      width={56}
+                                                      height={56}
+                                                      alt="user acvatar"
+                                                    />
+                                                  </div>
                                                 </div>
                                               </div>
                                             </div>
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
-                                    {/* Owner name */}
-                                    <div className="flex min-w-0 shrink grow basis-0 flex-col items-start p-1">
-                                      <div className="relative flex min-w-0 max-w-full shrink grow basis-auto flex-col flex-wrap ">
-                                        {/* name */}
-                                        <div className="min-w-0 max-w-full break-words text-left text-[17px] leading-[1.33rem] text-primary-text">
-                                          <span className="relative block overflow-hidden text-ellipsis whitespace-nowrap">
-                                            BE Yeu
-                                          </span>
+                                      {/* Owner name */}
+                                      <div className="flex min-w-0 shrink grow basis-0 flex-col items-start p-1">
+                                        <div className="relative flex min-w-0 max-w-full shrink grow basis-auto flex-col flex-wrap ">
+                                          {/* name */}
+                                          <div className="min-w-0 max-w-full break-words text-left text-[17px] leading-[1.33rem] text-primary-text">
+                                            <span className="relative block overflow-hidden text-ellipsis whitespace-nowrap">
+                                              BE Yeu
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      {/* fake */}
+                                      <div className="min-0 relative z-0 flex max-w-full  shrink-0 flex-col">
+                                        <div className="select-none pl-3">
+                                          <div className="flex cursor-pointer flex-nowrap items-center justify-center rounded-full"></div>
                                         </div>
                                       </div>
                                     </div>
-                                    {/* fake */}
-                                    <div className="min-0 relative z-0 flex max-w-full  shrink-0 flex-col">
-                                      <div className="select-none pl-3">
-                                        <div className="flex cursor-pointer flex-nowrap items-center justify-center rounded-full"></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </Link>
-                              </div>
-                            </div>
-                            {/* hr */}
-                            <div className="mx-6 h-[1px] bg-gray-700" />
-                          </div>
-                          {/* ma */}
-                          <div className="mb-2 flex flex-col py-1 ">
-                            <div className="flex flex-col">
-                              {profileToolkit.map((item, i) => (
-                                <div className="flex flex-col px-2" key={i}>
-                                  <div className="flex  w-full cursor-pointer items-center rounded-xl px-2 hover:bg-hover-overlay">
-                                    <div className="pointer-events-auto m-2 ml-0 flex flex-col items-center justify-center rounded-full bg-primary-icon-clr-hover">
-                                      <div className="flex h-[36px] w-[36px] flex-col items-center justify-center overflow-hidden rounded-full border-none outline-none">
-                                        <item.icon className="h-5 w-5 text-primary-icon" />
-                                      </div>
-                                    </div>
-                                    <div className="flex w-full items-center ">
-                                      <div className="flex min-w-0 grow basis-0 flex-col py-3">
-                                        <div className="min-w-0 max-w-full break-words text-left text-[15px] leading-[1.33rem] text-primary-text">
-                                          <span className="relative block overflow-hidden text-ellipsis whitespace-nowrap">
-                                            {item.name}
-                                          </span>
-                                        </div>
-                                      </div>
-                                      <div className="tems-center pointer-events-auto m-3 mr-0 flex flex-col justify-center">
-                                        <div className="flex h-[36px] w-[36px] flex-col items-center justify-center overflow-hidden rounded-full border-none outline-none">
-                                          <ChevronRightIcon className="h-7 w-7 text-primary-icon" />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                                  </Link>
                                 </div>
-                              ))}
+                              </div>
+                              {/* hr */}
+                              <div className="mx-6 h-[1px] bg-gray-700" />
+                            </div>
+                            {/* ma */}
+                            <div className="mb-2 flex flex-col py-1 ">
+                              <div className="flex flex-col">
+                                {profileToolkit.map((item, i) => (
+                                  <div className="flex flex-col px-2" key={i}>
+                                    <div className="flex  w-full cursor-pointer items-center rounded-xl px-2 hover:bg-hover-overlay">
+                                      <div className="pointer-events-auto m-2 ml-0 flex flex-col items-center justify-center rounded-full bg-primary-icon-clr-hover">
+                                        <div className="flex h-[36px] w-[36px] flex-col items-center justify-center overflow-hidden rounded-full border-none outline-none">
+                                          <item.icon className="h-5 w-5 text-primary-icon" />
+                                        </div>
+                                      </div>
+                                      <div className="flex w-full items-center ">
+                                        <div className="flex min-w-0 grow basis-0 flex-col py-3">
+                                          <div className="min-w-0 max-w-full break-words text-left text-[15px] leading-[1.33rem] text-primary-text">
+                                            <span className="relative block overflow-hidden text-ellipsis whitespace-nowrap">
+                                              {item.name}
+                                            </span>
+                                          </div>
+                                        </div>
+                                        <div className="tems-center pointer-events-auto m-3 mr-0 flex flex-col justify-center">
+                                          <div className="flex h-[36px] w-[36px] flex-col items-center justify-center overflow-hidden rounded-full border-none outline-none">
+                                            <ChevronRightIcon className="h-7 w-7 text-primary-icon" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-
-                      <div className="pointer-events-none visible absolute left-0 top-0 z-[10] w-full -translate-x-0 bg-blue-500 opacity-100 transition-opacity-transform duration-200 ease-fds-soft">
-                        {/* profile */}
-                        <div className="relative flex shrink-0 grow flex-col justify-start overflow-hidden ">
-                          <div className="flex flex-col px-2">
-                            <div className="mx-2 mb-4 mt-2  flex flex-col rounded-2xl  shadow-[0_2px_12px_rgba(0,0,0,0.2)]">
-                              <div className="my-1 flex   flex-col overflow-hidden rounded-2xl ">
-                                <Link
-                                  href="/"
-                                  className="flex cursor-pointer  select-auto flex-col  hover:bg-third-clr"
-                                >
-                                  <div className="z-0 flex flex-nowrap items-center p-1 text-white ">
-                                    {/* avatar */}
-                                    <div className="relative flex min-w-0 max-w-full shrink-0 flex-col p-1">
-                                      <div className="flex select-none">
-                                        <div className="relative h-[36px] w-[36px]">
-                                          <div className="absolute inset-0 h-full w-full ">
-                                            <div className="z-0 block overflow-hidden rounded-full bg-primary-clr">
-                                              <div className="relative h-0 pt-[100%]">
-                                                <div className="absolute inset-0 m-0 h-full w-full p-0">
-                                                  <Image
-                                                    src="/images/avatar.jpg"
-                                                    width={56}
-                                                    height={56}
-                                                    alt="user acvatar"
-                                                  />
+                        {/* Settings & Privacy tab */}
+                        <div className="pointer-events-none visible absolute left-0 top-0 z-[10] h-full w-full -translate-x-0  opacity-100 transition-opacity-transform duration-200 ease-fds-soft ">
+                          {/* profile be */}
+                          <div className="relative flex shrink-0 grow flex-col justify-start overflow-hidden ">
+                            <div className="flex flex-col px-2">
+                              <div className="mx-2 mb-4 mt-2  flex flex-col rounded-2xl  shadow-[0_2px_12px_rgba(0,0,0,0.2)]">
+                                <div className="my-1 flex   flex-col overflow-hidden rounded-2xl ">
+                                  <Link
+                                    href="/"
+                                    className="flex cursor-pointer  select-auto flex-col  hover:bg-third-clr"
+                                  >
+                                    <div className="z-0 flex flex-nowrap items-center p-1 text-white ">
+                                      {/* avatar */}
+                                      <div className="relative flex min-w-0 max-w-full shrink-0 flex-col p-1">
+                                        <div className="flex select-none">
+                                          <div className="relative h-[36px] w-[36px]">
+                                            <div className="absolute inset-0 h-full w-full ">
+                                              <div className="z-0 block overflow-hidden rounded-full bg-primary-clr">
+                                                <div className="relative h-0 pt-[100%]">
+                                                  <div className="absolute inset-0 m-0 h-full w-full p-0">
+                                                    <Image
+                                                      src="/images/avatar.jpg"
+                                                      width={56}
+                                                      height={56}
+                                                      alt="user acvatar"
+                                                    />
+                                                  </div>
                                                 </div>
                                               </div>
                                             </div>
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
-                                    {/* Owner name */}
-                                    <div className="flex min-w-0 shrink grow basis-0 flex-col items-start p-1">
-                                      <div className="relative flex min-w-0 max-w-full shrink grow basis-auto flex-col flex-wrap ">
-                                        {/* name */}
-                                        <div className="min-w-0 max-w-full break-words text-left text-[17px] leading-[1.33rem] text-primary-text">
-                                          <span className="relative block overflow-hidden text-ellipsis whitespace-nowrap">
-                                            BE Yeu
-                                          </span>
+                                      {/* Owner name */}
+                                      <div className="flex min-w-0 shrink grow basis-0 flex-col items-start p-1">
+                                        <div className="relative flex min-w-0 max-w-full shrink grow basis-auto flex-col flex-wrap ">
+                                          {/* name */}
+                                          <div className="min-w-0 max-w-full break-words text-left text-[17px] leading-[1.33rem] text-primary-text">
+                                            <span className="relative block overflow-hidden text-ellipsis whitespace-nowrap">
+                                               Settin Privacy tab
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      {/* fake */}
+                                      <div className="min-0 relative z-0 flex max-w-full  shrink-0 flex-col">
+                                        <div className="select-none pl-3">
+                                          <div className="flex cursor-pointer flex-nowrap items-center justify-center rounded-full"></div>
                                         </div>
                                       </div>
                                     </div>
-                                    {/* fake */}
-                                    <div className="min-0 relative z-0 flex max-w-full  shrink-0 flex-col">
-                                      <div className="select-none pl-3">
-                                        <div className="flex cursor-pointer flex-nowrap items-center justify-center rounded-full"></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </Link>
-                              </div>
-                            </div>
-                            {/* hr */}
-                            <div className="mx-6 h-[1px] bg-gray-700" />
-                          </div>
-                          {/* ma */}
-                          <div className="mb-2 flex flex-col py-1 ">
-                            <div className="flex flex-col">
-                              {profileToolkit.map((item, i) => (
-                                <div className="flex flex-col px-2" key={i}>
-                                  <div className="flex  w-full cursor-pointer items-center rounded-xl px-2 hover:bg-hover-overlay">
-                                    <div className="pointer-events-auto m-2 ml-0 flex flex-col items-center justify-center rounded-full bg-primary-icon-clr-hover">
-                                      <div className="flex h-[36px] w-[36px] flex-col items-center justify-center overflow-hidden rounded-full border-none outline-none">
-                                        <item.icon className="h-5 w-5 text-primary-icon" />
-                                      </div>
-                                    </div>
-                                    <div className="flex w-full items-center ">
-                                      <div className="flex min-w-0 grow basis-0 flex-col py-3">
-                                        <div className="min-w-0 max-w-full break-words text-left text-[15px] leading-[1.33rem] text-primary-text">
-                                          <span className="relative block overflow-hidden text-ellipsis whitespace-nowrap">
-                                            {item.name}
-                                          </span>
-                                        </div>
-                                      </div>
-                                      <div className="tems-center pointer-events-auto m-3 mr-0 flex flex-col justify-center">
-                                        <div className="flex h-[36px] w-[36px] flex-col items-center justify-center overflow-hidden rounded-full border-none outline-none">
-                                          <ChevronRightIcon className="h-7 w-7 text-primary-icon" />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                                  </Link>
                                 </div>
-                              ))}
+                              </div>
+                              {/* hr */}
+                              <div className="mx-6 h-[1px] bg-gray-700" />
+                            </div>
+                            {/* ma */}
+                            <div className="mb-2 flex flex-col py-1 ">
+                              <div className="flex flex-col">
+                                {profileToolkit.map((item, i) => (
+                                  <div className="flex flex-col px-2" key={i}>
+                                    <div className="flex  w-full cursor-pointer items-center rounded-xl px-2 hover:bg-hover-overlay">
+                                      <div className="pointer-events-auto m-2 ml-0 flex flex-col items-center justify-center rounded-full bg-primary-icon-clr-hover">
+                                        <div className="flex h-[36px] w-[36px] flex-col items-center justify-center overflow-hidden rounded-full border-none outline-none">
+                                          <item.icon className="h-5 w-5 text-primary-icon" />
+                                        </div>
+                                      </div>
+                                      <div className="flex w-full items-center ">
+                                        <div className="flex min-w-0 grow basis-0 flex-col py-3">
+                                          <div className="min-w-0 max-w-full break-words text-left text-[15px] leading-[1.33rem] text-primary-text">
+                                            <span className="relative block overflow-hidden text-ellipsis whitespace-nowrap">
+                                              {item.name}
+                                            </span>
+                                          </div>
+                                        </div>
+                                        <div className="tems-center pointer-events-auto m-3 mr-0 flex flex-col justify-center">
+                                          <div className="flex h-[36px] w-[36px] flex-col items-center justify-center overflow-hidden rounded-full border-none outline-none">
+                                            <ChevronRightIcon className="h-7 w-7 text-primary-icon" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </div>

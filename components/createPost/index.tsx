@@ -89,7 +89,7 @@ export function CreatePost() {
     <div className="relative   z-0 mb-4 w-full max-w-full overflow-x-hidden rounded-lg bg-secondary-clr shadow-xl ">
       <div className="flex flex-wrap justify-center px-4 pb-[10px] pt-[12px]   ">
         {/* what's on your mind */}
-        <div className="flex w-full shrink grow items-start gap-x-2">
+        <div className="flex w-full shrink grow items-start gap-x-2 ">
           <Link
             href={'/'}
             className="m-0 flex h-[40px] w-[40px] shrink-0 grow-0 cursor-pointer items-center justify-center overflow-hidden rounded-full p-0 ring-blue-500 ring-offset-2 ring-offset-white focus:outline-none focus-visible:ring"
@@ -102,7 +102,7 @@ export function CreatePost() {
               height={40}
             />
           </Link>
-          <Dialog open={isModalOpen} onOpenChange={handleCLose}>
+          <Dialog open={isModalOpen} onOpenChange={handleCLose} >
             <DialogTrigger asChild>
               <div
                 className="relative flex min-w-0 shrink grow basis-0 cursor-pointer select-none items-center justify-start rounded-2xl bg-third-clr px-3 py-2 ring-blue-500 ring-offset-2 ring-offset-white hover:bg-fourth-clr focus:outline-none focus-visible:ring"

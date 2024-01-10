@@ -1,61 +1,7 @@
-import { Feedback, HelpSupport, LogOut, Moon, Settings } from '../icon';
+'use client'
 
-export const profileToolkit = [
-  {
-    name: 'Settings & privacy',
-    href: '##',
-    icon: Settings,
-  },
-  {
-    name: 'Help & Support',
-    href: '##',
-    icon: HelpSupport,
-  },
-  {
-    name: 'Display & Accessibility',
-    href: '##',
-    icon: Moon,
-  },
-  {
-    name: 'Give feedback',
-    href: '##',
-    icon: Feedback,
-  },
-  {
-    name: 'Log Out',
-    href: '##',
-    icon: LogOut,
-  },
-];
-export const settingsAndPrivacy = [
-  {
-    name: 'Settings',
-    href: '##',
-    icon: Settings,
-  },
-  {
-    name: 'Language',
-    href: '##',
-    icon: Settings,
-  },
-  {
-    name: 'Feed',
-    href: '##',
-    icon: Settings,
-  },
-]
-export const displayAndAccessibility = [
-  {
-    name: 'Keyboard',
-    href: '##',
-    icon: Settings,
-  },
-  {
-    name: 'Dark mode',
-    href: '##',
-    icon: Settings,
-  },
-]
+import Image from "next/image";
+import Link from "next/link"
 
 const contacts = [
   {
@@ -150,30 +96,46 @@ const contacts = [
     seen: true,
   },
 ];
-interface Message {
-  id: number;
-  name: string;
-  url: string;
-  seen: boolean;
-  lastMessage: string;
+const ImageSection = ({postId,imageUrl}:{postId:number; imageUrl:string}) => {
+  return (
+    <div className="relative">
+      {/* <Link href={`/photo/${postId}`} className="relative m-0 min-h-0 min-w-0 p-0"
+      > */}
+      <div className="relative m-0 min-h-0 min-w-0 p-0">
+
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-black">
+          {/* use hook to measure element dimension */}
+          <div className="w-[calc((100vh-325px)*1.1257)] min-w-[500px] max-w-full ">
+            <div className="relative h-0 overflow-hidden pt-[88.83333%]">
+              <div className="absolute left-0 top-0 h-full w-full">
+                <div className="flex h-full w-full items-center justify-center  object-cover">
+                  <Link
+                    href={`/?photoId=${postId}`}
+                    as={`/photo/${postId}`}
+                    
+                  >
+                    <Image
+                      style={{ transform: 'translate3d(0, 0, 0)' }}
+                      src={imageUrl}
+                      alt="content"
+                      width={800}
+                      height={800}
+                      sizes="(max-width: 640px) 100vw,
+                      (max-width: 1280px) 50vw,
+                      (max-width: 1536px) 33vw,
+                      25vw"
+                    />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {/* </Link> */}
+    </div>
+
+    </div>
+  )
 }
 
-export const messages: Message[] = contacts.map((contact, index) => {
-  return {
-    id: index + 1,
-    name: contact.name,
-    url: contact.url,
-    seen: contact.seen,
-    lastMessage: generateRandomText(Math.floor(Math.random() * 234)),
-    createdAt: '2023-09-26 07:03:11',
-  };
-});
-function generateRandomText(length: number): string {
-  const characters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-}
+export default ImageSection

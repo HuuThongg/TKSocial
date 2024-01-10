@@ -10,6 +10,8 @@ import dayjs from 'dayjs';
 dayjs().format();
 import { User, posts, Comment, Like, Post as TypePost } from '@/db/schema';
 
+import ImageSection from './ImageSection';
+
 dayjs.extend(relativeTime);
 dayjs.extend(updateLocal);
 
@@ -41,12 +43,14 @@ type PostProps = {
 // this is how i past data to Post;
 export default function Post({ post }: PostProps) {
   const content = post.content;
-
+  const postId = post.id;
   // const content = postInfo.post.content;
   const authorAvatar = post.author?.imageUrl;
   const authorName = post.author?.name;
   const time = post.createdAt!;
   const imageUrl = post.img;
+ 
+  
   return (
     <div className="relative z-0 mb-4 w-full">
       <div className="relative z-0 w-full overflow-hidden rounded-lg bg-secondary-clr text-primary-text">
@@ -102,27 +106,8 @@ export default function Post({ post }: PostProps) {
           </div>
           {/* image/video */}
           {imageUrl && (
-            <div className="relative">
-              <Link href="/" className="relative m-0 min-h-0 min-w-0 p-0">
-                <div className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-black">
-                  {/* use hook to measure element dimension */}
-                  <div className="w-[calc((100vh-325px)*1.1257)] min-w-[500px] max-w-full ">
-                    <div className="relative h-0 overflow-hidden pt-[88.83333%]">
-                      <div className="absolute left-0 top-0 h-full w-full">
-                        <div className="flex h-full w-full items-center justify-center  object-cover">
-                          <Image
-                            src={imageUrl}
-                            alt="content"
-                            width={800}
-                            height={800}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
+            <ImageSection postId={postId} imageUrl={imageUrl}/>
+            
           )}
         </div>
         {/* comment */}

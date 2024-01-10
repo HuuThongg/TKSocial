@@ -30,6 +30,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "tailwind.config.js"
-  ],
+, "app/photo/page.tsx"  ],
   "exclude": ["node_modules"]
 }

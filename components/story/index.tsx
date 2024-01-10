@@ -59,38 +59,6 @@ export default function Story() {
   return (
     <div className="mb-4 flex justify-center pt-2">
       <div className="relative z-0 flex flex-col space-y-2 overflow-hidden rounded-lg bg-secondary-clr ">
-        <div className="flex w-full flex-wrap items-center justify-center border-b border-third-clr">
-          <div className="m-0 flex min-w-0 shrink grow flex-col px-[6px] pt-[6px] ">
-            <div className="flex w-full gap-x-2 px-2">
-              {/* stories */}
-              {[...Array(2)].map((item, index) => (
-                <div
-                  key={index}
-                  className="relative flex max-w-full shrink-0 grow flex-col bg-transparent py-1"
-                >
-                  <div className="relative m-0 flex border-0 border-none p-0 ">
-                    <div className="relative flex h-[60px] shrink-0 grow items-center justify-center">
-                      <div className="mr-2 ">
-                        <StoryIcon className="h-5 w-5  text-accent " />
-                      </div>
-                      <div className="m-0 flex min-w-0 max-w-full items-center justify-center break-words p-0 text-start text-[15px] font-semibold">
-                        <span className="relative inline-block  overflow-x-hidden text-ellipsis whitespace-nowrap leading-5 text-secondary-text">
-                          Live Video
-                        </span>
-                      </div>
-                      <div className="absolute bottom-0 left-0 h-[3px] w-full bg-accent"></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              {/* reels */}
-
-              {/* <div className="py-1">
-
-              </div> */}
-            </div>
-          </div>
-        </div>
         <div className="z-0 flex w-[500px] max-w-full flex-col 2sm:w-[680px]">
           <div className="relative min-h-[200px]  py-1">
             <div className="relative z-0 box-border">

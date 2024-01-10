@@ -103,6 +103,7 @@ const Collection = () => {
                               <div className="absolute inset-0 h-full w-full">
                                 <Image
                                   src="/images/storiesAva/sangnguyen.jpg"
+                                  fill
                                   className="h-full w-full object-cover"
                                   alt=""
                                 />

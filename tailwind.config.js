@@ -25,6 +25,10 @@ module.exports = {
       xl: '1420px',
       // xl: '899 1100 1160 1340 1420 1920',
       '2xl': '1921px',
+      narrow: { raw: '(max-aspect-ratio: 3 / 2)' },
+      wide: { raw: '(min-aspect-ratio: 3 / 2)' },
+      'taller-than-854': { raw: '(min-height: 854px)' },
+      
     },
     extend: {
       transitionTimingFunction: {

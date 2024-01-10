@@ -5,3 +5,4 @@ import { drizzle } from 'drizzle-orm/planetscale-serverless';
 
 const conn = connect(config);
 export const db = drizzle(conn, { schema, logger: false });
+  
